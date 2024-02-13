@@ -8,6 +8,4 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-** Year 2024
-#Prueba commit ivaramlar ioihioh
-24.1.1 Proyecto base
+D01 Versión del primer entregable del proyecto

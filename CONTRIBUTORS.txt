@@ -8,4 +8,8 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-- Rafael Corchuelo (corchu@us.es)
+- Mohamed Abouri (mohabo1@alum.us.es)
+- Rafael Cabello Ranea (rafcabran@alum.us.es)
+- Franciso Javier Calderón Rodríguez (fracalrod3@alum.us.es)
+- David Delgado Pallares (davdelpal1@alum.us.es)
+- Iván Ramírez Lara (ivaramlar@alum.us.es)

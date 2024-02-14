@@ -10,9 +10,11 @@
 
 master.company.title = La empresa
 master.company.text = \
-	Acme SF, Inc. es una empresa ficticia que ofrece un proyecto starter para los \
-	estudiantes de la asignatura Diseño y Pruebas de la titulación de \
-	Ingeniería del Software en la Universidad de Seville. 
+	Acme Software Factory, Inc. (Acme SF, Inc. para abreviar) es una empresa ficticia que se especializa en ayudar \
+	a las organizaciones a iniciarse en una variedad de temas relacionados con la gestión y el desarrollo de \
+	proyectos de software. El objetivo de este proyecto es desarrollar un WIS para ayudar a esta organización a \
+	gestionar su negocio, desde proyectos hasta historias de usuarios, contratos, registros de progreso y auditorías \
+	de calidad. 
 master.company.name = Acme, Inc.
 master.company.address = 01 Acme Drive, Sevilla, España
 master.company.phone = +1 000 111 222

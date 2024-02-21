@@ -1,42 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
-  <zoom_level>10</zoom_level>
+  <zoom_level>8</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>370</x>
-      <y>0</y>
-      <w>210</w>
-      <h>190</h>
+      <x>296</x>
+      <y>200</y>
+      <w>216</w>
+      <h>152</h>
     </coordinates>
-    <panel_attributes>&lt;&lt;Entity&gt;&gt;
-User Account
---
--version: Integer
--enabled: Boolean
--identity: Enum
--password:String
--username: String
-
-
-
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>320</x>
-      <y>250</y>
-      <w>210</w>
-      <h>190</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+    <panel_attributes>&lt;&lt;Role&gt;&gt;
 Manager
 --
--version: Integer
--company: String
--sector: String
+-degree:String{NotBlank,Max(76)}
+-overview:String{NotBlank,Max(101)}
+-certifications:String{NotBlank,Max(101)}
+-link:String
 
 
 
@@ -45,23 +24,12 @@ Manager
     <additional_attributes/>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>430</x>
-      <y>180</y>
-      <w>50</w>
-      <h>90</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>30.0;10.0;10.0;70.0</additional_attributes>
-  </element>
-  <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>350</x>
-      <y>530</y>
-      <w>210</w>
-      <h>190</h>
+      <x>368</x>
+      <y>424</y>
+      <w>168</w>
+      <h>152</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Project
@@ -69,9 +37,10 @@ Project
 -code: String {NotBlank,Unique}
 -title: String {NotBlank,Max(76)}
 -abstract: String {NotBlank,Max(101)}
--fatal Errors Indicator:Boolean
+-fatal_errors Indicator:Boolean
 -cost:Integer {NotNull,Min(0)}
 -link:String
+-draft_mode:Boolean
 
 
 
@@ -84,17 +53,17 @@ Project
     <id>UMLClass</id>
     <coordinates>
       <x>0</x>
-      <y>540</y>
-      <w>210</w>
-      <h>190</h>
+      <y>432</y>
+      <w>256</w>
+      <h>152</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 User Story
 --
 -title: String {NotBlank,Max(76)}
--description: String {NotBlank,Max(7106)}
--estimated_Cost: Integer {NotNull,Min(1)}
--acceptance_Criteria:String {NotBlank,Max(101)}
+-description: String {NotBlank,Max(101)}
+-estimated_cost: Integer {NotNull,Min(1)}
+-acceptance_criteria:String {NotBlank,Max(101)}
 -link: String
 
 
@@ -106,23 +75,23 @@ User Story
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>620</x>
-      <y>250</y>
-      <w>210</w>
-      <h>190</h>
+      <x>584</x>
+      <y>200</y>
+      <w>352</w>
+      <h>152</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Form&gt;&gt;
 Dashboard
 --
--total_number_per_type_of_priority: Map&lt;String,Integer&gt; {NotNull}
--average_Us_cost: Integer {NotNull}
--deviation_Us_cost: Integer {NotNull}
--min_Us_cost: Integer {NotNull}
--max_Us_cost: Integer {NotNull}
--average_project_cost:Integer {NotNull}
--deviation_project_cost:Integer {NotNull}
--min_project_cost: Integer {NotNull}
--max_project_cost: Integer {NotNull}
+-total_number_per_type_of_priority: Map&lt;String,Integer&gt; 
+-average_us_cost: Integer 
+-deviation_us_cost: Integer
+-min_us_cost: Integer 
+-max_us_cost: Integer 
+-average_project_cost:Integer 
+-deviation_project_cost:Integer
+-min_project_cost: Integer
+-max_project_cost: Integer
 
 
 </panel_attributes>
@@ -131,13 +100,13 @@ Dashboard
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>400</x>
-      <y>430</y>
-      <w>110</w>
-      <h>120</h>
+      <x>408</x>
+      <y>344</y>
+      <w>88</w>
+      <h>96</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
-m1=1..n
+    <panel_attributes>lt=x-&gt;
+m1=1..*
 Manages
 m2= 1</panel_attributes>
     <additional_attributes>60.0;100.0;10.0;10.0</additional_attributes>
@@ -145,12 +114,12 @@ m2= 1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>200</x>
-      <y>620</y>
-      <w>170</w>
-      <h>60</h>
+      <x>248</x>
+      <y>496</y>
+      <w>136</w>
+      <h>48</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-x
 
 
 1..*         has            1</panel_attributes>
@@ -159,13 +128,13 @@ m2= 1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>520</x>
-      <y>330</y>
-      <w>120</w>
-      <h>50</h>
+      <x>504</x>
+      <y>264</y>
+      <w>96</w>
+      <h>40</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-
-m1=1..n
+    <panel_attributes>lt=x-&gt;
+m1=1..*
 has
 m2= 1</panel_attributes>
     <additional_attributes>100.0;20.0;10.0;20.0</additional_attributes>
@@ -173,12 +142,12 @@ m2= 1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>550</x>
-      <y>430</y>
-      <w>190</w>
-      <h>200</h>
+      <x>528</x>
+      <y>344</y>
+      <w>152</w>
+      <h>160</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
+    <panel_attributes>lt=&lt;-x
 m1=1
 m2= 1</panel_attributes>
     <additional_attributes>10.0;180.0;170.0;10.0</additional_attributes>

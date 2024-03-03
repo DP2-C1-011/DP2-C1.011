@@ -1,33 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
-  <zoom_level>8</zoom_level>
+  <zoom_level>13</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>400</x>
-      <y>376</y>
-      <w>296</w>
-      <h>136</h>
+      <x>338</x>
+      <y>234</y>
+      <w>481</w>
+      <h>234</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
-Training Module
+TrainingModule
 --
 - code: String {Not Blank, Unique, Pattern}
-- creation moment: Date {Past}
+- creationMoment: Date {Past}
 - details: String {Not Blank, Max(100)}
-- difficulty level: DifficultyLevel
-- update moment: Date {Past, After(creation moment)}
-- optional link: String
-- total time: Double</panel_attributes>
+- difficultyLevel: DifficultyLevel
+- updateMoment: Date {Past}
+- optionalLink: String
+- / totalTime: Integer {Transient}
+- draftMode: Boolean</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1008</x>
-      <y>256</y>
-      <w>112</w>
-      <h>96</h>
+      <x>1274</x>
+      <y>65</y>
+      <w>182</w>
+      <h>156</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Enumeration&gt;&gt;
 DifficultyLevel
@@ -40,50 +41,51 @@ DifficultyLevel
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>416</x>
-      <y>624</y>
-      <w>256</w>
-      <h>128</h>
+      <x>364</x>
+      <y>637</y>
+      <w>416</w>
+      <h>208</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
-Training Session
+TrainingSession
 --
 - code: String {Not Blank, Unique, Pattern}
-- period:
+- startMoment: Date
+- finishMoment: Date
 - location: String {Not Blank, Max(75)}
 - instructor: String {Max(75)}
-- contact email: String {Not Null, Email-Pattern}
-- optional link: String</panel_attributes>
+- contactEmail: String {Not Null, Email-Pattern}
+- optionalLink: String</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>816</x>
-      <y>656</y>
-      <w>304</w>
-      <h>152</h>
+      <x>962</x>
+      <y>585</y>
+      <w>494</w>
+      <h>195</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Form&gt;&gt;
-Developer Dashboard
+DeveloperDashboard
 --
-- training modules with update moment number: Integer
-- training sessions with link number: Integer
-- training modules average time: Double
-- training modules deviation time: Double
-- training modules minimum time: Double
-- training modules maximum time: Double</panel_attributes>
+- numTrainingModulesUpdated: Integer
+- numTrainingSessionsLink: Integer
+- avgTrainingModulesTime: Double
+- devTrainingModulesTime: Double
+- minTrainingModulesTime: Double
+- maxTrainingModulesTime: Double</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>848</x>
-      <y>376</y>
-      <w>240</w>
-      <h>120</h>
+      <x>1066</x>
+      <y>234</y>
+      <w>390</w>
+      <h>195</h>
     </coordinates>
-    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+    <panel_attributes>&lt;&lt;Role&gt;&gt;
 DeveloperRole
 --
 - degree: String {Not blank, Max(75)}
@@ -95,141 +97,82 @@ DeveloperRole
     <additional_attributes/>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>536</x>
-      <y>504</y>
-      <w>24</w>
-      <h>136</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;150.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
     <id>Text</id>
     <coordinates>
-      <x>552</x>
-      <y>560</y>
-      <w>48</w>
-      <h>24</h>
-    </coordinates>
-    <panel_attributes>has
-style=wordwrap</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>552</x>
-      <y>600</y>
-      <w>48</w>
-      <h>24</h>
-    </coordinates>
-    <panel_attributes>1..*
-style=wordwrap</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>552</x>
-      <y>520</y>
-      <w>48</w>
-      <h>24</h>
-    </coordinates>
-    <panel_attributes>1
-style=wordwrap</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>952</x>
-      <y>488</y>
-      <w>24</w>
-      <h>184</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;210.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>968</x>
-      <y>568</y>
-      <w>72</w>
-      <h>24</h>
-    </coordinates>
-    <panel_attributes>access
-style=wordwrap</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>968</x>
-      <y>504</y>
-      <w>48</w>
-      <h>24</h>
-    </coordinates>
-    <panel_attributes>1
-style=wordwrap</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>968</x>
-      <y>624</y>
-      <w>48</w>
-      <h>24</h>
-    </coordinates>
-    <panel_attributes>1
-style=wordwrap</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>664</x>
-      <y>696</y>
-      <w>168</w>
-      <h>24</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;190.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>552</x>
-      <y>312</y>
-      <w>48</w>
-      <h>24</h>
+      <x>585</x>
+      <y>130</y>
+      <w>78</w>
+      <h>39</h>
     </coordinates>
     <panel_attributes>
 style=wordwrap</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>767</x>
+      <y>416</y>
+      <w>325</w>
+      <h>247</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x</panel_attributes>
+    <additional_attributes>230.0;10.0;10.0;170.0</additional_attributes>
+  </element>
+  <element>
     <id>Text</id>
     <coordinates>
-      <x>720</x>
-      <y>680</y>
-      <w>72</w>
-      <h>24</h>
+      <x>832</x>
+      <y>494</y>
+      <w>130</w>
+      <h>39</h>
     </coordinates>
-    <panel_attributes>describes
+    <panel_attributes>operated by
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>806</x>
+      <y>338</y>
+      <w>286</w>
+      <h>39</h>
+    </coordinates>
+    <panel_attributes>lt=x-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;200.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>884</x>
+      <y>312</y>
+      <w>143</w>
+      <h>39</h>
+    </coordinates>
+    <panel_attributes>operated by
 style=wordwrap</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>680</x>
-      <y>680</y>
-      <w>48</w>
-      <h>24</h>
+      <x>1027</x>
+      <y>312</y>
+      <w>78</w>
+      <h>39</h>
+    </coordinates>
+    <panel_attributes>1
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>832</x>
+      <y>312</y>
+      <w>78</w>
+      <h>39</h>
     </coordinates>
     <panel_attributes>0..*
 style=wordwrap</panel_attributes>
@@ -238,45 +181,45 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>784</x>
-      <y>680</y>
-      <w>48</w>
-      <h>24</h>
+      <x>1027</x>
+      <y>403</y>
+      <w>78</w>
+      <h>39</h>
     </coordinates>
     <panel_attributes>1
 style=wordwrap</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>664</x>
-      <y>488</y>
-      <w>200</w>
-      <h>152</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;170.0;230.0;10.0</additional_attributes>
-  </element>
-  <element>
     <id>Text</id>
     <coordinates>
-      <x>712</x>
-      <y>536</y>
-      <w>72</w>
-      <h>24</h>
+      <x>780</x>
+      <y>585</y>
+      <w>78</w>
+      <h>39</h>
     </coordinates>
-    <panel_attributes>operates
+    <panel_attributes>0..*
 style=wordwrap</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>559</x>
+      <y>455</y>
+      <w>39</w>
+      <h>208</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-x</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
+  </element>
+  <element>
     <id>Text</id>
     <coordinates>
-      <x>704</x>
-      <y>496</y>
-      <w>48</w>
-      <h>24</h>
+      <x>585</x>
+      <y>598</y>
+      <w>78</w>
+      <h>39</h>
     </coordinates>
     <panel_attributes>1..*
 style=wordwrap</panel_attributes>
@@ -285,119 +228,63 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>784</x>
-      <y>776</y>
-      <w>48</w>
-      <h>24</h>
+      <x>585</x>
+      <y>468</y>
+      <w>78</w>
+      <h>39</h>
     </coordinates>
     <panel_attributes>1
 style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>104</x>
+      <y>338</y>
+      <w>182</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>updateMoment
+must be after
+creationMoment
+bg=white</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>688</x>
-      <y>440</y>
-      <w>176</w>
-      <h>24</h>
+      <x>273</x>
+      <y>364</y>
+      <w>91</w>
+      <h>52</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;200.0;10.0</additional_attributes>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;20.0;50.0;10.0</additional_attributes>
   </element>
   <element>
-    <id>Text</id>
+    <id>UMLNote</id>
     <coordinates>
-      <x>744</x>
-      <y>424</y>
-      <w>72</w>
-      <h>24</h>
+      <x>117</x>
+      <y>689</y>
+      <w>182</w>
+      <h>91</h>
     </coordinates>
-    <panel_attributes>operates
-style=wordwrap</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>824</x>
-      <y>424</y>
-      <w>48</w>
-      <h>24</h>
-    </coordinates>
-    <panel_attributes>1
-style=wordwrap</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>704</x>
-      <y>424</y>
-      <w>48</w>
-      <h>24</h>
-    </coordinates>
-    <panel_attributes>0..*
-style=wordwrap</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>824</x>
-      <y>480</y>
-      <w>48</w>
-      <h>24</h>
-    </coordinates>
-    <panel_attributes>1
-style=wordwrap</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>672</x>
-      <y>592</y>
-      <w>48</w>
-      <h>24</h>
-    </coordinates>
-    <panel_attributes>0..*
-style=wordwrap</panel_attributes>
+    <panel_attributes>finishMoment
+must be after
+startMoment
+bg=white</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>400</x>
-      <y>504</y>
-      <w>432</w>
-      <h>312</h>
+      <x>286</x>
+      <y>728</y>
+      <w>104</w>
+      <h>39</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;370.0;520.0;370.0</additional_attributes>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>416</x>
-      <y>520</y>
-      <w>48</w>
-      <h>24</h>
-    </coordinates>
-    <panel_attributes>0..*
-style=wordwrap</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>712</x>
-      <y>776</y>
-      <w>72</w>
-      <h>24</h>
-    </coordinates>
-    <panel_attributes>describes
-style=wordwrap</panel_attributes>
-    <additional_attributes/>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;60.0;10.0</additional_attributes>
   </element>
 </diagram>

@@ -6,8 +6,8 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
 import javax.validation.Valid;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -24,7 +24,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class TrainingModule extends AbstractEntity {
+public class TrainingSession extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
@@ -33,30 +33,38 @@ public class TrainingModule extends AbstractEntity {
 	@ManyToOne()
 	private Developer			developer;
 
+	@NotNull
+	@Valid
+	@ManyToOne()
+	private TrainingModule		trainingModule;
+
 	@NotBlank
 	@Column(unique = true)
-	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}")
+	@Pattern(regexp = "TS-[A-Z]{1,3}-[0-9]{3}")
 	private String				code;
 
 	@Past
 	@NotNull
-	private Date				creationMoment;
-
-	@NotBlank
-	@Length(max = 100)
-	private String				details;
-
-	private DifficultyLevel		difficultyLevel;
+	//Comprobar que es una semana posterior a creationMoment
+	private Date				startMoment;
 
 	@Past
-	//Comprobar en el service que es posterior a creationMoment
-	private Date				updateMoment;
+	@NotNull
+	//Comprobar que es posterior a startMoment
+	private Date				finishMoment;
+
+	@NotBlank
+	@Length(max = 75)
+	private String				location;
+
+	@NotBlank
+	@Length(max = 75)
+	private String				instructor;
+
+	@NotNull
+	@Email
+	private String				contactEmail;
 
 	@URL
 	private String				optionalLink;
-
-	@Transient
-	private double				totalTime;
-
-	private boolean				draftMode;
 }

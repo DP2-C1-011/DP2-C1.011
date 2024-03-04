@@ -5,5 +5,7 @@ user-account-provider-01,true,"UserIdentity{name: 'Laurel', surname: 'Provider',
 user-account-provider-02,true,"UserIdentity{name: 'Martina', surname: 'коза თხა', email: 'martina@acme.com'}",provider2,provider2
 user-account-manager-01,true,"UserIdentity{name: 'Iván', surname: 'Ramírez', email: 'ivan@acme.com'}",manager1,manager1
 user-account-manager-02,true,"UserIdentity{name: 'Mohamed', surname: 'Abouri', email: 'moha@acme.com'}",manager2,manager2
-user-account-developer-01,true,"UserIdentity{name: 'Rafael', surname: 'Cabello', email: 'rafcabran@acme.com'}",developer1,developer1
-user-account-developer-02,true,"UserIdentity{name: 'Juan', surname: 'Developer', email: 'juan@acme.com'}",developer2,developer2
+user-account-client-01,true,"UserIdentity{name: 'Rafael', surname: 'Cabello', email: 'rafa@acme.com'}",client1,client1
+user-account-client-02,true,"UserIdentity{name: 'Fran', surname: 'Javier', email: 'fran@acme.com'}",client2,client2
+user-account-developer-01,true,"UserIdentity{name: 'Arturo', surname: 'Morgan', email: 'arturo@acme.com'}",developer1,developer1
+user-account-developer-02,true,"UserIdentity{name: 'Juan', surname: 'Marston', email: 'juan@acme.com'}",developer2,developer2

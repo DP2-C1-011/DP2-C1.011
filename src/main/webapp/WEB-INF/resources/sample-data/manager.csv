@@ -1,3 +1,3 @@
-key,key:userAccount,company,sector
-manager-01,user-account-manager-02,"Terra Nets, S.A.","Internet"
-manager-02,user-account-manager-02,"Лорем ипсум","Λορεμ ιπσθμ"
+key,key:userAccount,degree,overview,certifications,link
+manager-01,user-account-manager-02,Master of Business Administration,Experienced professional with strong leadership skills.,"Project Management Professional (PMP),",https://example.com/manager_profile1
+manager-02,user-account-manager-02,Bachelor of Science in Engineering,Technical expert with a proven track record in project management.,Six Sigma Black Belt,https://example.com/manager_profile2

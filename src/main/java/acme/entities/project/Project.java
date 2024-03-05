@@ -1,11 +1,12 @@
 
-package acme.entities;
+package acme.entities.project;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
@@ -17,12 +18,17 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class UserStory extends AbstractEntity {
+public class Project extends AbstractEntity {
 
 	/**
 	 * 
 	 */
 	private static final long	serialVersionUID	= 1L;
+
+	@Pattern(regexp = "[A-Z]{3}-[0-9]{4}")
+	@NotBlank
+	@Column(unique = true)
+	String						code;
 
 	@NotBlank
 	@Length(max = 76)
@@ -30,20 +36,17 @@ public class UserStory extends AbstractEntity {
 
 	@NotBlank
 	@Length(max = 101)
-	String						description;
+	@Column(name = "Abstract")
+	String						abstracto;
 
+	String						fatalError;
 	@NotNull
-	@Min(1)
-	Integer						estimatedCost;
+	@Min(0)
+	Integer						cost;
 
-	@NotBlank
-	@Length(max = 101)
-	String						acceptanceCriteria;
 	@URL
 	String						link;
 
-	@NotNull
-	@ManyToOne(optional = false)
-	Project						project;
+	Boolean						draftMode;
 
 }

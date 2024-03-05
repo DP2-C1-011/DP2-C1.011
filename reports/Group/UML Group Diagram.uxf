@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>6</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>444</x>
+      <y>180</y>
+      <w>174</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Objective
+--
+- instantiationMoment: Date {Past}
+- title: String {Not Blank, Max(75)}
+- description: String {Not Blank, Max(100)} 
+- priority: Priority
+- status: Boolean
+- duration: Date {Past}
+- optionalLink: String
+
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>444</x>
+      <y>312</y>
+      <w>174</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Notice
+--
+- instantiationMoment: Date {Past}
+- title: String {Not Blank, Max(75)}
+- author: String {Not Blank, Max(75)}
+- message: String {Not Blank, Max(100)}
+- optionalEmailAddress: String
+- optionalLink: String
+ 
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>276</x>
+      <y>102</y>
+      <w>84</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+Priority
+--
+- Low
+- Medium
+- High
+
+bg=green
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>420</x>
+      <y>132</y>
+      <w>150</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>The duration must start at any moment 
+after the instantiation moment.
+bg=blue
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>474</x>
+      <y>156</y>
+      <w>18</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=..</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>222</x>
+      <y>180</y>
+      <w>186</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Claim
+--
+- code: String {Not Blank, Unique, Pattern}
+- instantiationMoment: Date {Past}
+- heading: String {Not Blank, Max(75)}
+- description: String {Not Blank, Max(100)} 
+- department: String {Not Blank, Max(100)} 
+- optionalEmailAddress: String
+- optionalLink: String
+
+
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>222</x>
+      <y>312</y>
+      <w>186</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Risk
+--
+- reference: String {Not Blank, Unique, Pattern}
+- identificationDate: Date {Past}
+- impact: Double {Positive}
+- probability: Double
+- /value: Double
+- description: String {Not Blank, Max(100)}
+- optionalLink: String
+ 
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>438</x>
+      <y>420</y>
+      <w>186</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>The author must be computed as follows: 
+“〈username〉 - 〈surname, name〉”, where 
+“〈username〉” denotes the username of the 
+principal who has posted the note and 
+“〈surname, name〉” denotes his or her full name.
+bg=blue
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>522</x>
+      <y>390</y>
+      <w>18</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=..</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>222</x>
+      <y>438</y>
+      <w>186</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>bg=green
+&lt;&lt;Entity&gt;&gt;
+Banner
+--
+- instantiation/updateMoment: Date {Past}
+- displayPeriod: Date {Past}
+- linkPicture: String {NotBlank, Url}
++ slogan: String {NotBlank, Max(75)}
++ linkDoc: String {NotBlank}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>36</x>
+      <y>468</y>
+      <w>174</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>The display period must start at any moment 
+after the instantiation/update moment and 
+must last for at least one week.
+bg=blue
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>204</x>
+      <y>480</y>
+      <w>30</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=..</panel_attributes>
+    <additional_attributes>10.0;10.0;30.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>444</x>
+      <y>486</y>
+      <w>120</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>The picture of linkPicture must 
+be stored somewhere else.
+bg=blue
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>402</x>
+      <y>492</y>
+      <w>54</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=..</panel_attributes>
+    <additional_attributes>70.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>588</x>
+      <y>132</y>
+      <w>96</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>Status indicate whether 
+it is critical or not.
+bg=blue
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>612</x>
+      <y>156</y>
+      <w>36</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=..</panel_attributes>
+    <additional_attributes>40.0;10.0;40.0;100.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>648</x>
+      <y>282</y>
+      <w>162</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>bg=green
+&lt;&lt;Form&gt;&gt;
+Administrator Dashboard
+--
++ numberOfPrincipalRoles: Integer
++ noticesRatio: Double
++ objectivesStatusRatio: Double
++ maximumValueRisks: Double
++ minimumValueRisks: Double
++ averageValueRisks: Double
++ standardDeviationValueRisks: Double
++ maximunClaims: Integer
++ minimunClaims: Integer
++ averageClaims: Double
++ standardDeviationClaims: Double
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>648</x>
+      <y>222</y>
+      <w>132</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>noticesRatio is calculated using
+both an email address and a link.
+bg=blue
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>702</x>
+      <y>246</y>
+      <w>18</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=..</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>654</x>
+      <y>438</y>
+      <w>150</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>The claims parameters are calculated
+taking into account only the written 
+ones in the last 10 weeks.
+bg=blue
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>726</x>
+      <y>408</y>
+      <w>18</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=..</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+</diagram>

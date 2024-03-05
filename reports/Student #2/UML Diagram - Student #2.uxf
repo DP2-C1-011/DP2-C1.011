@@ -76,8 +76,8 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>590</x>
-      <y>460</y>
+      <x>600</x>
+      <y>440</y>
       <w>400</w>
       <h>180</h>
     </coordinates>
@@ -97,8 +97,8 @@ Client Dashboard
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>620</x>
-      <y>220</y>
+      <x>630</x>
+      <y>260</y>
       <w>330</w>
       <h>130</h>
     </coordinates>
@@ -115,8 +115,8 @@ Client
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>380</x>
-      <y>130</y>
+      <x>450</x>
+      <y>140</y>
       <w>220</w>
       <h>90</h>
     </coordinates>
@@ -125,53 +125,6 @@ Type
 --
 + "company"
 + "individual"</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>770</x>
-      <y>340</y>
-      <w>30</w>
-      <h>140</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-x</panel_attributes>
-    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>790</x>
-      <y>350</y>
-      <w>30</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>1
-style=wordwrap</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>780</x>
-      <y>400</y>
-      <w>60</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>access
-style=wordwrap</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>790</x>
-      <y>440</y>
-      <w>30</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>1
-style=wordwrap</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

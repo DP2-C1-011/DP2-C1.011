@@ -4,9 +4,9 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>10</x>
+      <x>60</x>
       <y>0</y>
-      <w>270</w>
+      <w>240</w>
       <h>140</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Role&gt;&gt;
@@ -24,7 +24,7 @@ layer=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>10</x>
+      <x>60</x>
       <y>160</y>
       <w>100</w>
       <h>80</h>
@@ -41,26 +41,23 @@ IN_KIND
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>10</x>
-      <y>470</y>
-      <w>520</w>
-      <h>240</h>
+      <x>260</x>
+      <y>520</y>
+      <w>300</w>
+      <h>200</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Invoice
 --
 
--code: String {NotBlank,Unique}
--registration: LocalDateTime {After(LocalDateTime.now())}
--due: LocalDate {Before(LocalDate.now()), registration-due&gt;=1 month}
--quantity: Integer {Min(1)}
--tax: Double {Min(0.)}
--email: String {optional}
--link: String {optional}
-
---
-
--total: Double {quantity*tax}
+-code: String {Pattern,NotBlank,Unique}
+-registrationDate: LocalDateTime 
+-dueDate: LocalDate 
+-quantity: Integer {Positive,not nought}
+-tax: Double {Positive}
+-optionalEmail: String 
+-optionalLink: String 
+-/total: Double 
 
 </panel_attributes>
     <additional_attributes/>
@@ -68,22 +65,22 @@ Invoice
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>10</x>
+      <x>260</x>
       <y>260</y>
-      <w>480</w>
+      <w>280</w>
       <h>190</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Sponsorship
 --
 
--code: String {NotBlank,Unique}
--moment: LocalDateTime {After(LocalDate.now())}
--duration: LocalDate {After(LocalDate.now()), duration-moment&gt;=1 month}
--amount: Integer {Min(1)}
--type: Enum 
--email: String {optional}
--link: String {optional}
+-code: String {Pattern,NotBlank,Unique}
+-moment: LocalDateTime 
+-duration: LocalDate 
+-amount: Integer {Positive}
+-type: Type
+-optionalEmail: String 
+-optionalLink: String 
 
 
 </panel_attributes>
@@ -92,62 +89,62 @@ Sponsorship
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>130</x>
+      <x>200</x>
       <y>130</y>
-      <w>70</w>
-      <h>150</h>
+      <w>80</w>
+      <h>180</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=0..n
 m2=0..1
 does &gt;
 layer=0</panel_attributes>
-    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
+    <additional_attributes>60.0;150.0;10.0;150.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>480</x>
+      <x>530</x>
       <y>360</y>
-      <w>90</w>
-      <h>130</h>
+      <w>80</w>
+      <h>180</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=0..n
 m2=0..1
 bills &gt;
 layer=0</panel_attributes>
-    <additional_attributes>30.0;110.0;30.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>20.0;160.0;20.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>360</x>
+      <x>410</x>
       <y>0</y>
-      <w>120</w>
+      <w>220</w>
       <h>240</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Form&gt;&gt;
 Dashboard
 --
 
--lowTax: Integer
--linked: Integer
--avSpo: Double
--devSpo: Double
--minSpo: Integer
--maxSpo: Integer
--avInv: Double
--devInv: Double
--minInv: Integer
--maxInv: Integer
+-taxLess21: Integer
+-linkedSponsorships: Integer
+-averageSponsorship: Double
+-deviationSponsorship: Double
+-minimumSponsorship: Integer
+-maximumSponsorship: Integer
+-averageInvoice: Double
+-deviationInvoice: Double
+-minimumInvoice: Integer
+-maximumInvoice: Integer
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>250</x>
+      <x>300</x>
       <y>60</y>
       <w>130</w>
       <h>220</h>
@@ -157,21 +154,101 @@ m1=0..n
 m2=0..1
 handles &gt;
 layer=0</panel_attributes>
-    <additional_attributes>10.0;200.0;10.0;160.0;50.0;160.0;50.0;10.0;110.0;10.0</additional_attributes>
+    <additional_attributes>10.0;200.0;10.0;160.0;30.0;160.0;30.0;10.0;110.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>470</x>
-      <y>70</y>
-      <w>180</w>
-      <h>510</h>
+      <x>550</x>
+      <y>230</y>
+      <w>150</w>
+      <h>350</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=0..n
 m2=0..1
 handles &gt;
 layer=0</panel_attributes>
-    <additional_attributes>60.0;480.0;100.0;480.0;100.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;320.0;70.0;320.0;70.0;40.0;30.0;40.0;30.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>0</x>
+      <y>610</y>
+      <w>240</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>registrationDate and dueDate must 
+take place after the current time
+and be separated by a month in time
+bg=blue
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>230</x>
+      <y>630</y>
+      <w>50</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=..
+layer=0</panel_attributes>
+    <additional_attributes>10.0;10.0;30.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>10</x>
+      <y>310</y>
+      <w>230</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>moment and duration must 
+take place after the current time
+and be separated by a month in 
+time
+bg=blue
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>230</x>
+      <y>340</y>
+      <w>50</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=..
+layer=0</panel_attributes>
+    <additional_attributes>10.0;10.0;30.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>0</x>
+      <y>520</y>
+      <w>240</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>total is calculated as {quantity*tax}
+bg=blue
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>230</x>
+      <y>530</y>
+      <w>50</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=..
+layer=0</panel_attributes>
+    <additional_attributes>10.0;10.0;30.0;10.0</additional_attributes>
   </element>
 </diagram>

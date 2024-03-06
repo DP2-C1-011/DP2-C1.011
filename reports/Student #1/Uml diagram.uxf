@@ -12,9 +12,9 @@
     <panel_attributes>&lt;&lt;Role&gt;&gt;
 Manager
 --
-+degree:String{NotBlank,Max(76)}
-+overview:String{NotBlank,Max(101)}
-+certifications:String{NotBlank,Max(101)}
++degree:String{NotBlank,Max(75)}
++overview:String{NotBlank,Max(100)}
++certifications:String{NotBlank,Max(100)}
 -link:String
 
 
@@ -35,8 +35,8 @@ Manager
 Project
 --
 +code: String {NotBlank,Unique}
-+title: String {NotBlank,Max(76)}
-+abstract: String {NotBlank,Max(101)}
++title: String {NotBlank,Max(75)}
++abstract: String {NotBlank,Max(100)}
 +fatal_errors Indicator:Boolean
 +cost:Integer {NotNull,Min(0)}
 -link:String
@@ -60,10 +60,10 @@ Project
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 User Story
 --
-+title: String {NotBlank,Max(76)}
-+description: String {NotBlank,Max(101)}
++title: String {NotBlank,Max(75)}
++description: String {NotBlank,Max(100)}
 +estimated_cost: Integer {NotNull,Min(1)}
-+acceptance_criteria:String {NotBlank,Max(101)}
++acceptance_criteria:String {NotBlank,Max(100)}
 -link: String
 
 

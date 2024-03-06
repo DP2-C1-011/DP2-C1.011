@@ -1,2 +1,6 @@
 key,title,description,estimatedCost,acceptanceCriteria,link,key:project
-user-story-01,"Implement user authentication feature","Develop a robust user authentication system with secure password storage",8,"User should be able to sign up log in and reset their password successfully","https://example.com/user-authentication",project-01
+user-story-01,"Implement user authentication feature","Develop a robust user authentication system with secure password storage",2,"User should be able to sign up log in and reset their password successfully","https://example.com/user-authentication",project-01
+user-story-02,"Implement email notification system","Set up a system to send email notifications for various user actions",33,"User should receive email confirmations for sign up", "password reset, and account changes,https://example.com/email-notifications",project-01
+user-story-03,"Create user profile pages","Design and implement user profile pages with editable fields",34,"Users should be able to view and edit their profile information","https://example.com/user-profiles",project-01
+user-story-04,"Develop admin dashboard","Build an admin dashboard for managing users and system settings",35,"Admins should be able to view user data and modify user roles and adjust system configurations",https://example.com/admin-dashboard",project-01
+user-story-05,"Develop admin menu","Build an admin menu for managing the diferents screens",74,"Admins should be able to navigate between the screen",https://example.com/admin-dashboard",project-01

@@ -31,11 +31,11 @@ public class Project extends AbstractEntity {
 	String						code;
 
 	@NotBlank
-	@Length(max = 76)
+	@Length(max = 75)
 	String						title;
 
 	@NotBlank
-	@Length(max = 101)
+	@Length(max = 100)
 	@Column(name = "Abstract")
 	String						abstracto;
 

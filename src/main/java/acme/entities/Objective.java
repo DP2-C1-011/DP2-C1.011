@@ -1,7 +1,6 @@
 
 package acme.entities;
 
-import java.time.Duration;
 import java.util.Date;
 
 import javax.validation.constraints.NotBlank;
@@ -31,9 +30,11 @@ public class Objective extends AbstractEntity {
 
 	private Priority			priority;
 
-	private Status				status;
+	private Boolean				isCritical;
 
-	private Duration			duration;
+	private Date				startDate;
+
+	private Date				endDate;
 
 	@URL
 	private String				optionalLink;

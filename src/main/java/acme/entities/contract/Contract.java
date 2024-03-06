@@ -5,8 +5,9 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
@@ -27,6 +28,7 @@ public class Contract extends AbstractEntity {
 	@NotBlank
 	@Column(unique = true)
 	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}")
+	@NotNull
 	private String				code;
 
 	@Past
@@ -34,19 +36,24 @@ public class Contract extends AbstractEntity {
 
 	@NotBlank
 	@Length(max = 75)
+	@NotNull
 	private String				provider;
 
 	@NotBlank
 	@Length(max = 75)
+	@NotNull
 	private String				customer;
 
 	@NotBlank
 	@Length(max = 100)
+	@NotNull
 	private String				goals;
 
 	private Double				budget;
 
-	@OneToOne
+	private Boolean				draftMode;
+
+	@ManyToOne
 	private Project				project;
 
 }

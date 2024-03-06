@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Past;
@@ -30,6 +31,7 @@ public class ProgressLog extends AbstractEntity {
 	private String				recordId;
 
 	@Min(0)
+	@Max(100)
 	private Double				completeness;
 
 	@NotBlank

@@ -5,6 +5,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
@@ -29,17 +30,20 @@ public class Client extends AbstractRole {
 	@NotBlank
 	@Column(unique = true)
 	@Pattern(regexp = "CLI-[0-9]{4}")
+	@NotNull
 	private String				identification;
 
 	@NotBlank
 	@Length(max = 75)
+	@NotNull
 	private String				companyName;
 
-	@NotBlank
+	@NotNull
 	private Type				type;
 
 	@NotBlank
 	@Email
+	@NotNull
 	private String				email;
 
 	@URL

@@ -100,7 +100,7 @@ Client
 + company_name : String {NotBlank, Max(75)}
 + type : Type {NotBlank}
 + email : String {NotBlank}
-- /optional_link : String
+- optional_link : String
 bg=#7F00FF</panel_attributes>
     <additional_attributes/>
   </element>
@@ -115,8 +115,8 @@ bg=#7F00FF</panel_attributes>
     <panel_attributes>&lt;&lt;Enumeration&gt;&gt;
 Type
 --
-+ "company"
-+ "individual"
++ company
++ individual
 bg=red</panel_attributes>
     <additional_attributes/>
   </element>

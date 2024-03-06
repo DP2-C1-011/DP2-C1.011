@@ -1,6 +1,7 @@
 
 package acme.entities.project;
 
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
@@ -17,6 +18,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Embeddable
 public class UserStory extends AbstractEntity {
 
 	/**

@@ -1,43 +1,37 @@
 
 package acme.form;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import acme.client.data.AbstractForm;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class Dashboard extends AbstractForm {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
+	Map<String, Integer>		totalNumberPerTypeOfPriority;
 
-	public Map<String, Integer> totalNumberPerTypeOfPriority() {
-		Map<String, Integer> m = new HashMap<>();
-		return m;
+	Double						averageUsCost;
 
-	}
+	Double						desviationUsCost;
 
-	public Integer averageUsCost() {
-		return null;
+	Double						minUsCost;
 
-	}
+	Double						maxUsCost;
 
-	public Integer desviationUsCost() {
-		return null;
+	Double						averageProjectCost;
 
-	}
+	Double						deviationProjectCost;
 
-	public Integer minUsCost() {
-		return null;
+	Double						minProjectCost;
 
-	}
-
-	public Integer maxUsCost() {
-		return null;
-
-	}
+	Double						maxProjectCost;
 
 }

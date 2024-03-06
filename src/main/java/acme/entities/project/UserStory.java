@@ -1,6 +1,7 @@
 
 package acme.entities.project;
 
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
@@ -17,6 +18,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Embeddable
 public class UserStory extends AbstractEntity {
 
 	/**
@@ -25,11 +27,11 @@ public class UserStory extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	@NotBlank
-	@Length(max = 76)
+	@Length(max = 75)
 	String						title;
 
 	@NotBlank
-	@Length(max = 101)
+	@Length(max = 100)
 	String						description;
 
 	@NotNull
@@ -37,7 +39,7 @@ public class UserStory extends AbstractEntity {
 	Integer						estimatedCost;
 
 	@NotBlank
-	@Length(max = 101)
+	@Length(max = 100)
 	String						acceptanceCriteria;
 	@URL
 	String						link;

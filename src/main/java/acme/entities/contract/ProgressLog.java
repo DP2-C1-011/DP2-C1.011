@@ -9,6 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
@@ -26,26 +27,32 @@ public class ProgressLog extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	@NotBlank
+	@NotNull
 	@Column(unique = true)
 	@Pattern(regexp = "PG-[A-Z]{1,2}-[0-9]{4}")
 	private String				recordId;
 
 	@Min(0)
 	@Max(100)
-	private Double				completeness;
+	@NotNull
+	private Integer				completeness;
 
 	@NotBlank
 	@Length(max = 100)
+	@NotNull
 	private String				comment;
 
 	@Past
+	@NotNull
 	private Date				registartionMoment;
 
 	@NotBlank
 	@Length(max = 75)
+	@NotNull
 	private String				responsible;
 
 	@ManyToOne
+	@NotNull
 	private Contract			contract;
 
 }

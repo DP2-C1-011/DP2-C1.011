@@ -30,10 +30,12 @@ public class Client extends AbstractRole {
 	@NotBlank
 	@Column(unique = true)
 	@Pattern(regexp = "CLI-[0-9]{4}")
+	@NotNull
 	private String				identification;
 
 	@NotBlank
 	@Length(max = 75)
+	@NotNull
 	private String				companyName;
 
 	@NotNull
@@ -41,6 +43,7 @@ public class Client extends AbstractRole {
 
 	@NotBlank
 	@Email
+	@NotNull
 	private String				email;
 
 	@URL

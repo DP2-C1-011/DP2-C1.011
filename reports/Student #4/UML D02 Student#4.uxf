@@ -57,7 +57,7 @@ Invoice
 -tax: Double {Positive}
 -optionalEmail: String 
 -optionalLink: String 
--/total: Double 
+-/total: Money 
 
 </panel_attributes>
     <additional_attributes/>

@@ -4,56 +4,58 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>210</x>
-      <y>260</y>
-      <w>280</w>
+      <x>110</x>
+      <y>250</y>
+      <w>410</w>
       <h>150</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Contract
 --
-+ code : String {NotBlank, Unique, Pattern}
++ code : String {NotBlank, Unique, Pattern("[A-Z]{1,3}-[0-9]{3}")}
 + instantiation_moment : Date {Past}
 + provider : String {NotBlank, Max(75)}
 + customer : String {NotBlank, Max(75)}
 + goals : String {NotBlank, Max(100)}
-+ budget : Double {Max(project_cost)}</panel_attributes>
++ budget : Double
+bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>200</x>
-      <y>510</y>
-      <w>310</w>
+      <x>120</x>
+      <y>490</y>
+      <w>460</w>
       <h>130</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Progress Log
 --
-+ record_id : String {NotBlank, Unique, Pattern}
-+ completeness : Double {Min(0)}
++ record_id : String {NotBlank, Unique, Pattern("PG-[A-Z]{1,2}-[0-9]{4}")}
++ completeness : Double {Min(0), Max(100)}
 + comment : String {NotBlank, Max(100)}
 + registartion_moment : Date {Past}
-+ responsible : String {NotBlank, Max(75)}</panel_attributes>
++ responsible : String {NotBlank, Max(75)}
+bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>340</x>
-      <y>400</y>
+      <x>240</x>
+      <y>390</y>
       <w>30</w>
-      <h>130</h>
+      <h>120</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-x</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
   </element>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>350</x>
-      <y>450</y>
+      <x>260</x>
+      <y>430</y>
       <w>100</w>
       <h>30</h>
     </coordinates>
@@ -62,22 +64,10 @@ style=wordwrap</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>Text</id>
-    <coordinates>
-      <x>360</x>
-      <y>410</y>
-      <w>30</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>1
-style=wordwrap</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>600</x>
-      <y>440</y>
+      <x>630</x>
+      <y>450</y>
       <w>400</w>
       <h>180</h>
     </coordinates>
@@ -91,32 +81,34 @@ Client Dashboard
 + average_contract_budget : Double
 + deviation_contract:budget : Double
 + min_contract_budget : Double
-+ max_contract_budget : Double</panel_attributes>
++ max_contract_budget : Double
+bg=orange</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>630</x>
-      <y>260</y>
-      <w>330</w>
+      <y>250</y>
+      <w>420</w>
       <h>130</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Role&gt;&gt;
 Client
 --
-+ identification : String {NotBlank, Unique, Pattern}
++ identification : String {NotBlank, Unique, Pattern("CLI-[0-9]{4}")}
 + company_name : String {NotBlank, Max(75)}
 + type : Type {NotBlank}
 + email : String {NotBlank}
-- optional_link : String</panel_attributes>
+- /optional_link : String
+bg=#7F00FF</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>450</x>
-      <y>140</y>
+      <x>490</x>
+      <y>130</y>
       <w>220</w>
       <h>90</h>
     </coordinates>
@@ -124,19 +116,56 @@ Client
 Type
 --
 + "company"
-+ "individual"</panel_attributes>
++ "individual"
+bg=red</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>360</x>
-      <y>490</y>
+      <x>260</x>
+      <y>470</y>
       <w>30</w>
       <h>20</h>
     </coordinates>
     <panel_attributes>*
 style=wordwrap</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>260</x>
+      <y>400</y>
+      <w>30</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>1
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>120</x>
+      <y>160</y>
+      <w>180</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Budget must be lower or
+equal than the project .
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>200</x>
+      <y>220</y>
+      <w>30</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
   </element>
 </diagram>

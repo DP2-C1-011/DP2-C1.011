@@ -15,8 +15,8 @@ Sponsor
 
 -name: String {NotBlank, Max(76)}
 -benefits: List {NotBlank, Max(101)}
--webpage: String {optional}
--email: String {optional}
+-optionalWebpage: String 
+-optionalEmail: String 
 
 layer=1</panel_attributes>
     <additional_attributes/>
@@ -51,9 +51,9 @@ Invoice
 --
 
 -code: String {Pattern,NotBlank,Unique}
--registrationDate: LocalDateTime 
--dueDate: LocalDate 
--quantity: Integer {Positive,not nought}
+-registrationDate: Date {Past}
+-dueDate: Date {Past}
+-quantity: Double {Positive,not nought}
 -tax: Double {Positive}
 -optionalEmail: String 
 -optionalLink: String 
@@ -75,9 +75,9 @@ Sponsorship
 --
 
 -code: String {Pattern,NotBlank,Unique}
--moment: LocalDateTime 
--duration: LocalDate 
--amount: Integer {Positive}
+-moment: Date {Past}
+-duration: Date (Future}
+-amount: Double {Positive}
 -type: Type
 -optionalEmail: String 
 -optionalLink: String 
@@ -132,12 +132,12 @@ Dashboard
 -linkedSponsorships: Integer
 -averageSponsorship: Double
 -deviationSponsorship: Double
--minimumSponsorship: Integer
--maximumSponsorship: Integer
+-minimumSponsorship: Double
+-maximumSponsorship: Double
 -averageInvoice: Double
 -deviationInvoice: Double
--minimumInvoice: Integer
--maximumInvoice: Integer
+-minimumInvoice: Double
+-maximumInvoice: Double
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -177,11 +177,10 @@ layer=0</panel_attributes>
       <x>0</x>
       <y>610</y>
       <w>240</w>
-      <h>70</h>
+      <h>50</h>
     </coordinates>
     <panel_attributes>registrationDate and dueDate must 
-take place after the current time
-and be separated by a month in time
+be separated by a month in time
 bg=blue
 layer=1</panel_attributes>
     <additional_attributes/>
@@ -202,14 +201,12 @@ layer=0</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>10</x>
-      <y>310</y>
+      <y>330</y>
       <w>230</w>
-      <h>70</h>
+      <h>50</h>
     </coordinates>
-    <panel_attributes>moment and duration must 
-take place after the current time
-and be separated by a month in 
-time
+    <panel_attributes>moment and duration must be 
+separated by a month in time
 bg=blue
 layer=1</panel_attributes>
     <additional_attributes/>

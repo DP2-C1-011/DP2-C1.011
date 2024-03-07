@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -55,6 +56,7 @@ public class Sponsorship extends AbstractEntity {
 	private Sponsor				sponsor;
 
 
+	@Transient
 	public Integer duration() {
 		int res = (int) (this.end.getTime() - this.start.getTime());
 		return Integer.valueOf(res);

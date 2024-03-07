@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -54,6 +55,7 @@ public class Invoice extends AbstractEntity {
 	private Sponsorship			sponsorship;
 
 
+	@Transient
 	public Money total() {
 		Money m = null;
 		Double res = this.quantity.getAmount() * (1. + this.tax);

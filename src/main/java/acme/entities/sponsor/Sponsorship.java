@@ -7,8 +7,10 @@ import javax.persistence.Column;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Future;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.URL;
@@ -30,9 +32,11 @@ public class Sponsorship extends AbstractEntity {
 	@Column(unique = true)
 	private String				code;
 
+	@Past
 	@NotNull
 	private Date				start;
 
+	@Future
 	@NotNull
 	private Date				end;
 

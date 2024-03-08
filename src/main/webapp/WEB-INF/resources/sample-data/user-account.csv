@@ -9,3 +9,7 @@ user-account-client-01,true,"UserIdentity{name: 'Rafael', surname: 'Cabello', em
 user-account-client-02,true,"UserIdentity{name: 'Fran', surname: 'Javier', email: 'fran@acme.com'}",client2,client2
 user-account-developer-01,true,"UserIdentity{name: 'Arturo', surname: 'Morgan', email: 'arturo@acme.com'}",developer1,developer1
 user-account-developer-02,true,"UserIdentity{name: 'Juan', surname: 'Marston', email: 'juan@acme.com'}",developer2,developer2
+user-account-sponsor-01,true,"UserIdentity{name: 'Mohamed', surname: 'Abouri', email: 'moha@acme.com'}",sponsor1,sponsor1
+user-account-sponsor-02,true,"UserIdentity{name: 'Rafael', surname: 'Cabello', email: 'rafa@acme.com'}",sponsor2,sponsor2
+user-account-administrator-01,true,"UserIdentity{name: 'Rafael', surname: 'Cabello', email: 'rafa@acme.com'}",administrator1,administrator1
+user-account-administrator-02,true,"UserIdentity{name: 'Mohamed', surname: 'Abouri', email: 'moha@acme.com'}",administrator2,administrator2

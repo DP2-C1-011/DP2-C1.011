@@ -36,7 +36,7 @@ ProgressLog
 + record_id : String {NotNull, NotBlank, Unique, Pattern("PG-[A-Z]{1,2}-[0-9]{4}")}
 + completeness : Integer {NotNull, Min(0), Max(100)}
 + comment : String {NotNull, NotBlank, Length(max=100)}
-+ registartion_moment : Date {NotNull, Past}
++ registration_moment : Date {NotNull, Past}
 + responsible : String {NotNull, NotBlank, Length(max=75)}
 bg=green</panel_attributes>
     <additional_attributes/>
@@ -100,7 +100,7 @@ Client
 + identification : String {NotNull, NotBlank, Unique, Pattern("CLI-[0-9]{4}")}
 + company_name : String {NotNull, NotBlank, Length(max=75)}
 + type : Type {NotNull, NotBlank}
-+ email : String {NotNull, NotBlank}
++ email : String {NotNull, NotBlank, Email}
 - optional_link : String {URL}
 bg=#7F00FF</panel_attributes>
     <additional_attributes/>

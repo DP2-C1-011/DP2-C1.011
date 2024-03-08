@@ -1,0 +1,11 @@
+key,code,instantiation-moment,heading,description,department,optional-email-address,optional-link
+claim-01,C-0001,2015/01/29 15:00,Urgent Issue,Software crashes frequently,Tech Support,support@example.com,http://support.example.com/issues/1
+claim-02,C-0002,2016/02/15 10:30,Login Failure,Unable to access account,Customer Service,help@example.com,
+claim-03,C-0003,2017/03/10 09:20,Payment Error,Transaction not completing,Finance,finance@example.com,http://finance.example.com/payment-issues
+claim-04,C-0004,2018/04/05 14:45,Account Locked,Account locked after login attempts,Security,security@example.com,
+claim-05,C-0005,2019/05/25 16:00,Missing Features,Reported features missing in the release,Development,devteam@example.com,http://dev.example.com/features/missing
+claim-06,C-0006,2020/06/30 11:15,Delayed Response,Support response times are too long,Customer Service,,
+claim-07,C-0007,2021/07/18 13:50,Incorrect Billing,Billed for services not received,Finance,billing@example.com,http://finance.example.com/billing-issues
+claim-08,C-0008,2020/08/22 08:35,Data Loss,Lost data during system update,Tech Support,techsupport@example.com,
+claim-09,C-0009,2018/09/12 17:10,Performance Issues,System is extremely slow,IT,itdept@example.com,http://it.example.com/performance
+claim-10,C-0010,2014/10/07 12:25,Hardware Failure,Laptop not turning on,Tech Support,hardware@example.com,http://support.example.com/hardware

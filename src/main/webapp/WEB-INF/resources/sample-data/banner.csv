@@ -1,0 +1,11 @@
+key,instantiation-moment,display-period-start,display-period-end,link-picture,slogan,link-doc
+banner-01,2019/11/30 10:00,2019/12/01 00:00,2019/12/31 23:59,http://example.com/pic1.jpg,Our Best Sale Yet!,http://example.com/doc1.pdf
+banner-02,2018/10/29 09:00,2018/11/01 00:00,2018/12/01 00:00,http://example.com/pic2.jpg,Innovation for You,http://example.com/doc2.pdf
+banner-03,2017/09/01 00:00,2017/10/01 00:00,2018/11/30 23:59,http://example.com/pic3.jpg,Quality First,http://example.com/doc3.pdf
+banner-04,2017/08/31 23:59,2017/09/30 23:59,2017/10/31 23:59,http://example.com/pic4.jpg,rust in Our Experience,http://example.com/doc4.pdf
+banner-05,2015/07/26 06:00,2015/08/01 00:00,2016/09/30 23:59,http://example.com/pic5.jpg,Design Your Future,http://example.com/doc5.pd
+banner-06,2014/06/25 05:00,2014/07/01 00:00,2015/08/31 23:59,http://example.com/pic6.jpg,Solutions for a Smarter World,http://example.com/doc6.pdf
+banner-07,2013/05/24 04:00,2013/06/01 00:00,2013/06/30 23:59,http://example.com/pic7.jpg,Driven by Innovation,http://example.com/doc7.pdf
+banner-08,2012/04/23 03:00,2012/05/01 00:00,2012/05/31 23:59,http://example.com/pic8.jpg,Committed to Excellence,http://example.com/doc8.pdf
+banner-09,2011/03/22 02:00,2011/04/01 00:00,2011/04/30 23:59,http://example.com/pic9.jpg,Your Partner in Success,http://example.com/doc9.pdf
+"banner-10,",2010/02/20 01:00,2010/03/01 00:00,2010/03/31 23:59,http://example.com/pic10.jpg,"""Beyond the Ordinary""",http://example.com/doc10.pdf

@@ -1,0 +1,4 @@
+key,code,executionDate,codeAuditType,correctiveActions,optionalLink,draftMode,key:auditor,key:project
+code-audit-01,ABC123,2023-05-15,1,"Corregir errores de seguridad","https://ejemplo.com",false,auditor-01,project-01
+code-audit-02,DEF456,2023-08-20,2,"Actualizar bibliotecas","https://ejemplo.com/actualizaciones",true,auditor-02,project-01
+code-audit-03,GHI789,2023-10-10,3,"Revisar configuración","https://ejemplo.com/config",false,auditor-01,project-01

@@ -1,0 +1,11 @@
+key,instantiation-moment,title,description,priority,is-critical,start-date,end-date,optional-link
+objective-01,2019/12/31 15:00,Objective A,Increase customer satisfaction,HIGH,true,2019/01/01 09:00,2019/06/30 18:00,http://example.com/objectiveA
+objective-02,2018/11/30 14:00,Objective B,Enhance product features,MEDIUM,false,2018/02/01 09:00,2018/08/31 18:00,http://example.com/objectiveB
+objective-03,2017/10/29 13:00,Objective C,Improve operational efficiency,LOW,true,2017/03/01 09:00,2017/09/30 18:00,
+objective-04,2016/09/28 12:00,Objective D,Expand market reach,HIGH,false,2016/04/01 09:00,2016/10/31 18:00,http://example.com/objectiveD
+objective-05,2015/08/27 11:00,Objective E,Develop new product line,MEDIUM,true,2015/05/01 09:00,2015/11/30 18:00,
+objective-06,2014/07/26 10:00,Objective F,Reduce production costs,LOW,false,2014/06/01 09:00,2014/12/31 18:00,http://example.com/objectiveF
+objective-07,2013/06/25 09:00,Objective G,Increase brand awareness,HIGH,true,2013/07/01 09:00,2013/12/31 18:00,
+objective-08,2012/05/24 08:00,Objective H,Streamline customer service,MEDIUM,false,2012/08/01 09:00,2012/12/31 18:00,http://example.com/objectiveH
+objective-09,2011/04/23 07:00,Objective I,Optimize supply chain management,LOW,true,2011/09/01 09:00,2011/12/31 18:00,
+objective-10,2010/03/22 06:00,Objective J,Enhance data security,HIGH,false,2010/10/01 09:00,2010/12/31 18:00,http://example.com/objectiveJ

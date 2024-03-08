@@ -1,0 +1,11 @@
+key,instantiation-moment,title,author,message,optional-email,optional-link
+notice-01,2019/12/31 15:00,Year End Update,John Doe,Summary of the year's achievements,john.doe@example.com,http://example.com/year-end-update
+notice-02,2018/11/30 14:00,New Policy Announcement,Jane Smith,Details on the new workplace policy,jane.smith@example.com,
+notice-03,2017/10/29 13:00,Quarterly Financials,Sarah Connor,Overview of quarterly financial performance,,http://example.com/quarterly-financials
+notice-04,2016/09/28 12:00,Product Launch,James T. Kirk,Introduction to our new product line,james.kirk@example.com,http://example.com/product-launch
+notice-05,2015/08/27 11:00,Holiday Schedule,Leia Organa,Office hours during the holiday season,leia.organa@example.com,
+notice-06,2014/07/26 10:00,Safety Protocol Update,Bruce Wayne,Revised safety measures and protocols,bruce.wayne@example.com,http://example.com/safety-protocol
+notice-07,2013/06/25 09:00,Community Service Day,Luke Skywalker,Join us for a day of community service,luke.skywalker@example.com,
+notice-08,2012/05/24 08:00,Technology Upgrade,Hermione Granger,Upcoming upgrades to our IT infrastructure,hermione.granger@example.com,http://example.com/tech-upgrade
+notice-09,2011/04/23 07:00,Employee Training Sessions,Tony Stark,Schedule and topics for upcoming training sessions,tony.stark@example.com,
+notice-10,2010/03/22 06:00,Annual General Meeting,Steve Rogers,Invitation and agenda for the annual general meeting,steve.rogers@example.com,http://example.com/agm

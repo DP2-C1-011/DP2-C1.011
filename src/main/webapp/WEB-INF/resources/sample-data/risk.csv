@@ -1,0 +1,11 @@
+key,reference,identification-date,impact,probability,description,optional-link
+risk-01,R-001,2019/12/31 09:00,5,0.8,Risk on project A,http://example.com/riskA
+risk-02,R-002,2018/11/30 09:00,3,0.5,Risk on project B,http://example.com/riskB
+risk-03,R-003,2017/10/29 09:00,2,0.3,Risk on project C,
+risk-04,R-004,2016/09/28 09:00,4,0.7,Risk on project D,http://example.com/riskD
+risk-05,R-005,2015/08/27 09:00,1,0.9,Risk on project E,
+risk-06,R-006,2014/07/26 09:00,3,0.6,Risk on project F,http://example.com/riskF
+risk-07,R-007,2013/06/25 09:00,2,0.2,Risk on project G,
+risk-08,R-008,2012/05/24 09:00,4,0.4,Risk on project H,http://example.com/riskH
+risk-09,R-009,2011/04/23 09:00,1,0.1,Risk on project I,
+risk-10,R-010,2010/03/22 09:00,5,0.5,Risk on project J,http://example.com/riskJ

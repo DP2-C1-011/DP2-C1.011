@@ -1,0 +1,11 @@
+key,key:developer,code,creation-moment,details,difficulty-level,update-moment,optional-link,total-time,draft-mode
+training-module-01,developer-01,A-001,2015/01/29 15:00,Basic Java Module,BASIC,2015/02/22 15:25,https://www.learnjava.com,20,false
+training-module-02,developer-02,MN-653,2020/02/12 20:21,Machine Learning Proficiency,ADVANCED,,https://www.aimastery.com,40,false
+training-module-03,developer-01,JQW-555,2019/10/03 12:02,Intermediate Python Module,INTERMEDIATE,2019/10/30 23:59,https://www.pythoncourses.com,20,false
+training-module-04,developer-02,DP-002,2017/02/01 10:00,Design and Testing 2 Module,INTERMEDIATE,2018/11/29 19:21,https://www.etsii.es,60,false
+training-module-05,developer-01,BLK-101,2013/09/01 10:00,Blockchain Applications,ADVANCED,2017/12/01 19:32,https://www.learningdeeplearning.com,30,false
+training-module-06,developer-01,XYZ-999,2009/09/01 01:35,Basic Python Module,BASIC,2017/11/29 19:32,https://www.pythoncourses.com,20,false
+training-module-07,developer-02,DLL-099,2014/02/23 12:01,Deep Learning Module,INTERMEDIATE,,https://www.learningdeeplearning.com,34,true
+training-module-08,developer-01,CSS-493,2010/10/01 10:39,Introduction to CSS,BASIC,2016/11/29 20:54,https://webcourses.es,1,true
+training-module-09,developer-02,Z-916,2017/03/06 07:10,Github Overview,BASIC,2019/01/30 19:32,https://webcourses.es,4,true
+training-module-10,developer-01,ST-004,2016/10/12 07:00,Cybersecurity Mastery,ADVANCED,,https://hackercoding.com,46,true

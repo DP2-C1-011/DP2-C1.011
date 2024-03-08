@@ -6,7 +6,6 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -46,6 +45,7 @@ public class TrainingModule extends AbstractEntity {
 	@Length(max = 100)
 	private String				details;
 
+	@NotNull
 	private DifficultyLevel		difficultyLevel;
 
 	@Past
@@ -55,8 +55,7 @@ public class TrainingModule extends AbstractEntity {
 	@URL
 	private String				optionalLink;
 
-	@Transient
-	private double				totalTime;
+	private Integer				totalTime;
 
 	private boolean				draftMode;
 }

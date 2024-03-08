@@ -17,7 +17,6 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
-import acme.roles.Developer;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,11 +26,6 @@ import lombok.Setter;
 public class TrainingSession extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
-
-	@NotNull
-	@Valid
-	@ManyToOne()
-	private Developer			developer;
 
 	@NotNull
 	@Valid

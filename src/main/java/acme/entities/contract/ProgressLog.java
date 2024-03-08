@@ -46,7 +46,7 @@ public class ProgressLog extends AbstractEntity {
 
 	@Past
 	@NotNull
-	private Date				registartionMoment;
+	private Date				registrationMoment;
 
 	@NotBlank
 	@Length(max = 75)

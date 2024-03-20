@@ -42,10 +42,15 @@
 		
 		<acme:menu-option code="master.menu.manager" access="hasRole('Manager')">
 			<acme:menu-suboption code="master.menu.manager.projects" action="/manager/project/list"/>
+<<<<<<< HEAD
 			<acme:menu-suboption code="master.menu.manager.userStories" action="/manager/user-story/list"/>
+=======
+>>>>>>> refs/remotes/origin/master
 		</acme:menu-option>
 		
-		
+		<acme:menu-option code="master.menu.client" access="hasRole('Client')">
+			<acme:menu-suboption code="master.menu.client.contracts" action="/client/contract/list"/>
+		</acme:menu-option>
 		
 
 		<acme:menu-option code="master.menu.provider" access="hasRole('Provider')">

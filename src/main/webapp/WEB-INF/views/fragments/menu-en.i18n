@@ -29,6 +29,11 @@ master.menu.administrator.populate-initial = Populate DB (initial)
 master.menu.administrator.populate-sample = Populate DB (samples)
 master.menu.administrator.shut-down = Shut down
 
+# master.menu.client ###################################################
+
+master.menu.client = Client
+master.menu.client.contracts = Contracts
+
 # master.menu.provider ########################################################
 
 master.menu.provider = Provider
@@ -50,5 +55,9 @@ master.menu.user-account.become-consumer = Become a consumer
 
 # master.menu.manager ####################################################
 master.menu.manager = Manager
+<<<<<<< HEAD
 master.menu.manager.projects = Projects
 master.menu.manager.userStories = Users Stories
+=======
+master.menu.manager.projects = Projects
+>>>>>>> refs/remotes/origin/master

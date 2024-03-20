@@ -1,0 +1,16 @@
+manager.project.form.title = Detalles de los proyectos
+manager.project.list.title = Lista de proyectos
+
+manager.project.form.label.code = Código:
+manager.project.form.label.title = Título:
+manager.project.form.label.abstracto = Abstract:
+manager.project.form.label.fatal-error = Error fatal:
+manager.project.form.label.cost = Coste: 
+manager.project.form.label.link = Enlace:
+manager.project.form.label.draft-mode = Draft mode:
+
+manager.project.form.button.update = Actualizar
+
+manager.project.list.label.code = Código
+manager.project.list.label.title = Título
+

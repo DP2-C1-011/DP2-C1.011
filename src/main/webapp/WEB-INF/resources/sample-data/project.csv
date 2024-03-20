@@ -1,2 +1,2 @@
-key,code,title,abstracto,fatal-error,cost,link,draft-mode
-project-01,ABC-1234,Implementación de inicio de sesión de usuarios,Desarrollar la funcionalidad de inicio de sesión para los usuarios del sistema.,No,178,https://example.com/user_story1,True
+key,code,title,abstracto,fatal-error,cost,link,draft-mode,key:manager
+project-01,ABC-1234,Implementación de inicio de sesión de usuarios,Desarrollar la funcionalidad de inicio de sesión para los usuarios del sistema.,No,178,https://example.com/user_story1,True,manager-01

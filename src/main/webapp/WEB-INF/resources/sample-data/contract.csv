@@ -1,26 +1,26 @@
-key,code,instantiation-moment,provider,customer,goals,budget,draft-mode,key:project
-contract-01,ABC-123,2010/06/12 17:30,TechSolutions Inc.,Jennifer Thompson,The terms herein are to be interpreted with clarity,"EUR 15,000.00",true,project-01
-contract-02,XY-987,2018/07/13 16:35,TechSolutions Inc.,Jennifer Thompson,The terms herein are to be interpreted with clarity,"EUR 15,000.00",true,project-01
-contract-03,PQR-456,2001/08/14 15:40,TechSolutions Inc.,Jennifer Thompson,The terms herein are to be interpreted with clarity,"EUR 15,000.00",true,project-01
-contract-04,AB-789,2007/09/15 14:10,TechSolutions Inc.,Jennifer Thompson,The terms herein are to be interpreted with clarity,"EUR 15,000.00",true,project-01
-contract-05,XYZ-654,2015/10/16 12:50,TechSolutions Inc.,Jennifer Thompson,The terms herein are to be interpreted with clarity,"EUR 15,000.00",true,project-01
-contract-06,DEF-321,2001/08/14 15:40,Global Services Co.,Michael Davis,"the Parties agree to resolve the matter through mediation","USD 7,000.00",false,project-01
-contract-07,LMN-555,2001/08/14 15:40,TechSolutions Inc.,Michael Davis,"the Parties agree to resolve the matter through mediation","USD 7,000.00",false,project-01
-contract-08,UV-999,2001/08/14 15:40,InnovateTech Solutions,Michael Davis,"the Parties agree to resolve the matter through mediation","USD 7,000.00",false,project-01
-contract-09,OPQ-888,2001/08/14 15:40,ProConnect Services,Michael Davis,"the Parties agree to resolve the matter through mediation","USD 7,000.00",false,project-01
-contract-10,HIJ-222,2001/08/14 15:40,Swift Solutions Group,Michael Davis,"the Parties agree to resolve the matter through mediation","USD 7,000.00",false,project-01
-contract-11,KLM-777,2018/07/13 16:35,ProConnect Services,Jennifer Thompson,Both Parties agree to identify risks associated with this Agreement,"EUR 20,000.00",true,project-01
-contract-12,WXY-444,2018/07/13 16:35,ProConnect Services,Michael Davis,Both Parties acknowledge and agree to identify risks associated with this Agreement,"EUR 20,000.00",true,project-01
-contract-13,NOP-666,2018/07/13 16:35,ProConnect Services,Alex Rodriguez,Both Parties acknowledge and agree to identify risks associated with this Agreement,"EUR 20,000.00",true,project-01
-contract-14,RST-111,2018/07/13 16:35,ProConnect Services,Sarah Johnson,Both Parties acknowledge and agree to identify risks associated with this Agreement,"EUR 20,000.00",true,project-01
-contract-15,GHI-333,2018/07/13 16:35,ProConnect Services,Emily Chen,"Both Parties acknowledge and agree to identify risks associated with this Agreement""","EUR 20,000.00",true,project-01
-contract-16,JK-567,2007/09/15 14:10,Global Services Co.,Alex Rodriguez,The terms herein are to be interpreted with clarity and specificity to prevent misunderstandings,"USD 5,000.00",false,project-01
-contract-17,VWX-999,2007/09/15 14:10,Global Services Co.,Alex Rodriguez,"the Parties agree to resolve the matter through mediation","USD 5,000.00",false,project-01
-contract-18,LM-222,2007/09/15 14:10,Global Services Co.,Alex Rodriguez,Both Parties agree to identify risks associated with this Agreement,"USD 5,000.00",false,project-01
-contract-19,YZ-888,2007/09/15 14:10,Global Services Co.,Alex Rodriguez,This Agreement is structured to ensure mutual benefit to all Parties involved,"USD 5,000.00",false,project-01
-contract-20,ABC-345,2007/09/15 14:10,Global Services Co.,Alex Rodriguez,The seller shall adhere to clear performance standards as detailed in Exhibit A of this Agreement,"USD 5,000.00",false,project-01
-contract-21,WY-474,2001/08/14 15:40,ProConnect Services,Emily Chen,Both Parties agree to identify risks associated with this Agreement,"EUR 27,000.00",true,project-01
-contract-22,YA-174,2001/08/14 15:40,ProConnect Services,Emily Chen,Both Parties agree to identify risks associated with this Agreement,"EUR 20,000.00",true,project-01
-contract-23,ZC-145,2001/08/14 15:40,ProConnect Services,Emily Chen,Both Parties agree to identify risks associated with this Agreement,"EUR 7,000.00",true,project-01
-contract-24,ACC-128,2001/08/14 15:40,ProConnect Services,Emily Chen,Both Parties agree to identify risks associated with this Agreement,"EUR 15,000.00",true,project-01
-contract-25,OHI-996,2001/08/14 15:40,ProConnect Services,Emily Chen,Both Parties agree to identify risks associated with this Agreement,"EUR 5,000.00",true,project-01
+key,code,instantiation-moment,provider,customer,goals,budget,draft-mode,key:project,key:client
+contract-01,ABC-123,2010/06/12 17:30,TechSolutions Inc.,Jennifer Thompson,The terms herein are to be interpreted with clarity,"EUR 15,000.00",true,project-01,client-01
+contract-02,XY-987,2018/07/13 16:35,TechSolutions Inc.,Jennifer Thompson,The terms herein are to be interpreted with clarity,"EUR 15,000.00",true,project-01,client-01
+contract-03,PQR-456,2001/08/14 15:40,TechSolutions Inc.,Jennifer Thompson,The terms herein are to be interpreted with clarity,"EUR 15,000.00",true,project-01,client-01
+contract-04,AB-789,2007/09/15 14:10,TechSolutions Inc.,Jennifer Thompson,The terms herein are to be interpreted with clarity,"EUR 15,000.00",true,project-01,client-01
+contract-05,XYZ-654,2015/10/16 12:50,TechSolutions Inc.,Jennifer Thompson,The terms herein are to be interpreted with clarity,"EUR 15,000.00",true,project-01,client-01
+contract-06,DEF-321,2001/08/14 15:40,Global Services Co.,Michael Davis,the Parties agree to resolve the matter through mediation,"USD 7,000.00",false,project-01,client-02
+contract-07,LMN-555,2001/08/14 15:40,TechSolutions Inc.,Michael Davis,the Parties agree to resolve the matter through mediation,"USD 7,000.00",false,project-01,client-02
+contract-08,UV-999,2001/08/14 15:40,InnovateTech Solutions,Michael Davis,the Parties agree to resolve the matter through mediation,"USD 7,000.00",false,project-01,client-02
+contract-09,OPQ-888,2001/08/14 15:40,ProConnect Services,Michael Davis,the Parties agree to resolve the matter through mediation,"USD 7,000.00",false,project-01,client-02
+contract-10,HIJ-222,2001/08/14 15:40,Swift Solutions Group,Michael Davis,the Parties agree to resolve the matter through mediation,"USD 7,000.00",false,project-01,client-02
+contract-11,KLM-777,2018/07/13 16:35,ProConnect Services,Jennifer Thompson,Both Parties agree to identify risks associated with this Agreement,"EUR 20,000.00",true,project-01,client-01
+contract-12,WXY-444,2018/07/13 16:35,ProConnect Services,Michael Davis,Both Parties acknowledge and agree to identify risks associated with this Agreement,"EUR 20,000.00",true,project-01,client-01
+contract-13,NOP-666,2018/07/13 16:35,ProConnect Services,Alex Rodriguez,Both Parties acknowledge and agree to identify risks associated with this Agreement,"EUR 20,000.00",true,project-01,client-01
+contract-14,RST-111,2018/07/13 16:35,ProConnect Services,Sarah Johnson,Both Parties acknowledge and agree to identify risks associated with this Agreement,"EUR 20,000.00",true,project-01,client-01
+contract-15,GHI-333,2018/07/13 16:35,ProConnect Services,Emily Chen,"Both Parties acknowledge and agree to identify risks associated with this Agreement""","EUR 20,000.00",true,project-01,client-01
+contract-16,JK-567,2007/09/15 14:10,Global Services Co.,Alex Rodriguez,The terms herein are to be interpreted with clarity and specificity to prevent misunderstandings,"USD 5,000.00",false,project-01,client-02
+contract-17,VWX-999,2007/09/15 14:10,Global Services Co.,Alex Rodriguez,the Parties agree to resolve the matter through mediation,"USD 5,000.00",false,project-01,client-02
+contract-18,LM-222,2007/09/15 14:10,Global Services Co.,Alex Rodriguez,Both Parties agree to identify risks associated with this Agreement,"USD 5,000.00",false,project-01,client-02
+contract-19,YZ-888,2007/09/15 14:10,Global Services Co.,Alex Rodriguez,This Agreement is structured to ensure mutual benefit to all Parties involved,"USD 5,000.00",false,project-01,client-02
+contract-20,ABC-345,2007/09/15 14:10,Global Services Co.,Alex Rodriguez,The seller shall adhere to clear performance standards as detailed in Exhibit A of this Agreement,"USD 5,000.00",false,project-01,client-02
+contract-21,WY-474,2001/08/14 15:40,ProConnect Services,Emily Chen,Both Parties agree to identify risks associated with this Agreement,"EUR 27,000.00",true,project-01,client-01
+contract-22,YA-174,2001/08/14 15:40,ProConnect Services,Emily Chen,Both Parties agree to identify risks associated with this Agreement,"EUR 20,000.00",true,project-01,client-01
+contract-23,ZC-145,2001/08/14 15:40,ProConnect Services,Emily Chen,Both Parties agree to identify risks associated with this Agreement,"EUR 7,000.00",true,project-01,client-01
+contract-24,ACC-128,2001/08/14 15:40,ProConnect Services,Emily Chen,Both Parties agree to identify risks associated with this Agreement,"EUR 15,000.00",true,project-01,client-01
+contract-25,OHI-996,2001/08/14 15:40,ProConnect Services,Emily Chen,Both Parties agree to identify risks associated with this Agreement,"EUR 5,000.00",true,project-01,client-01

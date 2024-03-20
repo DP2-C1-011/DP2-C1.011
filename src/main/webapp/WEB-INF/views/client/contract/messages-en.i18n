@@ -1,0 +1,15 @@
+client.contract.form.title = Contracts's details
+client.contract.list.title = Contracts's list
+
+client.contract.form.label.code = Code:
+client.contract.form.label.instantiationMoment = Instantiation moment:
+client.contract.form.label.provider = Provider:
+client.contract.form.label.customer = Customer:
+client.contract.form.label.goals = Goals: 
+client.contract.form.label.budget = Budget:
+client.contract.form.label.draft-mode = Draft mode:
+
+client.contract.form.button.update = Update
+
+client.contract.list.label.code = Code
+client.contract.list.label.instantiationMoment = Instantiation moment

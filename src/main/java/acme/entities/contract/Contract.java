@@ -16,6 +16,7 @@ import org.hibernate.validator.constraints.Length;
 import acme.client.data.AbstractEntity;
 import acme.client.data.datatypes.Money;
 import acme.entities.project.Project;
+import acme.roles.Client;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -60,5 +61,9 @@ public class Contract extends AbstractEntity {
 	@ManyToOne
 	@NotNull
 	private Project				project;
+
+	@ManyToOne
+	@NotNull
+	private Client				client;
 
 }

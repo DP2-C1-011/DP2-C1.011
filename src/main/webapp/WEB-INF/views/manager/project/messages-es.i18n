@@ -11,6 +11,7 @@ manager.project.form.label.draft-mode = Draft mode:
 
 manager.project.form.button.update = Actualizar
 manager.project.form.button.userStories = Historias de usuario
+manager.project.form.button.apply = Añadir
 
 
 manager.project.list.label.code = Código

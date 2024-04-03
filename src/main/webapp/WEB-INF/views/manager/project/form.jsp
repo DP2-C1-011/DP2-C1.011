@@ -11,6 +11,8 @@
 	<acme:input-url code="manager.project.form.label.link" path="link"/>
 	<acme:input-checkbox code="manager.project.form.label.draft-mode" path="draft-mode"/>
 	
-	<acme:button code="manager.project.form.button.userStories" action="/manager/user-story/list?jobId=${id}"/>
+	<acme:button code="manager.project.form.button.userStories" action="/manager/user-story/list?projectId=${id}"/>
+	<acme:button code="manager.project.form.button.apply" action="/manager/user-story/create?proiectId=${id}"/>
+	
 		
 </acme:form>

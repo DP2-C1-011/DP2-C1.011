@@ -31,7 +31,6 @@ public class ManagerUserStoryListService extends AbstractService<Manager, UserSt
 		int managerId;
 		managerId = super.getRequest().getPrincipal().getActiveRoleId();
 		objects = this.mur.findUserStoryByManagerId(managerId);
-
 		super.getBuffer().addData(objects);
 	}
 
@@ -50,16 +49,16 @@ public class ManagerUserStoryListService extends AbstractService<Manager, UserSt
 	@Override
 	public void unbind(final Collection<UserStory> objects) {
 		assert objects != null;
-
-		int managerId;
+		int masterId;
 		Project project;
 		final boolean showCreate;
 
-		managerId = super.getRequest().getData("managerId", int.class);
-		project = this.mur.findProjectByManagerId(managerId);
+		masterId = super.getRequest().getData("projectId", int.class);
+		project = this.mur.findOneProjectById(masterId);
 		showCreate = project.getDraftMode() && super.getRequest().getPrincipal().hasRole(project.getManager());
 
-		super.getResponse().addGlobal("managerId", managerId);
+		super.getResponse().addGlobal("projectId", masterId);
 		super.getResponse().addGlobal("showCreate", showCreate);
 	}
+
 }

@@ -1,5 +1,5 @@
-manager.user_story.form.title = Detalle de la historia de usuario
-manager.user_story.list.title = Lista de historias de usuario
+manager.user-story.form.title = Detalle de la historia de usuario
+manager.user-story.list.title = Lista de historias de usuario
 
 manager.user_story.form.label.title = Titulo:
 manager.user_story.form.label.description = Descripción:
@@ -8,6 +8,7 @@ manager.user_story.form.label.acceptanceCriteria = Criterios de aceptación:
 manager.user_story.form.label.link = Url:
 
 manager.user_story.form.button.update = Actualizar
+
 
 manager.user_story.list.label.title = Titulo
 manager.user_story.list.label.description = Descripción

@@ -42,10 +42,7 @@
 		
 		<acme:menu-option code="master.menu.manager" access="hasRole('Manager')">
 			<acme:menu-suboption code="master.menu.manager.projects" action="/manager/project/list"/>
-<<<<<<< HEAD
 			<acme:menu-suboption code="master.menu.manager.userStories" action="/manager/user-story/list"/>
-=======
->>>>>>> refs/remotes/origin/master
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.client" access="hasRole('Client')">
@@ -59,6 +56,11 @@
 
 		<acme:menu-option code="master.menu.consumer" access="hasRole('Consumer')">
 			<acme:menu-suboption code="master.menu.consumer.favourite-link" action="http://www.example.com/"/>
+		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.developer" access="hasRole('Developer')">
+			<acme:menu-suboption code="master.menu.developer.training-modules" action="/developer/training-module/list"/>
+			<acme:menu-suboption code="master.menu.developer.training-sessions" action="/developer/training-session/list"/>
 		</acme:menu-option>
 	</acme:menu-left>
 

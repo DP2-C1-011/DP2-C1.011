@@ -5,10 +5,12 @@
 
 <acme:form>
 	<acme:input-textbox code="manager.project.form.label.code" path="code"/>	
-	<acme:input-textbox code="manager.project.form.label.instantiationMoment" path="instantiationMoment"/>
 	<acme:input-textbox code="manager.project.form.label.abstracto" path="abstracto"/>
 	<acme:input-textarea code="manager.project.form.label.fatal-error" path="fatal-error"/>
 	<acme:input-textbox code="manager.project.form.label.cost" path="cost"/>	
 	<acme:input-url code="manager.project.form.label.link" path="link"/>
-	<acme:input-checkbox code="manager.project.form.label.draft-mode" path="draft-mode"/>	
+	<acme:input-checkbox code="manager.project.form.label.draft-mode" path="draft-mode"/>
+	
+	<acme:button code="manager.project.form.button.userStories" action="/manager/user-story/list?jobId=${id}"/>
+		
 </acme:form>

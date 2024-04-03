@@ -1,5 +1,5 @@
-manager.user_story.form.title = User Stories's detail
-manager.user_story.list.title = User Stories's list
+manager.user-story.form.title = User Stories's detail
+manager.user-story.list.title = User Stories's list
 
 manager.user_story.form.label.title = Title:
 manager.user_story.form.label.description = Description:
@@ -7,7 +7,8 @@ manager.user_story.form.label.estimatedCost = Estimated cost:
 manager.user_story.form.label.acceptanceCriteria = Acceptance criteria: 
 manager.user_story.form.label.link = Link:
 
-manager.user_story.form.button.update = Update
 
-manager.user_story.list.label.title = Title
-manager.user_story.list.label.description = Description
+manager.user_story.form.button.update = Update:
+manager.user_story.list.label.title = Title:
+manager.user_story.list.label.description = Description:
+

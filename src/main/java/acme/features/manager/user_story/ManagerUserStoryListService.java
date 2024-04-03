@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.entities.project.Project;
 import acme.entities.project.UserStory;
 import acme.roles.Manager;
 
@@ -44,5 +45,21 @@ public class ManagerUserStoryListService extends AbstractService<Manager, UserSt
 		dataset = super.unbind(object, "title", "description");
 
 		super.getResponse().addData(dataset);
+	}
+
+	@Override
+	public void unbind(final Collection<UserStory> objects) {
+		assert objects != null;
+
+		int managerId;
+		Project project;
+		final boolean showCreate;
+
+		managerId = super.getRequest().getData("managerId", int.class);
+		project = this.mur.findProjectByManagerId(managerId);
+		showCreate = project.getDraftMode() && super.getRequest().getPrincipal().hasRole(project.getManager());
+
+		super.getResponse().addGlobal("managerId", managerId);
+		super.getResponse().addGlobal("showCreate", showCreate);
 	}
 }

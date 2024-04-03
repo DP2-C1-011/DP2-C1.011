@@ -10,6 +10,8 @@ manager.project.form.label.link = Enlace:
 manager.project.form.label.draft-mode = Draft mode:
 
 manager.project.form.button.update = Actualizar
+manager.project.form.button.userStories = Historias de usuario
+
 
 manager.project.list.label.code = Código
 manager.project.list.label.title = Título

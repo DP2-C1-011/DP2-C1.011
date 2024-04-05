@@ -12,6 +12,8 @@ manager.project.form.label.draft-mode = Draft mode:
 manager.project.form.button.update = Actualizar
 manager.project.form.button.userStories = Historias de usuario
 manager.project.form.button.apply = Añadir Historia de usuario
+manager.project.form.button.publish = Publicar
+manager.project.form.button.delete = Borrar
 
 
 manager.project.list.label.code = Código
@@ -19,6 +21,8 @@ manager.project.list.label.title = Título
 manager.project.list.button.create = Crear nuevo proyecto
 
 
-employer.job.form.error.negative-cost = El coste debe de ser superior a 0
-employer.job.form.error.duplicated = Este código ya existe, cambialo
+manager.project.form.error.negative-salary = El coste debe de ser superior a 0
+manager.project.form.error.duplicated = Este código ya existe, cambialo
+manager.project.form.error.user-story = El proyecto tiene que tener historias de usuario
+manager.project.form.error.draft-mode = El proyecto debe de estar en draft mode
 

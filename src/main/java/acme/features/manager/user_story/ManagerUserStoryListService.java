@@ -21,6 +21,7 @@ public class ManagerUserStoryListService extends AbstractService<Manager, UserSt
 
 	@Override
 	public void authorise() {
+		//TODO Comprobar que el manager no puede acceder a proyectos que no sean suyos.
 		super.getResponse().setAuthorised(true);
 	}
 
@@ -28,9 +29,9 @@ public class ManagerUserStoryListService extends AbstractService<Manager, UserSt
 	public void load() {
 		//Si la persona tiene rol de manager se traeran todos las user-stories asociadas a sus proyectos
 		Collection<UserStory> objects;
-		int managerId;
-		managerId = super.getRequest().getPrincipal().getActiveRoleId();
-		objects = this.mur.findUserStoryByManagerId(managerId);
+		int projectId;
+		projectId = super.getRequest().getData("projectId", int.class);
+		objects = this.mur.findUserStoryByProjectId(projectId);
 		super.getBuffer().addData(objects);
 	}
 
@@ -49,15 +50,15 @@ public class ManagerUserStoryListService extends AbstractService<Manager, UserSt
 	@Override
 	public void unbind(final Collection<UserStory> objects) {
 		assert objects != null;
-		int masterId;
+		int projectId;
 		Project project;
 		final boolean showCreate;
 
-		masterId = super.getRequest().getData("projectId", int.class);
-		project = this.mur.findOneProjectById(masterId);
+		projectId = super.getRequest().getData("projectId", int.class);
+		project = this.mur.findOneProjectById(projectId);
 		showCreate = project.getDraftMode() && super.getRequest().getPrincipal().hasRole(project.getManager());
 
-		super.getResponse().addGlobal("projectId", masterId);
+		super.getResponse().addGlobal("projectId", projectId);
 		super.getResponse().addGlobal("showCreate", showCreate);
 	}
 

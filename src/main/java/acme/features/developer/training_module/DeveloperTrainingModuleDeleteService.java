@@ -1,16 +1,19 @@
 
 package acme.features.developer.training_module;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.training.TrainingModule;
+import acme.entities.training.TrainingSession;
 import acme.roles.Developer;
 
 @Service
-public class DeveloperTrainingModuleCreateService extends AbstractService<Developer, TrainingModule> {
+public class DeveloperTrainingModuleDeleteService extends AbstractService<Developer, TrainingModule> {
 
 	@Autowired
 	DeveloperTrainingModuleRepository repository;
@@ -19,19 +22,25 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 	@Override
 	public void authorise() {
 		boolean status;
-		status = super.getRequest().getPrincipal().hasRole(Developer.class);
+		int moduleId;
+		TrainingModule module;
+		Developer developer;
+
+		moduleId = super.getRequest().getData("id", int.class);
+		module = this.repository.findTrainingModuleById(moduleId);
+		developer = module == null ? null : module.getDeveloper();
+		status = module != null && module.getDraftMode() && super.getRequest().getPrincipal().hasRole(developer);
+
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
 		TrainingModule object;
-		Developer developer;
+		int id;
 
-		developer = this.repository.findDeveloperById(super.getRequest().getPrincipal().getActiveRoleId());
-		object = new TrainingModule();
-		object.setDraftMode(true);
-		object.setDeveloper(developer);
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findTrainingModuleById(id);
 
 		super.getBuffer().addData(object);
 	}
@@ -40,29 +49,23 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 	public void bind(final TrainingModule object) {
 		assert object != null;
 
-		super.bind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "totalTime", "optionalLink");
+		super.bind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "totalTime", "optionalLink", "draftMode");
 	}
 
 	@Override
 	public void validate(final TrainingModule object) {
 		assert object != null;
-
-		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			TrainingModule existing;
-
-			existing = this.repository.findTrainingModuleByCode(object.getCode());
-			super.state(existing == null, "code", "developer.training-module.form.error.duplicateCode");
-		}
-
-		if (!super.getBuffer().getErrors().hasErrors("updateMoment"))
-			super.state(object.getUpdateMoment().before(object.getCreationMoment()), "updateMoment", "developer.trainin-module.form.error.updateBeforeCreate");
 	}
 
 	@Override
 	public void perform(final TrainingModule object) {
 		assert object != null;
-
-		this.repository.save(object);
+		int moduleId;
+		moduleId = super.getRequest().getData("id", int.class);
+		Collection<TrainingSession> sessions;
+		sessions = this.repository.findTrainingSessionsByTrainingModuleId(moduleId);
+		this.repository.deleteAll(sessions);
+		this.repository.delete(object);
 	}
 
 	@Override

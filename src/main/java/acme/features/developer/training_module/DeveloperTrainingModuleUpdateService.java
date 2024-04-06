@@ -10,7 +10,7 @@ import acme.entities.training.TrainingModule;
 import acme.roles.Developer;
 
 @Service
-public class DeveloperTrainingModuleCreateService extends AbstractService<Developer, TrainingModule> {
+public class DeveloperTrainingModuleUpdateService extends AbstractService<Developer, TrainingModule> {
 
 	@Autowired
 	DeveloperTrainingModuleRepository repository;
@@ -19,19 +19,25 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 	@Override
 	public void authorise() {
 		boolean status;
-		status = super.getRequest().getPrincipal().hasRole(Developer.class);
+		int moduleId;
+		TrainingModule module;
+		Developer developer;
+
+		moduleId = super.getRequest().getData("id", int.class);
+		module = this.repository.findTrainingModuleById(moduleId);
+		developer = module == null ? null : module.getDeveloper();
+		status = module != null && module.getDraftMode() && super.getRequest().getPrincipal().hasRole(developer);
+
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
 		TrainingModule object;
-		Developer developer;
+		int id;
 
-		developer = this.repository.findDeveloperById(super.getRequest().getPrincipal().getActiveRoleId());
-		object = new TrainingModule();
-		object.setDraftMode(true);
-		object.setDeveloper(developer);
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findTrainingModuleById(id);
 
 		super.getBuffer().addData(object);
 	}
@@ -39,13 +45,15 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 	@Override
 	public void bind(final TrainingModule object) {
 		assert object != null;
-
 		super.bind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "totalTime", "optionalLink");
 	}
 
 	@Override
 	public void validate(final TrainingModule object) {
 		assert object != null;
+
+		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
+			super.state(object.getDraftMode(), "draftMode", "developer.training-session.form.error.draftMode");
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			TrainingModule existing;

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.entities.training.TrainingModule;
 import acme.roles.Developer;
@@ -54,8 +55,8 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 			super.state(existing == null, "code", "developer.training-module.form.error.duplicateCode");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("updateMoment"))
-			super.state(object.getUpdateMoment().before(object.getCreationMoment()), "updateMoment", "developer.trainin-module.form.error.updateBeforeCreate");
+		if (!super.getBuffer().getErrors().hasErrors("updateMoment") && !super.getBuffer().getErrors().hasErrors("creationMoment") && object.getUpdateMoment() != null)
+			super.state(MomentHelper.isAfter(object.getUpdateMoment(), object.getCreationMoment()), "updateMoment", "developer.training-module.form.error.updateBeforeCreate");
 	}
 
 	@Override

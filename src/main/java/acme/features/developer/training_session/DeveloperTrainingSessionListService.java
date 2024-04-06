@@ -41,8 +41,9 @@ public class DeveloperTrainingSessionListService extends AbstractService<Develop
 	public void unbind(final TrainingSession object) {
 		assert object != null;
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "startMoment", "finishMoment", "location", "instructor", "contactEmail", "optionalLink");
+		dataset = super.unbind(object, "code", "startMoment", "finishMoment", "location", "instructor", "contactEmail", "optionalLink", "draftMode");
 		super.getResponse().addData(dataset);
+		super.getResponse().addGlobal("trainingModuleId", object.getTrainingModule().getId());
 	}
 
 	@Override
@@ -50,10 +51,13 @@ public class DeveloperTrainingSessionListService extends AbstractService<Develop
 		assert objects != null;
 		int moduleId;
 		TrainingModule tm;
+		final boolean showCreate;
 
 		moduleId = super.getRequest().getData("trainingModuleId", int.class);
 		tm = this.repository.findTrainingModuleById(moduleId);
+		showCreate = tm.getDraftMode() && super.getRequest().getPrincipal().hasRole(Developer.class);
 
 		super.getResponse().addGlobal("trainingModuleId", moduleId);
+		super.getResponse().addGlobal("showCreate", showCreate);
 	}
 }

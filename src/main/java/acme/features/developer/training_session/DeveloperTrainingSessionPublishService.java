@@ -10,7 +10,7 @@ import acme.entities.training.TrainingSession;
 import acme.roles.Developer;
 
 @Service
-public class DeveloperTrainingSessionShowService extends AbstractService<Developer, TrainingSession> {
+public class DeveloperTrainingSessionPublishService extends AbstractService<Developer, TrainingSession> {
 
 	@Autowired
 	DeveloperTrainingSessionRepository repository;
@@ -19,11 +19,14 @@ public class DeveloperTrainingSessionShowService extends AbstractService<Develop
 	@Override
 	public void authorise() {
 		boolean status;
-		int id;
-		TrainingSession ts;
-		id = super.getRequest().getData("id", int.class);
-		ts = this.repository.findTrainingSessionById(id);
-		status = ts != null && super.getRequest().getPrincipal().hasRole(Developer.class);
+		int sessionId;
+		TrainingSession session;
+		Developer developer;
+
+		sessionId = super.getRequest().getData("id", int.class);
+		session = this.repository.findTrainingSessionById(sessionId);
+		developer = session == null ? null : session.getTrainingModule().getDeveloper();
+		status = session != null && session.getDraftMode() && super.getRequest().getPrincipal().hasRole(developer);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -40,10 +43,29 @@ public class DeveloperTrainingSessionShowService extends AbstractService<Develop
 	}
 
 	@Override
+	public void bind(final TrainingSession object) {
+		assert object != null;
+		super.bind(object, "code", "startMoment", "finishMoment", "location", "instructor", "contactEmail", "optionalLink", "draftMode");
+	}
+
+	@Override
+	public void validate(final TrainingSession object) {
+		assert object != null;
+	}
+
+	@Override
+	public void perform(final TrainingSession object) {
+		assert object != null;
+		object.setDraftMode(false);
+		this.repository.save(object);
+	}
+
+	@Override
 	public void unbind(final TrainingSession object) {
 		assert object != null;
 		Dataset dataset;
 		dataset = super.unbind(object, "code", "startMoment", "finishMoment", "location", "instructor", "contactEmail", "optionalLink", "draftMode");
 		super.getResponse().addData(dataset);
 	}
+
 }

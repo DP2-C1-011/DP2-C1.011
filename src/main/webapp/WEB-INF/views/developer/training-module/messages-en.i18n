@@ -22,6 +22,6 @@ developer.training-module.list.label.code = Code
 developer.training-module.list.label.details = Details
 
 developer.training-module.form.error.training-session = Training Module must have at least one Training Session
-developer.training-session.form.error.draftMode = Training Module must stay in Draft Mode
+developer.training-module.form.error.draftMode = Training Module must stay in Draft Mode
 developer.training-module.form.error.duplicateCode = Another Training Module has this code
-developer.trainin-module.form.error.updateBeforeCreate = Update Moment must be after Creation Moment
+developer.training-module.form.error.updateBeforeCreate = Update Moment must be after Creation Moment

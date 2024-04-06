@@ -12,4 +12,6 @@
 	<acme:input-url code="developer.training-module.form.label.optional-link" path="optionalLink"/>
 	<acme:input-textbox code="developer.training-module.form.label.total-time" path="totalTime"/>
 	<acme:input-checkbox code="developer.training-module.form.label.draft-mode" path="draftMode"/>	
+	
+	<acme:button code="developer.training-module.form.button.training-sessions" action="/developer/training-session/list?trainingModuleId=${id}"/>
 </acme:form>

@@ -12,5 +12,8 @@ developer.training-module.form.label.draft-mode = Draft mode:
 
 developer.training-module.form.button.training-sessions = Sesiones de Entrenamiento
 
+developer.training-module.list.button.create = Crear
+developer.training-module.form.button.create = Crear
+
 developer.training-module.list.label.code = Código
 developer.training-module.list.label.details = Detalles

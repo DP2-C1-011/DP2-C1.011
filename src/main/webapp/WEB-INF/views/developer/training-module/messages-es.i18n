@@ -8,7 +8,20 @@ developer.training-module.form.label.difficulty-level = Dificultad:
 developer.training-module.form.label.update-moment = Momento de Actualización: 
 developer.training-module.form.label.optional-link = Enlace Opcional:
 developer.training-module.form.label.total-time = Tiempo Total:
-developer.training-module.form.label.draft-mode = Draft mode:
+developer.training-module.form.label.draft-mode = Draft mode
+
+developer.training-module.form.button.training-sessions = Sesiones de Entrenamiento
+
+developer.training-module.list.button.create = Crear
+developer.training-module.form.button.create = Crear
+developer.training-module.form.button.delete = Borrar
+developer.training-module.form.button.update = Actualizar
+developer.training-module.form.button.publish = Publicar
 
 developer.training-module.list.label.code = Código
 developer.training-module.list.label.details = Detalles
+
+developer.training-module.form.error.training-session = El Módulo de Entrenamiento debe tener al menos una Sesión de Entrenamiento
+developer.training-module.form.error.draftMode = Módulo de Entrenamiento debe quedarse en Draft Mode
+developer.training-module.form.error.duplicateCode = Otro Módulo de Entrenamiento tiene este código
+developer.training-module.form.error.updateBeforeCreate = El momento de actualización debe ser posterior al de creación

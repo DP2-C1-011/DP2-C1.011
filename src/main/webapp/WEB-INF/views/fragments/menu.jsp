@@ -59,7 +59,6 @@
 		
 		<acme:menu-option code="master.menu.developer" access="hasRole('Developer')">
 			<acme:menu-suboption code="master.menu.developer.training-modules" action="/developer/training-module/list"/>
-			<acme:menu-suboption code="master.menu.developer.training-sessions" action="/developer/training-session/list"/>
 		</acme:menu-option>
 	</acme:menu-left>
 

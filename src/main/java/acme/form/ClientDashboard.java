@@ -3,16 +3,20 @@ package acme.form;
 
 import acme.client.data.AbstractForm;
 import acme.client.data.datatypes.Money;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class ClientDashboard extends AbstractForm {
 
 	private static final long	serialVersionUID	= 1L;
 
 	private Integer				progressLogsCompletenessBelow25;
 
-	private Integer				progressLogCompletenessBetween25And50;
+	private Integer				progressLogsCompletenessBetween25And50;
 
-	private Integer				progressLogCompletenessBetween50And75;
+	private Integer				progressLogsCompletenessBetween50And75;
 
 	private Integer				progressLogsCompletenessAbove75;
 

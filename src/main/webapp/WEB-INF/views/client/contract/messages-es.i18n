@@ -7,9 +7,25 @@ client.contract.form.label.provider = Proveedor:
 client.contract.form.label.customer = Cliente:
 client.contract.form.label.goals = Objetivos: 
 client.contract.form.label.budget = Presupuesto:
-client.contract.form.label.draft-mode = Draft mode:
+client.contract.form.label.draftMode = Modo borrador:
+client.contract.form.label.systemCurrencyBudget = Presupuesto en devisa del sistema:
+client.contract.form.label.project = Proyecto:
 
+client.contract.list.button.create = Crear
 client.contract.form.button.update = Actualizar
+client.contract.form.button.create = Crear
 
 client.contract.list.label.code = Código
 client.contract.list.label.instantiationMoment = Momento de inicialización
+
+client.contract.form.button.progressLogs = Registros de progreso
+client.contract.form.button.update = Actualizar
+client.contract.form.button.delete = Borrar
+client.contract.form.button.publish = Publicar
+client.contract.form.button.create = Crear
+
+client.contract.form.error.budget.invalid-currency = Devisa no válida
+client.contract.form.error.not-published-progressLogs = Todos los registros de progreso deben estar publicados
+client.contract.form.error.duplicated = Este código ya existe
+client.contract.form.error.above-cost = El presupuesto es mayor que el coste del proyecto
+client.contract.form.error.bad-completeness = La suma de todos los presupuestos no puede exceder el coste total del proyecto

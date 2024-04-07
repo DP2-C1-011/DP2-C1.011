@@ -1,0 +1,9 @@
+client.client-dashboard.form.title = Panel de indicadores del cliente
+
+client.dashboard.form.title.general-indicators = Indicadores generales
+client.dashboard.form.title.progressLogs-completeness = Completitud de registros de progreso
+
+client.dashboard.form.label.average-contract-budget =  Media de los presupuestos de los contratos
+client.dashboard.form.label.max-contract-budget =  Maximo presupuesto de los contratos
+client.dashboard.form.label.min-contract-budget =  Mínimo presupuesto de los contratos
+client.dashboard.form.label.deviation-contract-budget =  Desviación de los presupuestos de los contratos

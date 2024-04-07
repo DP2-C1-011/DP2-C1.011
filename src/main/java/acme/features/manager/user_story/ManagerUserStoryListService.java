@@ -45,6 +45,8 @@ public class ManagerUserStoryListService extends AbstractService<Manager, UserSt
 		dataset = super.unbind(object, "title", "description");
 
 		super.getResponse().addData(dataset);
+		super.getResponse().addGlobal("projectId", object.getProject().getId());
+
 	}
 
 	@Override

@@ -6,9 +6,17 @@ manager.user_story.form.label.description = Description:
 manager.user_story.form.label.estimatedCost = Estimated cost:
 manager.user_story.form.label.acceptanceCriteria = Acceptance criteria: 
 manager.user_story.form.label.link = Link:
+manager.user_story.form.label.draft-mode = Draft mode:
 
 
-manager.user_story.form.button.update = Update:
+manager.user-story.form.button.update = Update
+manager.user-story.form.button.delete = Delete
+manager.user-story.form.button.create = Create
+manager.user-story.list.button.create = Create
+
+
 manager.user_story.list.label.title = Title:
 manager.user_story.list.label.description = Description:
+
+manager.user-story.form.error.negative-cost = Cost must be higher than 1
 

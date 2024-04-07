@@ -29,7 +29,7 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 		int projectId;
 		Project project;
 
-		projectId = super.getRequest().getData("proiectId", int.class);
+		projectId = super.getRequest().getData("projectId", int.class);
 		project = this.mur.findOneProjectById(projectId);
 
 		object = new UserStory();
@@ -67,7 +67,7 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 		Dataset dataset;
 		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "link", "draft-mode");
 		super.getResponse().addData(dataset);
-		//super.getResponse().addGlobal("projectId", super.getRequest().getData("projectId", int.class));
+		super.getResponse().addGlobal("projectId", super.getRequest().getData("projectId", int.class));
 
 	}
 

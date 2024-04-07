@@ -58,5 +58,12 @@ master.menu.manager.userStories = Historias de Usuario
 
 master.menu.client = Cliente
 master.menu.client.contracts = Contratos
+
 master.menu.client.progressLogs = Registros de progreso
 master.menu.client.dashboard = Panel de indicadores
+
+
+# master.menu.developer ####################################################
+master.menu.developer = Desarrollador
+master.menu.developer.training-modules = Módulos de Entrenamiento
+master.menu.developer.training-sessions = Sesiones de Entrenamiento

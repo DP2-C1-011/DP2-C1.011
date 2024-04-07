@@ -1,5 +1,5 @@
 
-package acme.features.manager.project;
+package acme.features.developer.training_session;
 
 import javax.annotation.PostConstruct;
 
@@ -7,31 +7,31 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import acme.client.controllers.AbstractController;
-import acme.entities.project.Project;
-import acme.roles.Manager;
+import acme.entities.training.TrainingSession;
+import acme.roles.Developer;
 
 @Controller
-public class ManagerProjectController extends AbstractController<Manager, Project> {
+public class DeveloperTrainingSessionController extends AbstractController<Developer, TrainingSession> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerProjectListService		listService;
+	private DeveloperTrainingSessionListService		listService;
 
 	@Autowired
-	private ManagerProjectShowService		showService;
+	private DeveloperTrainingSessionShowService		showService;
 
 	@Autowired
-	private ManagerProjectCreateService		createService;
+	private DeveloperTrainingSessionCreateService	createService;
 
 	@Autowired
-	private ManagerProjectPublishService	publishService;
+	private DeveloperTrainingSessionDeleteService	deleteService;
 
 	@Autowired
-	private ManagerProjectUpdateService		updateService;
+	private DeveloperTrainingSessionUpdateService	updateService;
 
 	@Autowired
-	private ManagerProjectDeleteService		deleteService;
+	private DeveloperTrainingSessionPublishService	publishService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -41,11 +41,10 @@ public class ManagerProjectController extends AbstractController<Manager, Projec
 		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
 		super.addBasicCommand("create", this.createService);
-		super.addBasicCommand("update", this.updateService);
 		super.addBasicCommand("delete", this.deleteService);
+		super.addBasicCommand("update", this.updateService);
 
 		super.addCustomCommand("publish", "update", this.publishService);
-
 	}
 
 }

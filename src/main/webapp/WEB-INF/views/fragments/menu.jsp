@@ -21,8 +21,8 @@
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
 			
 			<!-- <acme:menu-suboption code="master.menu.anonymous.favourite-link" action="http://www.example.com/"/> -->
-			<!-- <acme:menu-suboption code="77852382G: Ramírez Lara, Iván" action="https://www.youtube.com/"/> -->
-			<!-- <acme:menu-suboption code="78233219F: Calderón Rodríguez, Francisco Javier" action="http://ihasabucket.com/"/> -->
+			<!-- <acme:menu-suboption code="77852382G: RamÃ­rez Lara, IvÃ¡n" action="https://www.youtube.com/"/> -->
+			<!-- <acme:menu-suboption code="78233219F: CalderÃ³n RodrÃ­guez, Francisco Javier" action="http://ihasabucket.com/"/> -->
 			<!-- <acme:menu-suboption code="32094496C: Cabello Ranea, Rafael" action="https://store.steampowered.com/"/> -->
 			<!-- <acme:menu-suboption code="Y7156458E: Abouri, Mohamed" action="https://www.virustotal.com/"/> -->
 			<!-- <acme:menu-suboption code="29519510E: Delgado Pallares, David" action="https://www.realbetisbalompie.es/"/> -->
@@ -56,6 +56,10 @@
 
 		<acme:menu-option code="master.menu.consumer" access="hasRole('Consumer')">
 			<acme:menu-suboption code="master.menu.consumer.favourite-link" action="http://www.example.com/"/>
+		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.developer" access="hasRole('Developer')">
+			<acme:menu-suboption code="master.menu.developer.training-modules" action="/developer/training-module/list"/>
 		</acme:menu-option>
 	</acme:menu-left>
 

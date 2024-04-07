@@ -49,13 +49,13 @@ public class TrainingModule extends AbstractEntity {
 	private DifficultyLevel		difficultyLevel;
 
 	@Past
-	//Comprobar en el service que es posterior a creationMoment
 	private Date				updateMoment;
 
 	@URL
 	private String				optionalLink;
 
+	@NotNull
 	private Integer				totalTime;
 
-	private boolean				draftMode;
+	private Boolean				draftMode;
 }

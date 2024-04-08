@@ -59,6 +59,7 @@ master.menu.user-account.become-consumer = Become a consumer
 master.menu.developer = Developer
 master.menu.developer.training-modules = Training Modules
 master.menu.developer.training-sessions = Training Sessions
+master.menu.developer.dashboard = Developer Dashboard
 
 # master.menu.manager ####################################################
 master.menu.manager = Manager

@@ -1,5 +1,5 @@
 
-package acme.features.client.contract;
+package acme.features.client.progress_log;
 
 import javax.annotation.PostConstruct;
 
@@ -7,31 +7,31 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import acme.client.controllers.AbstractController;
-import acme.entities.contract.Contract;
+import acme.entities.contract.ProgressLog;
 import acme.roles.Client;
 
 @Controller
-public class ClientContractController extends AbstractController<Client, Contract> {
+public class ClientProgressLogController extends AbstractController<Client, ProgressLog> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ClientContractListService		listService;
+	private ClientProgressLogListService	listService;
 
 	@Autowired
-	private ClientContractShowService		showService;
+	private ClientProgressLogShowService	showService;
 
 	@Autowired
-	private ClientContractCreateService		createService;
+	private ClientProgressLogCreateService	createService;
 
 	@Autowired
-	private ClientContractUpdateService		updateService;
+	private ClientProgressLogUpdateService	updateService;
 
 	@Autowired
-	private ClientContractPublishService	publishService;
+	private ClientProgressLogDeleteService	deleteService;
 
 	@Autowired
-	private ClientContractDeleteService		deleteService;
+	private ClientProgressLogPublishService	publishService;
 
 	// Constructors -----------------------------------------------------------
 

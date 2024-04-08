@@ -1,0 +1,21 @@
+client.progress-log.form.title = Detalles de los registros de progreso
+client.progress-log.list.title = Lista de los registros de progreso
+
+client.progressLog.form.label.recordId = RegistroId:
+client.progressLog.form.label.completeness = Completitud:
+client.progressLog.form.label.comment = Comentario:
+client.progressLog.form.label.registartionMoment = Momento de registro:
+client.progressLog.form.label.responsible = Responsable:
+client.progressLog.form.label.draftMode = Modo borrador:
+
+client.progressLog.form.button.update = Actualizar
+client.progressLog.form.button.delete = Borrar
+client.progressLog.form.button.create = Crear
+client.progressLog.form.button.publish = Publicar
+
+client.progressLog.list.button.create = Crear
+
+client.progressLog.list.label.recordId = RegistroId
+client.progressLog.list.label.completeness = Completitud
+
+client.progressLog.form.error.duplicated = Este registro id ya existe

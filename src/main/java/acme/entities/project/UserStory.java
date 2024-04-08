@@ -45,6 +45,9 @@ public class UserStory extends AbstractEntity {
 	Boolean						draftMode;
 
 	@NotNull
+	UsPriority					priority;
+
+	@NotNull
 	@ManyToOne(optional = false)
 	Project						project;
 

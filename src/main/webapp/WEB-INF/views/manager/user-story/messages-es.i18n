@@ -7,6 +7,7 @@ manager.user_story.form.label.estimatedCost = Coste estimado:
 manager.user_story.form.label.acceptanceCriteria = Criterios de aceptación: 
 manager.user_story.form.label.link = Url:
 manager.user_story.form.label.draft-mode = Modo borrador:
+manager.user_story.form.label.priority = Prioridad:
 
 
 manager.user-story.form.button.update = Actualizar

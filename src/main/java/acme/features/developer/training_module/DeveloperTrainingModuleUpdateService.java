@@ -77,7 +77,7 @@ public class DeveloperTrainingModuleUpdateService extends AbstractService<Develo
 		SelectChoices choices;
 		choices = SelectChoices.from(DifficultyLevel.class, object.getDifficultyLevel());
 		dataset.put("difficultyLevels", choices);
-
+		super.getResponse().addGlobal("trainingModuleId", object.getId());
 		super.getResponse().addData(dataset);
 	}
 }

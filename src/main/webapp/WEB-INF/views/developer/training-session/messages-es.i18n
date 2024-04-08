@@ -1,13 +1,13 @@
 developer.training-session.form.title = Detalles Sesión de Entrenamiento
 developer.training-session.list.title = Listado Sesiones de Entrenamiento
 
-developer.training-session.form.label.code = Código:
-developer.training-session.form.label.start-moment = Momento Inicio:
-developer.training-session.form.label.finish-moment = Momento Fin:
-developer.training-session.form.label.location = Localización:
-developer.training-session.form.label.instructor = Instructor: 
-developer.training-session.form.label.contact-email = Email de Contacto:
-developer.training-session.form.label.optional-link = Link Opcional:
+developer.training-session.form.label.code = Código
+developer.training-session.form.label.start-moment = Momento Inicio
+developer.training-session.form.label.finish-moment = Momento Fin
+developer.training-session.form.label.location = Localización
+developer.training-session.form.label.instructor = Instructor
+developer.training-session.form.label.contact-email = Email de Contacto
+developer.training-session.form.label.optional-link = Link Opcional
 developer.training-session.form.label.draft-mode = Draft mode
 
 developer.training-session.list.label.code = Código

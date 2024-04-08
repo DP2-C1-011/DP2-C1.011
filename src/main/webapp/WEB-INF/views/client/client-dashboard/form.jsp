@@ -47,7 +47,7 @@
 </h2>
 
 <div>
-	<canvas id="canvas"></canvas>
+	<canvas id="myCanvas"></canvas>
 </div>
 
 <script type="text/javascript">
@@ -61,9 +61,22 @@
 					data : [
 						<jstl:out value="${progressLogsCompletenessBelow25}"/>, 
 						<jstl:out value="${progressLogsCompletenessBetween25And50}"/>, 
-						<jstl:out value="${progressLogsCompletenessBetween50And75}"/>
+						<jstl:out value="${progressLogsCompletenessBetween50And75}"/>,
 						<jstl:out value="${progressLogsCompletenessAbove75}"/>
-					]
+					],
+		            backgroundColor: [
+		                'rgba(255, 99, 132, 0.2)',   // Color for "BELOW 25"
+		                'rgba(54, 162, 235, 0.2)',   // Color for "BETWEEN 25 AND 50"
+		                'rgba(255, 206, 86, 0.2)',   // Color for "BETWEEN 50 AND 75"
+		                'rgba(75, 192, 192, 0.2)'    // Color for "ABOVE 75"
+		            ],
+		            borderColor: [
+		                'rgba(255, 99, 132, 1)',     // Border color for "BELOW 25"
+		                'rgba(54, 162, 235, 1)',     // Border color for "BETWEEN 25 AND 50"
+		                'rgba(255, 206, 86, 1)',     // Border color for "BETWEEN 50 AND 75"
+		                'rgba(75, 192, 192, 1)'      // Border color for "ABOVE 75"
+		            ],
+		            borderWidth: 1
 				}
 			]
 		};
@@ -85,7 +98,7 @@
 	
 		var canvas, context;
 	
-		canvas = document.getElementById("canvas");
+		canvas = document.getElementById("myCanvas");
 		context = canvas.getContext("2d");
 		new Chart(context, {
 			type : "bar",
@@ -94,5 +107,6 @@
 		});
 	});
 </script>
+
 
 <acme:return/>

@@ -77,10 +77,15 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 			Project project;
 
 			project = object.getProject();
+			Double objectAmount;
+			Boolean currencyState = this.moneyService.checkContains(object.getBudget().getCurrency());
+			super.state(currencyState, "budget", "client.contract.form.error.budget.invalid-currency");
 			Double projectCost = this.moneyService.computeMoneyExchange(project.getCost(), "EUR").getTarget().getAmount();
-			Double objectAmount = this.moneyService.computeMoneyExchange(object.getBudget(), "EUR").getTarget().getAmount();
-			super.state(projectCost >= objectAmount, "budget", "client.contract.form.error.above-cost");
-			super.state(this.moneyService.checkContains(object.getBudget().getCurrency()), "budget", "client.contract.form.error.budget.invalid-currency");
+			if (currencyState) {
+				objectAmount = this.moneyService.computeMoneyExchange(object.getBudget(), "EUR").getTarget().getAmount();
+				super.state(projectCost >= objectAmount, "budget", "client.contract.form.error.above-cost");
+			}
+
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {

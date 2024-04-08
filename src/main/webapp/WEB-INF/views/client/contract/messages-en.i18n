@@ -2,14 +2,30 @@ client.contract.form.title = Contracts's details
 client.contract.list.title = Contracts's list
 
 client.contract.form.label.code = Code:
+client.contract.form.label.project = Project:
 client.contract.form.label.instantiationMoment = Instantiation moment:
 client.contract.form.label.provider = Provider:
 client.contract.form.label.customer = Customer:
 client.contract.form.label.goals = Goals: 
 client.contract.form.label.budget = Budget:
-client.contract.form.label.draft-mode = Draft mode:
+client.contract.form.label.draftMode = Draft mode:
+client.contract.form.label.systemCurrencyBudget = System currency budget:
 
 client.contract.form.button.update = Update
 
+client.contract.list.button.create = Create
+
 client.contract.list.label.code = Code
 client.contract.list.label.instantiationMoment = Instantiation moment
+
+client.contract.form.button.progressLogs = Progress Logs
+client.contract.form.button.update = Update
+client.contract.form.button.delete = Delete
+client.contract.form.button.publish = Publish
+client.contract.form.button.create = Create
+
+client.contract.form.error.budget.invalid-currency = Invalid currency
+client.contract.form.error.not-published-progressLogs = All progress logs must be published
+client.contract.form.error.duplicated = This code is taken
+client.contract.form.error.above-cost = The budget is higher than the project cost
+client.contract.form.error.bad-budget = The sum of all budgets cannot exceed the total cost of the project

@@ -57,4 +57,6 @@ public class ProgressLog extends AbstractEntity {
 	@NotNull
 	private Contract			contract;
 
+	private Boolean				draftMode;
+
 }

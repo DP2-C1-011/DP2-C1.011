@@ -1,0 +1,21 @@
+client.progress-log.form.title = ProgressLog's details
+client.progress-log.list.title = ProgressLog's list
+
+client.progressLog.form.label.recordId = RecordId:
+client.progressLog.form.label.completeness = Completeness:
+client.progressLog.form.label.comment = Comment:
+client.progressLog.form.label.registartionMoment = Registration moment:
+client.progressLog.form.label.responsible = Responsible:
+client.progressLog.form.label.draftMode = Draft mode:
+
+client.progressLog.form.button.update = Update
+client.progressLog.form.button.delete = Delete
+client.progressLog.form.button.create = Create
+client.progressLog.form.button.publish = Publish
+
+client.progressLog.list.button.create = Create
+
+client.progressLog.list.label.recordId = Record Id
+client.progressLog.list.label.completeness = Completeness
+
+client.progressLog.form.error.duplicated = This record id is taken

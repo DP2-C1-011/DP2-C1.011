@@ -1,0 +1,77 @@
+
+package acme.features.developer.training_module;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
+import acme.client.services.AbstractService;
+import acme.entities.training.TrainingModule;
+import acme.roles.Developer;
+
+@Service
+public class DeveloperTrainingModuleUpdateService extends AbstractService<Developer, TrainingModule> {
+
+	@Autowired
+	DeveloperTrainingModuleRepository repository;
+
+
+	@Override
+	public void authorise() {
+		boolean status;
+		int moduleId;
+		TrainingModule module;
+		Developer developer;
+
+		moduleId = super.getRequest().getData("id", int.class);
+		module = this.repository.findTrainingModuleById(moduleId);
+		developer = module == null ? null : module.getDeveloper();
+		status = module != null && module.getDraftMode() && super.getRequest().getPrincipal().hasRole(developer);
+
+		super.getResponse().setAuthorised(status);
+	}
+
+	@Override
+	public void load() {
+		TrainingModule object;
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findTrainingModuleById(id);
+
+		super.getBuffer().addData(object);
+	}
+
+	@Override
+	public void bind(final TrainingModule object) {
+		assert object != null;
+		super.bind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "totalTime", "optionalLink");
+	}
+
+	@Override
+	public void validate(final TrainingModule object) {
+		assert object != null;
+
+		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
+			super.state(object.getDraftMode(), "draftMode", "developer.training-module.form.error.draftMode");
+
+		if (!super.getBuffer().getErrors().hasErrors("updateMoment") && !super.getBuffer().getErrors().hasErrors("creationMoment") && object.getUpdateMoment() != null)
+			super.state(MomentHelper.isAfter(object.getUpdateMoment(), object.getCreationMoment()), "updateMoment", "developer.training-module.form.error.updateBeforeCreate");
+	}
+
+	@Override
+	public void perform(final TrainingModule object) {
+		assert object != null;
+
+		this.repository.save(object);
+	}
+
+	@Override
+	public void unbind(final TrainingModule object) {
+		assert object != null;
+		Dataset dataset;
+		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "optionalLink", "totalTime", "draftMode");
+		super.getResponse().addData(dataset);
+	}
+}

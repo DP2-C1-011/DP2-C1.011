@@ -7,3 +7,5 @@
 	<acme:list-column code="client.contract.list.label.code" path="code" width="20%"/>
 	<acme:list-column code="client.contract.list.label.instantiationMoment" path="instantiationMoment" width="10%"/>
 </acme:list>
+
+<acme:button test="${showCreate}" code="client.contract.list.button.create" action="/client/contract/create"/>

@@ -33,6 +33,8 @@ master.menu.administrator.shut-down = Shut down
 
 master.menu.client = Client
 master.menu.client.contracts = Contracts
+master.menu.client.progressLogs = Progress logs
+master.menu.client.dashboard = Dashboard
 
 # master.menu.provider ########################################################
 
@@ -52,6 +54,8 @@ master.menu.user-account.provider = Provider data
 master.menu.user-account.become-provider = Become a provider
 master.menu.user-account.consumer = Consumer data
 master.menu.user-account.become-consumer = Become a consumer
+master.menu.user-account.client = Client data
+master.menu.user-account.become-client = Become a client
 
 # master.menu.developer ####################################################
 master.menu.developer = Developer
@@ -62,3 +66,4 @@ master.menu.developer.training-sessions = Training Sessions
 master.menu.manager = Manager
 master.menu.manager.projects = Projects
 master.menu.manager.userStories = Users Stories
+master.menu.manager.projects = Projects

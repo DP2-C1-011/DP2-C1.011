@@ -1,0 +1,9 @@
+client.client-dashboard.form.title = Client dashboard
+
+client.dashboard.form.title.general-indicators = General indicators
+client.dashboard.form.title.progressLogs-completeness = Progress logs completeness
+
+client.dashboard.form.label.average-contract-budget =  Average budget of the contracts
+client.dashboard.form.label.max-contract-budget =  Maximum budget of the contracts
+client.dashboard.form.label.min-contract-budget =  Minimum budget of the contracts
+client.dashboard.form.label.deviation-contract-budget =  Deviation budget of the contracts

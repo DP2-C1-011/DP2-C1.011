@@ -8,6 +8,8 @@ manager.project.form.label.fatal-error = Fatal Error:
 manager.project.form.label.cost = Cost: 
 manager.project.form.label.link = Link:
 manager.project.form.label.draft-mode = Draft mode:
+manager.project.form.label.systemCurrencyBudget = System currency cost:
+
 
 manager.project.form.button.update = Update
 manager.project.form.button.userStories = User Stories

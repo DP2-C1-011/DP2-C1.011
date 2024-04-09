@@ -8,6 +8,8 @@ manager.project.form.label.fatal-error = Error fatal:
 manager.project.form.label.cost = Coste: 
 manager.project.form.label.link = Enlace:
 manager.project.form.label.draft-mode = Modo borrador:
+client.contract.form.label.systemCurrencyBudget = Coste en devisa del sistema:
+
 
 manager.project.form.button.update = Actualizar
 manager.project.form.button.userStories = Historias de usuario

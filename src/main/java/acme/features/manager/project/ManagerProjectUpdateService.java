@@ -4,8 +4,10 @@ package acme.features.manager.project;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.components.MoneyService;
 import acme.entities.project.Project;
 import acme.features.manager.user_story.ManagerUserStoryRepository;
 import acme.roles.Manager;
@@ -20,6 +22,9 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 
 	@Autowired
 	ManagerUserStoryRepository			mur;
+
+	@Autowired
+	MoneyService						moneyService;
 
 
 	//Lo que hace authorise es traer la id del projecto a publicar, si este existe y tiene manager se podra publicar
@@ -77,6 +82,12 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 	@Override
 	public void perform(final Project object) {
 		assert object != null;
+		Money systemCurrencyBudget;
+		Money cost;
+
+		cost = object.getCost();
+		systemCurrencyBudget = this.moneyService.computeMoneyExchange(cost, "EUR").getTarget();
+		object.setSystemCurrencyBudget(systemCurrencyBudget);
 
 		this.repository.save(object);
 	}

@@ -4,8 +4,10 @@ package acme.features.manager.project;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.components.MoneyService;
 import acme.entities.project.Project;
 import acme.features.manager.user_story.ManagerUserStoryRepository;
 import acme.roles.Manager;
@@ -19,6 +21,8 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 	@Autowired
 	ManagerUserStoryRepository			mur;
 
+	@Autowired
+	MoneyService						moneyService;
 	// AbstractService interface ----------------------------------------------
 
 
@@ -76,12 +80,15 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 	@Override
 	public void perform(final Project object) {
 		assert object != null;
+		Money systemCurrencyBudget;
+		Money cost;
 
+		cost = object.getCost();
+		systemCurrencyBudget = this.moneyService.computeMoneyExchange(cost, "EUR").getTarget();
+		object.setSystemCurrencyBudget(systemCurrencyBudget);
 		object.setDraftMode(false);
-		;
 		this.repository.save(object);
 	}
-
 	//Muestra los datos en el formulario
 	@Override
 	public void unbind(final Project object) {

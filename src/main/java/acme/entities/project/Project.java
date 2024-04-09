@@ -56,4 +56,6 @@ public class Project extends AbstractEntity {
 	@ManyToOne(optional = false)
 	private Manager				manager;
 
+	private Money				systemCurrencyBudget;
+
 }

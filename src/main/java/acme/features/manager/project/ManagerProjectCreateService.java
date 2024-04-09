@@ -4,8 +4,10 @@ package acme.features.manager.project;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.components.MoneyService;
 import acme.entities.project.Project;
 import acme.roles.Manager;
 
@@ -15,7 +17,9 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 	//Poner validación de que coste es mayor que 0
 	//Poner validación de que el código del proyecto es unico
 	@Autowired
-	ManagerProjectRepository mpr;
+	ManagerProjectRepository	mpr;
+	@Autowired
+	MoneyService				moneyService;
 
 
 	@Override
@@ -59,11 +63,23 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 
 		if (!super.getBuffer().getErrors().hasErrors("cost"))
 			super.state(object.getCost().getAmount() > 0, "cost", "manager.project.form.error.negative-salary");
+
+		if (!super.getBuffer().getErrors().hasErrors("cost")) {
+			Boolean currencyState = this.moneyService.checkContains(object.getCost().getCurrency());
+			super.state(currencyState, "cost", "client.contract.form.error.budget.invalid-currency");
+
+		}
 	}
 
 	@Override
 	public void perform(final Project object) {
 		assert object != null;
+		Money systemCurrencyBudget;
+		Money cost;
+
+		cost = object.getCost();
+		systemCurrencyBudget = this.moneyService.computeMoneyExchange(cost, "EUR").getTarget();
+		object.setSystemCurrencyBudget(systemCurrencyBudget);
 
 		this.mpr.save(object);
 	}
@@ -74,7 +90,7 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 		assert object != null;
 
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "title", "abstracto", "fatalError", "cost", "link", "draft-mode");
+		dataset = super.unbind(object, "code", "title", "abstracto", "fatalError", "cost", "link", "draft-mode", "systemCurrencyBudget");
 		super.getResponse().addData(dataset);
 	}
 

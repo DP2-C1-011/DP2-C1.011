@@ -1,31 +1,31 @@
-key,code,title,abstracto,fatal-error,cost,link,draft-mode,key:manager
-project-01,ABC-1234,Implementación de inicio de sesión de usuarios,Desarrollar la funcionalidad de inicio de sesión para los usuarios del sistema.,No,"EUR 178,000.00",https://example.com/user_story1,True,manager-01
-project-02,ABC-1235,Implementación de user en base de datos,Desarrollar la funcionalidad de inicio de sesión para los usuarios del sistema.,No,"EUR 178,000.00",https://example.com/user_story1,True,manager-02
-project-03,ABC-1236,Implementación de vistas de user,Desarrollar la funcionalidad de inicio de sesión para los usuarios del sistema.,No,"EUR 178,000.00",https://example.com/user_story1,True,manager-02
-project-04,ABC-1237,Populación de datos,Desarrollar la funcionalidad de inicio de sesión para los usuarios del sistema.,No,"EUR 178,000.00",https://example.com/user_story1,True,manager-01
-project-05,ABC-1238,Implementación de pruebas,Desarrollar la funcionalidad de inicio de sesión para los usuarios del sistema.,No,"EUR 178,000.00",https://example.com/user_story1,True,manager-01
-project-06,ABC-1239,Implementación de inicio de sesión de usuarios,Desarrollar la funcionalidad de tests automaticos.,No,"EUR 178,000.00",https://example.com/user_story1,True,manager-01
-project-07,ABC-1240,Implementación de inicio de sesión de usuarios,Desarrollar la funcionalidad de pagos.,No,"EUR 178,000.00",https://example.com/user_story1,True,manager-02
-project-08,ABC-1241,Implementación de inicio de sesión de usuarios,Desarrollar la funcionalidad de chat.,No,"EUR 178,000.00",https://example.com/user_story1,True,manager-02
-project-09,ABC-1242,Implementación de inicio de sesión de usuarios,Desarrollar refactorización.,No,"EUR 178,000.00",https://example.com/user_story1,True,manager-01
-project-10,ABC-1243,Implementación de inicio de sesión de usuarios,Desarrollar mockups.,No,"EUR 178,000.00",https://example.com/user_story1,True,manager-01
-project-11,ABC-1244,Implementación de inicio de sesión de usuarios,Desarrollar la funcionalidad de tests automaticos.,Si,"EUR 178,000.00",https://example.com/user_story1,True,manager-01
-project-12,ABC-1245,Implementación de inicio de sesión de usuarios,Desarrollar la funcionalidad de pagos.,Si,"EUR 178,000.00",https://example.com/user_story1,True,manager-02
-project-13,ABC-1246,Implementación de inicio de sesión de usuarios,Desarrollar la funcionalidad de chat.,Si,"EUR 178,000.00",https://example.com/user_story1,True,manager-02
-project-14,ABC-1247,Implementación de inicio de sesión de usuarios,Desarrollar refactorización.,Si,"EUR 178,000.00",https://example.com/user_story1,True,manager-01
-project-15,ABC-1248,Implementación de inicio de sesión de usuarios,Desarrollar mockups.,Si,"EUR 178,000.00",https://example.com/user_story1,True,manager-01
-project-16,ABC-1249,Implementación de inicio de sesión de usuarios,Desarrollar la funcionalidad de tests automaticos.,Si,"USD 1,238,000.00",https://example.com/user_story1,True,manager-01
-project-17,ABC-1250,Implementación de inicio de sesión de usuarios,Desarrollar la funcionalidad de pagos.,Si,"USD 1,788,300.00",https://example.com/user_story1,True,manager-02
-project-18,ABC-1251,Implementación de inicio de sesión de usuarios,Desarrollar la funcionalidad de chat.,Si,"USD 278,000.20",https://example.com/user_story1,True,manager-02
-project-19,ABC-1252,Implementación de inicio de sesión de usuarios,Desarrollar refactorización.,Si,"USD 348,010.00",https://example.com/user_story1,True,manager-01
-project-20,ABC-1253,Implementación de inicio de sesión de usuarios,Desarrollar mockups.,Si,"USD 982,200.00",https://example.com/user_story1,True,manager-01
-project-21,ABC-1254,Implementación de inicio de sesión de usuarios,Desarrollar la funcionalidad de tests automaticos.,Si,"USD 1,238,000.00",https://example.com/user_story53,True,manager-01
-project-22,ABC-1255,Implementación de inicio de sesión de usuarios,Desarrollar la funcionalidad de pagos.,Si,"USD 1,788,300.00",https://example.com/user_story54,True,manager-02
-project-23,ABC-1256,Implementación de inicio de sesión de usuarios,Desarrollar la funcionalidad de chat.,Si,"USD 278,000.20",https://example.com/user_story55,True,manager-02
-project-24,ABC-1257,Implementación de inicio de sesión de usuarios,Desarrollar refactorización.,Si,"USD 348,010.00",https://example.com/user_story56,True,manager-01
-project-25,ABC-1258,Implementación de inicio de sesión de usuarios,Desarrollar mockups.,Si,"USD 982,200.00",https://example.com/user_story57,True,manager-01
-project-26,ABC-1259,Implementación de inicio de sesión de usuarios,Desarrollar la funcionalidad de tests automaticos.,Si,"USD 1,238,000.00",https://example.com/user_story53,False,manager-01
-project-27,ABC-1260,Implementación de inicio de sesión de usuarios,Desarrollar la funcionalidad de pagos.,Si,"USD 1,788,300.00",https://example.com/user_story54,False,manager-02
-project-28,ABC-1261,Implementación de inicio de sesión de usuarios,Desarrollar la funcionalidad de chat.,Si,"USD 278,000.20",https://example.com/user_story55,False,manager-02
-project-29,ABC-1262,Implementación de inicio de sesión de usuarios,Desarrollar refactorización.,Si,"USD 348,010.00",https://example.com/user_story56,False,manager-01
-project-30,ABC-1263,Implementación de inicio de sesión de usuarios,Desarrollar mockups.,Si,"USD 982,200.00",https://example.com/user_story57,False,manager-01
+key,code,title,abstracto,fatal-error,cost,link,draft-mode,key:manager,systemCurrencyBudget
+project-01,ABC-1234,Implementación de inicio de sesión de usuarios,Desarrollar la funcionalidad de inicio de sesión para los usuarios del sistema.,No,"EUR 178,000.00",https://example.com/user_story1,True,manager-01,"EUR 178,000.00"
+project-02,ABC-1235,Implementación de user en base de datos,Desarrollar la funcionalidad de inicio de sesión para los usuarios del sistema.,No,"EUR 178,000.00",https://example.com/user_story1,True,manager-02,"EUR 178,000.00"
+project-03,ABC-1236,Implementación de vistas de user,Desarrollar la funcionalidad de inicio de sesión para los usuarios del sistema.,No,"EUR 178,000.00",https://example.com/user_story1,True,manager-02,"EUR 178,000.00"
+project-04,ABC-1237,Populación de datos,Desarrollar la funcionalidad de inicio de sesión para los usuarios del sistema.,No,"EUR 178,000.00",https://example.com/user_story1,True,manager-01,"EUR 178,000.00"
+project-05,ABC-1238,Implementación de pruebas,Desarrollar la funcionalidad de inicio de sesión para los usuarios del sistema.,No,"EUR 178,000.00",https://example.com/user_story1,True,manager-01,"EUR 178,000.00"
+project-06,ABC-1239,Implementación de inicio de sesión de usuarios,Desarrollar la funcionalidad de tests automaticos.,No,"EUR 178,000.00",https://example.com/user_story1,True,manager-01,"EUR 178,000.00"
+project-07,ABC-1240,Implementación de inicio de sesión de usuarios,Desarrollar la funcionalidad de pagos.,No,"EUR 178,000.00",https://example.com/user_story1,True,manager-02,"EUR 178,000.00"
+project-08,ABC-1241,Implementación de inicio de sesión de usuarios,Desarrollar la funcionalidad de chat.,No,"EUR 178,000.00",https://example.com/user_story1,True,manager-02,"EUR 178,000.00"
+project-09,ABC-1242,Implementación de inicio de sesión de usuarios,Desarrollar refactorización.,No,"EUR 178,000.00",https://example.com/user_story1,True,manager-01,"EUR 178,000.00"
+project-10,ABC-1243,Implementación de inicio de sesión de usuarios,Desarrollar mockups.,No,"EUR 178,000.00",https://example.com/user_story1,True,manager-01,"EUR 178,000.00"
+project-11,ABC-1244,Implementación de inicio de sesión de usuarios,Desarrollar la funcionalidad de tests automaticos.,Si,"EUR 178,000.00",https://example.com/user_story1,True,manager-01,"EUR 178,000.00"
+project-12,ABC-1245,Implementación de inicio de sesión de usuarios,Desarrollar la funcionalidad de pagos.,Si,"EUR 178,000.00",https://example.com/user_story1,True,manager-02,"EUR 178,000.00"
+project-13,ABC-1246,Implementación de inicio de sesión de usuarios,Desarrollar la funcionalidad de chat.,Si,"EUR 178,000.00",https://example.com/user_story1,True,manager-02,"EUR 178,000.00"
+project-14,ABC-1247,Implementación de inicio de sesión de usuarios,Desarrollar refactorización.,Si,"EUR 178,000.00",https://example.com/user_story1,True,manager-01,"EUR 178,000.00"
+project-15,ABC-1248,Implementación de inicio de sesión de usuarios,Desarrollar mockups.,Si,"EUR 178,000.00",https://example.com/user_story1,True,manager-01,"EUR 178,000.00"
+project-16,ABC-1249,Implementación de inicio de sesión de usuarios,Desarrollar la funcionalidad de tests automaticos.,Si,"USD 1,238,000.00",https://example.com/user_story1,True,manager-01,"EUR 1,140,346.56"
+project-17,ABC-1250,Implementación de inicio de sesión de usuarios,Desarrollar la funcionalidad de pagos.,Si,"USD 1,788,300.00",https://example.com/user_story1,True,manager-02,"EUR 1,647,238.90"
+project-18,ABC-1251,Implementación de inicio de sesión de usuarios,Desarrollar la funcionalidad de chat.,Si,"USD 278,000.20",https://example.com/user_story1,True,manager-02,"EUR 256,071.54"
+project-19,ABC-1252,Implementación de inicio de sesión de usuarios,Desarrollar refactorización.,Si,"USD 348,010.00",https://example.com/user_story1,True,manager-01,"EUR 320,558.97"
+project-20,ABC-1253,Implementación de inicio de sesión de usuarios,Desarrollar mockups.,Si,"USD 982,200.00",https://example.com/user_story1,True,manager-01,"EUR 904,724.06"
+project-21,ABC-1254,Implementación de inicio de sesión de usuarios,Desarrollar la funcionalidad de tests automaticos.,Si,"USD 1,238,000.00",https://example.com/user_story53,True,manager-01,"EUR 1,140,346.56"
+project-22,ABC-1255,Implementación de inicio de sesión de usuarios,Desarrollar la funcionalidad de pagos.,Si,"USD 1,788,300.00",https://example.com/user_story54,True,manager-02,"EUR 1,647,238.90"
+project-23,ABC-1256,Implementación de inicio de sesión de usuarios,Desarrollar la funcionalidad de chat.,Si,"USD 278,000.20",https://example.com/user_story55,True,manager-02,"EUR 256,071.54"
+project-24,ABC-1257,Implementación de inicio de sesión de usuarios,Desarrollar refactorización.,Si,"USD 348,010.00",https://example.com/user_story56,True,manager-01,"EUR 320,558.97"
+project-25,ABC-1258,Implementación de inicio de sesión de usuarios,Desarrollar mockups.,Si,"USD 982,200.00",https://example.com/user_story57,True,manager-01,"EUR 904,724.06"
+project-26,ABC-1259,Implementación de inicio de sesión de usuarios,Desarrollar la funcionalidad de tests automaticos.,Si,"USD 1,238,000.00",https://example.com/user_story53,False,manager-01,"EUR 1,140,346.56"
+project-27,ABC-1260,Implementación de inicio de sesión de usuarios,Desarrollar la funcionalidad de pagos.,Si,"USD 1,788,300.00",https://example.com/user_story54,False,manager-02,"EUR 1,647,238.90"
+project-28,ABC-1261,Implementación de inicio de sesión de usuarios,Desarrollar la funcionalidad de chat.,Si,"USD 278,000.20",https://example.com/user_story55,False,manager-02,"EUR 256,071.54"
+project-29,ABC-1262,Implementación de inicio de sesión de usuarios,Desarrollar refactorización.,Si,"USD 348,010.00",https://example.com/user_story56,False,manager-01,"EUR 320,558.97"
+project-30,ABC-1263,Implementación de inicio de sesión de usuarios,Desarrollar mockups.,Si,"USD 982,200.00",https://example.com/user_story57,False,manager-01,"EUR 904,724.06"

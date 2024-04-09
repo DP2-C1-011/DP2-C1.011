@@ -21,7 +21,6 @@ public class ManagerUserStoryListService extends AbstractService<Manager, UserSt
 
 	@Override
 	public void authorise() {
-		//TODO Comprobar que el manager no puede acceder a proyectos que no sean suyos.
 		super.getResponse().setAuthorised(true);
 	}
 

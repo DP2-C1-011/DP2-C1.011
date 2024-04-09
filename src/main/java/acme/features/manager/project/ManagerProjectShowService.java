@@ -18,16 +18,7 @@ public class ManagerProjectShowService extends AbstractService<Manager, Project>
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int id;
-		Project project;
-		//cada uno de los elementos de la lista son projects, por lo que si pulsamos en uno sacamos su id y le mostramos todos los atributos
-		id = super.getRequest().getData("id", int.class);
-		project = this.mpr.findProjectById(id);
-		//comprobamos que el proyecto existe y que la persona que intenta acceder tiene rol de manager.
-		status = project != null && super.getRequest().getPrincipal().hasRole(project.getManager());
-
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
@@ -48,7 +39,7 @@ public class ManagerProjectShowService extends AbstractService<Manager, Project>
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "title", "abstracto", "fatal-error", "cost", "link", "draft-mode");
+		dataset = super.unbind(object, "code", "title", "abstracto", "fatalError", "cost", "link", "draft-mode");
 
 		super.getResponse().addData(dataset);
 	}

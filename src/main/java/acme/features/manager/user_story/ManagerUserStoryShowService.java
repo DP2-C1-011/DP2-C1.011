@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
+import acme.entities.project.UsPriority;
 import acme.entities.project.UserStory;
 import acme.roles.Manager;
 
@@ -18,15 +20,7 @@ public class ManagerUserStoryShowService extends AbstractService<Manager, UserSt
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int id;
-		UserStory userStory;
-		id = super.getRequest().getData("id", int.class);
-		userStory = this.mur.findUserStoryById(id);
-		//comprobamos que la us existe y que la persona que intenta acceder tiene rol de manager.
-		status = userStory != null && super.getRequest().getPrincipal().hasRole(userStory.getProject().getManager());
-
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
@@ -46,9 +40,12 @@ public class ManagerUserStoryShowService extends AbstractService<Manager, UserSt
 		assert object != null;
 
 		Dataset dataset;
+		SelectChoices choices;
+		choices = SelectChoices.from(UsPriority.class, object.getPriority());
 
 		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "link", "draft-mode", "priority");
-
+		dataset.put("priority", choices.getSelected().getKey());
+		dataset.put("priorities", choices);
 		super.getResponse().addData(dataset);
 	}
 

@@ -58,6 +58,13 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
 			super.state(object.getDraftMode(), "draftMode", "developer.training-session.form.error.draftMode");
 
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			TrainingSession existing;
+
+			existing = this.repository.findTrainingSessionByCode(object.getCode());
+			super.state(existing == null, "code", "developer.training-session.form.error.duplicateCode");
+		}
+
 		if (!super.getBuffer().getErrors().hasErrors("startMoment"))
 			super.state(MomentHelper.isAfter(object.getStartMoment(), object.getTrainingModule().getCreationMoment()), "startMoment", "developer.training-session.form.error.startBeforeCreate");
 

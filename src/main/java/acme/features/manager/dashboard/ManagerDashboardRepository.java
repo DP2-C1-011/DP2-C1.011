@@ -1,10 +1,14 @@
 
 package acme.features.manager.dashboard;
 
+import java.util.Collection;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
+import acme.entities.project.Project;
+import acme.entities.project.UsPriority;
 
 /*
  * The system must handle manager dashboards with the following data: total number of “must”, “should”, “could”, and “won’t”
@@ -13,6 +17,10 @@ import acme.client.repositories.AbstractRepository;
  */
 @Repository
 public interface ManagerDashboardRepository extends AbstractRepository {
+
+	//task
+	@Query("select count(u) from UserStory u where u.priority = :priority")
+	Integer countUSbyPriority(UsPriority priority);
 
 	//UserStory
 
@@ -28,7 +36,7 @@ public interface ManagerDashboardRepository extends AbstractRepository {
 	@Query("select max(u.estimatedCost) from UserStory u where u.project.manager.id = :id")
 	Double maxEstimationUserStories(int id);
 
-	//UserStory
+	//Project
 
 	@Query("select avg(p.systemCurrencyBudget.amount) from Project p where  p.manager.id = :id")
 	Double averageProjectCost(int id);
@@ -41,5 +49,8 @@ public interface ManagerDashboardRepository extends AbstractRepository {
 
 	@Query("select max(p.cost.amount) from Project p where p.manager.id = :id")
 	Double maxProjectCost(int id);
+
+	@Query("select p from Project p where p.manager.id = :managerId")
+	Collection<Project> findManyProjectsByManagerId(int managerId);
 
 }

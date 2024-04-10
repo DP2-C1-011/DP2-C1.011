@@ -20,7 +20,17 @@ public class ManagerUserStoryShowService extends AbstractService<Manager, UserSt
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int id;
+		UserStory us;
+		Manager manager;
+
+		id = super.getRequest().getData("id", int.class);
+		us = this.mur.findUserStoryById(id);
+		manager = us == null ? null : us.getProject().getManager();
+		status = us != null && us.getDraftMode() && super.getRequest().getPrincipal().hasRole(manager);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override

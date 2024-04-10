@@ -1,9 +1,8 @@
 
 package acme.form;
 
-import java.util.Map;
-
 import acme.client.data.AbstractForm;
+import acme.client.data.datatypes.Money;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,7 +15,13 @@ public class ManagerDashboard extends AbstractForm {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
-	Map<String, Integer>		totalNumberPerTypeOfPriority;
+	Integer						mustNumber;
+
+	Integer						shouldNumber;
+
+	Integer						couldNumber;
+
+	Integer						wontNumber;
 
 	Double						averageUsCost;
 
@@ -26,12 +31,12 @@ public class ManagerDashboard extends AbstractForm {
 
 	Double						maxUsCost;
 
-	Double						averageProjectCost;
+	Money						averageProjectCost;
 
-	Double						deviationProjectCost;
+	Money						deviationProjectCost;
 
-	Double						minProjectCost;
+	Money						minProjectCost;
 
-	Double						maxProjectCost;
+	Money						maxProjectCost;
 
 }

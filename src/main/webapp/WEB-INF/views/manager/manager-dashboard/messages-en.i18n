@@ -1,0 +1,14 @@
+manager.manager-dashboard.form.title = manager dashboard
+
+manager.dashboard.form.title.general-indicators = General indicators
+manager.dashboard.form.title.progressLogs-completeness = Progress logs completeness
+
+manager.dashboard.form.label.average-project-cost =  Average cost of the projects
+manager.dashboard.form.label.max-project-cost =  Maximum cost of the projects
+manager.dashboard.form.label.min-project-cost =  Minimum cost of the projects
+manager.dashboard.form.label.deviation-project-cost =  Deviation cost of the projects
+
+manager.dashboard.form.label.average-us-cost =  Average cost of the user stories
+manager.dashboard.form.label.max-us-cost =  Maximum cost of the user stories
+manager.dashboard.form.label.min-us-cost =  Minimum cost of the user stories
+manager.dashboard.form.label.deviation-us-cost =  Deviation cost of the user stories

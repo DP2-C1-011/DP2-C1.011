@@ -10,7 +10,6 @@
 	<acme:input-textarea code="manager.project.form.label.fatal-error" path="fatalError"/>
 	<acme:input-textbox code="manager.project.form.label.cost" path="cost"/>	
 	<acme:input-url code="manager.project.form.label.link" path="link"/>
-	<acme:input-checkbox code="manager.project.form.label.draft-mode" path="draftMode"/>
 	<acme:input-money code="client.contract.form.label.systemCurrencyBudget" path="systemCurrencyBudget" readonly="true"/>
 	
 	

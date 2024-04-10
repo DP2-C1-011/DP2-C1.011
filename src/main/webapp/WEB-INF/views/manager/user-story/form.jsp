@@ -9,7 +9,6 @@
 	<acme:input-textbox code="manager.user_story.form.label.estimatedCost" path="estimatedCost"/>
 	<acme:input-textarea code="manager.user_story.form.label.acceptanceCriteria" path="acceptanceCriteria"/>
 	<acme:input-url code="manager.user_story.form.label.link" path="link"/>	
-	<acme:input-checkbox code="manager.user_story.form.label.draft-mode" path="draftMode"/>
 	<acme:input-select code="manager.user_story.form.label.priority" path="priority" choices="${priorities}"/>	
 	
 	

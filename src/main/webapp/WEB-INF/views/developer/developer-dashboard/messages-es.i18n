@@ -1,0 +1,10 @@
+developer.developer-dashboard.form.title = Panel de Desarrollador
+
+developer.dashboard.form.title.general-indicators = Indicadores Generales
+
+developer.dashboard.form.label.num-tm-updated =  Número de Módulos de Entrenamiento con Momento de Actualización
+developer.dashboard.form.label.num-ts-link =  Número de Sesiones de Entrenamiento con Enlance
+developer.dashboard.form.label.avg-tm-time =  Media del Tiempo de Módulos de Entrenamiento
+developer.dashboard.form.label.dev-tm-time =  Desviación del Tiempo de Módulos de Entrenamiento
+developer.dashboard.form.label.min-tm-time =  Mínimo Tiempo de Módulos de Entrenamiento
+developer.dashboard.form.label.max-tm-time =  Máximo del Tiempo de Módulos de Entrenamiento

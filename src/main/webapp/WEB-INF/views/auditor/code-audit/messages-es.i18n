@@ -1,0 +1,13 @@
+auditor.code-audit.form.title = Detalles auditoría
+auditor.code-audit.list.title = Listado de auditorías
+
+auditor.code-audit.list.label.code = Código
+auditor.code-audit.list.label.corrective-actions = Acciones correctivas
+
+
+auditor.code-audit.create = Crear
+auditor.code-audit.form.button.delete = Borrar
+auditor.code-audit.form.button.update = Actualizar
+auditor.code-audit.form.button.publish = Publicar
+auditor.code-audit.error.codeAudit = Debe haber al menos un registro de auditoria
+auditor.code-audit.form.draftMode = Modo borrador

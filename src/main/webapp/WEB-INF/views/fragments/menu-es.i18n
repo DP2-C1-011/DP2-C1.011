@@ -77,3 +77,9 @@ master.menu.developer = Desarrollador
 master.menu.developer.training-modules = Módulos de Entrenamiento
 master.menu.developer.training-sessions = Sesiones de Entrenamiento
 master.menu.developer.dashboard = Panel de Desarrollador
+
+# master.menu.auditor ####################################################
+
+master.menu.auditor = Auditor
+master.menu.auditor.code-audits = Auditorías de código
+master.menu.auditor.audit-records = Registros de auditoría

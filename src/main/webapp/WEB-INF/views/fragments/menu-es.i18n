@@ -19,6 +19,8 @@ master.menu.sign-out = Salir
 
 master.menu.any = Cualquiera
 master.menu.any.training-modules = Módulos de Entrenamiento Publicados
+master.menu.any.projects = Proyectos publicados
+
 
 # master.menu.anonymous #######################################################
 
@@ -56,6 +58,8 @@ master.menu.user-account.developer = Datos de desarrollador
 master.menu.user-account.become-developer = Hazte desarrollador
 master.menu.user-account.client = Datos de cliente
 master.menu.user-account.become-client = Hazte cliente
+master.menu.user-account.manager = Datos del manager
+master.menu.user-account.become-manager = Hazte manager
 
 # master.menu.manager ####################################################
 

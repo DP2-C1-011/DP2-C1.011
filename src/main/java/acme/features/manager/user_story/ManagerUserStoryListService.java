@@ -26,7 +26,6 @@ public class ManagerUserStoryListService extends AbstractService<Manager, UserSt
 
 	@Override
 	public void load() {
-		//Si la persona tiene rol de manager se traeran todos las user-stories asociadas a sus proyectos
 		Collection<UserStory> objects;
 		int projectId;
 		projectId = super.getRequest().getData("projectId", int.class);

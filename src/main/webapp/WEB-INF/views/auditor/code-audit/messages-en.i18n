@@ -7,6 +7,7 @@ auditor.code-audit.form.label.code-audit-type = Code Audit Type
 auditor.code-audit.form.label.corrective-actions = Corrective Actions
 auditor.code-audit.form.label.optional-link = Optional Link
 auditor.code-audit.form.label.draft-mode = Draft Mode
+auditor.code-audit.form.label.project = Project
 
 auditor.code-audit.form.error.duplicateCode = The code already exists
 auditor.code-audit.list.label.code = Code

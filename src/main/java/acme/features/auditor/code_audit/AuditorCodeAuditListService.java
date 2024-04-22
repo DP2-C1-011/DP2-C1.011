@@ -25,9 +25,7 @@ public class AuditorCodeAuditListService extends AbstractService<Auditor, CodeAu
 
 	@Override
 	public void authorise() {
-		boolean status;
-		status = super.getRequest().getPrincipal().hasRole(Auditor.class);
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
@@ -36,7 +34,7 @@ public class AuditorCodeAuditListService extends AbstractService<Auditor, CodeAu
 		int auditorId;
 
 		auditorId = super.getRequest().getPrincipal().getActiveRoleId();
-		objects = this.repository.findCodeAuditByAuditorId(auditorId);
+		objects = this.repository.findManyCodeAuditsByAuditorId(auditorId);
 
 		super.getBuffer().addData(objects);
 	}

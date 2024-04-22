@@ -8,24 +8,31 @@ import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
 import acme.entities.audit.CodeAudit;
+import acme.entities.project.Project;
 import acme.roles.Auditor;
 
 @Repository
 public interface AuditorCodeAuditRepository extends AbstractRepository {
 
-	@Query("select au from CodeAudit au")
-	Collection<CodeAudit> findAllCodeAudits();
+	@Query("select ca from CodeAudit ca where ca.id = :id")
+	CodeAudit findOneCodeAuditById(int id);
 
-	@Query("select au from CodeAudit au where au.id = :id")
-	CodeAudit findCodeAuditById(int id);
-
-	@Query("select au from CodeAudit au where au.auditor.id = :id")
-	Collection<CodeAudit> findCodeAuditByAuditorId(int id);
+	@Query("select ca from CodeAudit ca where ca.auditor.id = :auditorId")
+	Collection<CodeAudit> findManyCodeAuditsByAuditorId(int auditorId);
 
 	@Query("select a from Auditor a where a.id = :id")
-	Auditor findAuditorById(int id);
+	Auditor findOneAuditorById(int id);
 
 	@Query("select au from CodeAudit au where au.code = :code")
 	CodeAudit findCodeAuditByCode(String code);
+
+	@Query("select p from Project p where p.id = :projectId")
+	Project findOneProjectById(int projectId);
+
+	@Query("select p from Project p")
+	Collection<Project> findAllProjects();
+
+	@Query("select pi.project from ParticipatesIn pi where pi.client.id = :auditorId")
+	Collection<Project> findManyProjectsByAuditorId(int auditorId);
 
 }

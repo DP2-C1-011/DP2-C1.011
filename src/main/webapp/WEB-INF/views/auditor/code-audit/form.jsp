@@ -6,8 +6,10 @@
 <acme:form>
 
 	<acme:input-textbox code="auditor.code-audit.form.label.code" path="code"/>	
+		<acme:input-select code="auditor.code-audit.form.label.project" path="project" choices="${projects}"/>
 	<acme:input-moment code="auditor.code-audit.form.label.execution-date" path="executionDate"/>
-	<acme:input-select code="auditor.code-audit.form.label.code-audit-type" path="codeAuditType" choices="${codeAuditTypes}"/>
+	<acme:input-select code="auditor.code-audit.form.label.code-audit-type" path="codeAuditType" choices="${codeAuditTypes}" 
+			readonly="${acme:anyOf(codeAuditTypes, 'STATIC|DYNAMIC')}"/>
 	<acme:input-textbox code="auditor.code-audit.form.label.corrective-actions" path="correctiveActions"/>	
 	<acme:input-url code="auditor.code-audit.form.label.optional-link" path="optionalLink"/>
 	<acme:input-checkbox code="auditor.code-audit.form.label.draft-mode" path="draftMode"/>

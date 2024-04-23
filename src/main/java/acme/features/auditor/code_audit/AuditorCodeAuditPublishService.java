@@ -15,7 +15,7 @@ import acme.entities.project.Project;
 import acme.roles.Auditor;
 
 @Service
-public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAudit> {
+public class AuditorCodeAuditPublishService extends AbstractService<Auditor, CodeAudit> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -27,25 +27,21 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 
 	@Override
 	public void authorise() {
-
 		boolean status;
-		int id;
+		int auditorId;
 		CodeAudit codeAudit;
 		Auditor auditor;
 
-		id = super.getRequest().getData("id", int.class);
-		codeAudit = this.repository.findOneCodeAuditById(id);
+		auditorId = super.getRequest().getData("id", int.class);
+		codeAudit = this.repository.findOneCodeAuditById(auditorId);
 		auditor = codeAudit == null ? null : codeAudit.getAuditor();
-
-		status = super.getRequest().getPrincipal().hasRole(auditor) || codeAudit != null && !codeAudit.isDraftMode();
+		status = codeAudit != null && codeAudit.isDraftMode() && super.getRequest().getPrincipal().hasRole(auditor);
 
 		super.getResponse().setAuthorised(status);
-
 	}
 
 	@Override
 	public void load() {
-
 		CodeAudit object;
 		int id;
 
@@ -53,17 +49,47 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 		object = this.repository.findOneCodeAuditById(id);
 
 		super.getBuffer().addData(object);
+
+	}
+
+	@Override
+	public void bind(final CodeAudit object) {
+		assert object != null;
+
+		int projectId;
+		Project project;
+
+		projectId = super.getRequest().getData("project", int.class);
+
+		project = this.repository.findOneProjectById(projectId);
+
+		super.bind(object, "code", "executionDate", "codeAuditType", "correctiveActions", "optionalLink");
+
+		object.setProject(project);
+	}
+
+	//Creo que aquí iría la restricción de la nota //mark
+	@Override
+	public void validate(final CodeAudit object) {
+		assert object != null;
+	}
+
+	@Override
+	public void perform(final CodeAudit object) {
+		assert object != null;
+
+		object.setDraftMode(false);
+		this.repository.save(object);
 	}
 
 	@Override
 	public void unbind(final CodeAudit object) {
-
 		assert object != null;
 
 		Collection<Project> projects;
 		SelectChoices projectsChoices;
-		SelectChoices codeAuditTypesChoices;
 		Dataset dataset;
+		SelectChoices codeAuditTypesChoices;
 
 		projects = this.repository.findAllProjects();
 		projectsChoices = SelectChoices.from(projects, "code", object.getProject());
@@ -74,7 +100,9 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 
 		codeAuditTypesChoices = SelectChoices.from(CodeAuditType.class, object.getCodeAuditType());
 		dataset.put("codeAuditTypes", codeAuditTypesChoices);
+
 		super.getResponse().addData(dataset);
+
 	}
 
 }

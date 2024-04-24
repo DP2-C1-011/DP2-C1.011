@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
-import acme.entities.project.Project;
 import acme.entities.project.UsPriority;
 import acme.entities.project.UserStory;
 import acme.roles.Manager;
@@ -28,15 +27,12 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 	@Override
 	public void load() {
 		UserStory object;
-		int projectId;
-		Project project;
+		Manager manager;
 
-		projectId = super.getRequest().getData("projectId", int.class);
-		project = this.mur.findOneProjectById(projectId);
-
+		manager = this.mur.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
 		object = new UserStory();
-		object.setProject(project);
 		object.setDraftMode(true);
+		object.setManager(manager);
 
 		super.getBuffer().addData(object);
 	}
@@ -77,7 +73,6 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 		dataset.put("priority", choices.getSelected().getKey());
 		dataset.put("priorities", choices);
 		super.getResponse().addData(dataset);
-		super.getResponse().addGlobal("projectId", super.getRequest().getData("projectId", int.class));
 
 	}
 

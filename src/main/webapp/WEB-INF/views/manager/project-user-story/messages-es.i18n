@@ -8,13 +8,18 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-manager.link.list.label.userStory= Historia de usuario
-manager.link.form.label.userStory= Historia de usuario
+manager.link.list.label.userStory= Proyecto
+manager.link.form.label.userStory= Proyecto
+manager.link.list.label.project = Proyecto
+manager.link.form.label.project = Proyecto
+
 
 manager.link.form.button.delete=Borrar
 manager.link.form.button.create=Asignar
 
 manager.project-user-story.list.title=Asignaciones
 manager.project-user-story.form.title=Asignación
+
+
 
 manager.project.form.error.duplicated-user-story= Historia de usuario duplicada

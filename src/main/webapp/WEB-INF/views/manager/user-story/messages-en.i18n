@@ -20,5 +20,9 @@ manager.user-story.form.button.publish = Publish
 manager.user_story.list.label.title = Title:
 manager.user_story.list.label.description = Description:
 
+manager.user-story.list.button.add = Add user-story to a project
+
+manager.user-story.list.button.deleteFromProject = Remove from a project
+
 manager.user-story.form.error.negative-cost = Cost must be higher than 1
 

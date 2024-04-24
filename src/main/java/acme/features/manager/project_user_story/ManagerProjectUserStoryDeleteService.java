@@ -1,58 +1,92 @@
 
 package acme.features.manager.project_user_story;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
+import acme.entities.project.Project;
 import acme.entities.project.ProjectUserStory;
+import acme.entities.project.UserStory;
 import acme.roles.Manager;
 
 @Service
 public class ManagerProjectUserStoryDeleteService extends AbstractService<Manager, ProjectUserStory> {
 
 	@Autowired
-	private ManagerProjectUserStoryRepository deleteRepository;
+	private ManagerProjectUserStoryRepository mur;
 
 
 	@Override
 	public void authorise() {
-		int id = super.getRequest().getData("id", int.class);
-		ProjectUserStory link = this.deleteRepository.findLinkById(id);
+		boolean status;
+		int id;
+		ProjectUserStory pus;
+		Manager manager;
 
-		Principal principal = super.getRequest().getPrincipal();
-		int userAccountId = principal.getAccountId();
-
-		boolean status = link != null && principal.hasRole(Manager.class) && link.getProject().getManager().getUserAccount().getId() == userAccountId;
+		id = super.getRequest().getData("id", int.class);
+		pus = this.mur.findLinkById(id);
+		manager = pus == null ? null : pus.getProject().getManager();
+		status = pus != null && super.getRequest().getPrincipal().hasRole(manager);
 
 		super.getResponse().setAuthorised(status);
 	}
 	@Override
 	public void load() {
-		int id = super.getRequest().getData("id", int.class);
-		ProjectUserStory link = this.deleteRepository.findLinkById(id);
-		super.getBuffer().addData(link);
+		int userStoryId = super.getRequest().getData("userStoryId", int.class);
+		UserStory us = this.mur.findUserStoryById(userStoryId);
+
+		ProjectUserStory object = new ProjectUserStory();
+		object.setUserStory(us);
+
+		super.getBuffer().addData(object);
 	}
 	@Override
 	public void bind(final ProjectUserStory object) {
 		assert object != null;
-		super.bind(object, "userStory");
+		int projectId;
+		Project project;
+		projectId = super.getRequest().getData("project", int.class);
+		project = this.mur.findProjectById(projectId);
+		super.bind(object, "id");
+		object.setProject(project);
+
 	}
 	@Override
 	public void validate(final ProjectUserStory object) {
 		assert object != null;
+		if (!super.getBuffer().getErrors().hasErrors("project"))
+			super.state(object.getProject() != null, "project", "manager.project-user-story.form.error.projectNotNull");
+		if (!super.getBuffer().getErrors().hasErrors("project"))
+			super.state(object.getProject().getDraftMode(), "project", "manager.project-user-story.form.error.project");
 	}
 	@Override
 	public void perform(final ProjectUserStory object) {
 		assert object != null;
-		this.deleteRepository.delete(object);
+		this.mur.delete(object);
 	}
 	@Override
 	public void unbind(final ProjectUserStory object) {
 		assert object != null;
+		int userStoryId = super.getRequest().getData("userStoryId", int.class);
+
+		Manager manager = this.mur.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
+		Collection<Project> projects = this.mur.findProjects();
+
+		SelectChoices choices = SelectChoices.from(projects, "title", object.getProject());
+
 		Dataset dataset = super.unbind(object, "userStory");
+
+		dataset.put("project", choices.getSelected().getKey());
+		dataset.put("projects", choices);
+		dataset.put("userStoryId", userStoryId);
+
 		super.getResponse().addData(dataset);
+		super.getResponse().addGlobal("userStoryId", super.getRequest().getData("userStoryId", int.class));
+
 	}
 }

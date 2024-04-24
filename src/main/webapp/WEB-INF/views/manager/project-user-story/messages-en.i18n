@@ -8,8 +8,12 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-manager.link.list.label.userStory= User story
-manager.link.form.label.userStory= User story
+manager.link.list.label.userStory= Project
+manager.link.form.label.userStory= Project
+
+manager.link.list.label.project = Project
+manager.link.form.label.project = Project
+
 
 manager.link.form.button.delete= Delete
 manager.link.form.button.create= Assign

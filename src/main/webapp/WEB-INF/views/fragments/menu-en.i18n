@@ -80,4 +80,5 @@ master.menu.manager.projects = Projects
 master.menu.manager.userStories = Users Stories
 master.menu.manager.projects = Projects
 master.menu.manager.dashboard = Dashboard
+master.menu.manager.user-story = User Stories
 

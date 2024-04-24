@@ -1,12 +1,15 @@
 
 package acme.features.manager.user_story;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.entities.project.ProjectUserStory;
 import acme.entities.project.UsPriority;
 import acme.entities.project.UserStory;
 import acme.roles.Manager;
@@ -27,7 +30,7 @@ public class ManagerUserStoryDeleteService extends AbstractService<Manager, User
 
 		id = super.getRequest().getData("id", int.class);
 		us = this.mur.findUserStoryById(id);
-		manager = us == null ? null : us.getProject().getManager();
+		manager = us == null ? null : us.getManager();
 		status = us != null && us.getDraftMode() && super.getRequest().getPrincipal().hasRole(manager);
 
 		super.getResponse().setAuthorised(status);
@@ -60,6 +63,9 @@ public class ManagerUserStoryDeleteService extends AbstractService<Manager, User
 	@Override
 	public void perform(final UserStory object) {
 		assert object != null;
+		Collection<ProjectUserStory> us;
+		us = this.mur.findProjectUserStoryByUserStoryId(object.getId());
+		this.mur.deleteAll(us);
 		this.mur.delete(object);
 	}
 
@@ -74,7 +80,6 @@ public class ManagerUserStoryDeleteService extends AbstractService<Manager, User
 		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "link", "draft-mode");
 		dataset.put("priority", choices.getSelected().getKey());
 		dataset.put("priorities", choices);
-		dataset.put("masterId", object.getProject());
 		super.getResponse().addData(dataset);
 
 	}

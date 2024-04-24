@@ -24,21 +24,21 @@ public interface ManagerDashboardRepository extends AbstractRepository {
 
 	//UserStory
 
-	@Query("select avg(u.estimatedCost) from UserStory u where  u.project.manager.id = :id")
+	@Query("select avg(u.estimatedCost) from UserStory u where  u.manager.id = :id")
 	Double averageEstimationUserStories(int id);
 
-	@Query("select STDDEV(u.estimatedCost) from UserStory u where u.project.manager.id = :id")
+	@Query("select STDDEV(u.estimatedCost) from UserStory u where u.manager.id = :id")
 	Double deviationEstimationUserStories(int id);
 
-	@Query("select min(u.estimatedCost)from UserStory u where u.project.manager.id = :id")
+	@Query("select min(u.estimatedCost)from UserStory u where u.manager.id = :id")
 	Double minEstimationUserStories(int id);
 
-	@Query("select max(u.estimatedCost) from UserStory u where u.project.manager.id = :id")
+	@Query("select max(u.estimatedCost) from UserStory u where u.manager.id = :id")
 	Double maxEstimationUserStories(int id);
 
 	//Project
 
-	@Query("select avg(p.systemCurrencyBudget.amount) from Project p where  p.manager.id = :id")
+	@Query("select avg(p.cost.amount) from Project p where  p.manager.id = :id")
 	Double averageProjectCost(int id);
 
 	@Query("select STDDEV(p.cost.amount) from Project p where p.manager.id = :id")

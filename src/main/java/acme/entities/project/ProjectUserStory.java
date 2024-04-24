@@ -23,6 +23,8 @@ public class ProjectUserStory extends AbstractEntity {
 	private Project				project;
 
 	@ManyToOne(optional = true)
+	@NotNull
+	@Valid
 	private UserStory			userStory;
 
 }

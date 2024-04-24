@@ -21,5 +21,9 @@ manager.user-story.form.button.publish = Publicar
 manager.user_story.list.label.title = Titulo
 manager.user_story.list.label.description = Descripción
 
+manager.user-story.list.button.add = Añadir historia de usuario a proyecto
+
+manager.user-story.list.button.deleteFromProject = Eliminar historia de usuario de proyecto
+
 
 manager.user-story.form.error.negative-cost = El coste debe de ser superior a 1

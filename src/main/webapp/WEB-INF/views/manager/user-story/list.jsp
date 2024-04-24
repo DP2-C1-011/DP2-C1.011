@@ -8,4 +8,4 @@
 	<acme:list-column code="manager.user_story.list.label.description" path="description" width="20%"/>
 </acme:list>
 
-<acme:button test = "${showCreate}" code="manager.user-story.list.button.create" action="/manager/user-story/create?projectId=${projectId}"/>
+<acme:button test = "${showCreate}" code="manager.user-story.list.button.create" action="/manager/user-story/create"/>

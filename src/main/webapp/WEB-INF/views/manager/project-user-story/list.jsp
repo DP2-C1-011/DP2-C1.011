@@ -17,4 +17,7 @@
 
 <acme:list>
 	<acme:list-column code="manager.link.list.label.userStory" path="userStory"/>
+	<acme:list-column code="manager.link.list.label.project" path="project"/>
+	
 </acme:list>
+<acme:button test = "${showCreate}" code="manager.user-story.list.button.create" action="/manager/project-user-story/create?masterId=${masterId}"/>

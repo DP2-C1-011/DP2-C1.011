@@ -26,7 +26,7 @@ public class ManagerProjectShowService extends AbstractService<Manager, Project>
 		projectId = super.getRequest().getData("id", int.class);
 		project = this.mpr.findProjectById(projectId);
 		manager = project == null ? null : project.getManager();
-		status = project != null && project.getDraftMode() && super.getRequest().getPrincipal().hasRole(manager);
+		status = project != null && super.getRequest().getPrincipal().hasRole(manager);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -49,7 +49,7 @@ public class ManagerProjectShowService extends AbstractService<Manager, Project>
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "title", "abstracto", "fatalError", "cost", "link", "draft-mode", "systemCurrencyBudget");
+		dataset = super.unbind(object, "code", "title", "abstracto", "fatalError", "cost", "link", "draft-mode");
 
 		super.getResponse().addData(dataset);
 	}

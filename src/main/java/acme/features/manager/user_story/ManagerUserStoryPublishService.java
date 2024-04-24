@@ -27,7 +27,7 @@ public class ManagerUserStoryPublishService extends AbstractService<Manager, Use
 
 		id = super.getRequest().getData("id", int.class);
 		us = this.mur.findUserStoryById(id);
-		manager = us == null ? null : us.getProject().getManager();
+		manager = us == null ? null : us.getManager();
 		status = us != null && us.getDraftMode() && super.getRequest().getPrincipal().hasRole(manager);
 
 		super.getResponse().setAuthorised(status);
@@ -77,7 +77,6 @@ public class ManagerUserStoryPublishService extends AbstractService<Manager, Use
 		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "link", "draft-mode");
 		dataset.put("priority", choices.getSelected().getKey());
 		dataset.put("priorities", choices);
-		dataset.put("masterId", object.getProject());
 		super.getResponse().addData(dataset);
 
 	}

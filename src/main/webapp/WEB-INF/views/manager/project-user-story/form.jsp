@@ -16,13 +16,13 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form>
+	<acme:input-select code="manager.link.form.label.userStory" path="project" choices="${projects}"/>		
 	<jstl:choose>
-		<jstl:when test="${_command=='show'}">
-			<acme:submit code="manager.link.form.button.delete" action="manager/project-user-story/delete?projectId=${projectId}"/>
+		<jstl:when test="${acme:anyOf(_command, 'delete')}">
+			<acme:submit code="manager.link.form.button.delete" action="manager/project-user-story/delete?userStoryId=${userStoryId}"/>
 		</jstl:when>
 		<jstl:when test="${_command=='create'}">
-			<acme:input-select code="manager.link.form.label.userStory" path="userStory" choices="${userStories}"/>
-			<acme:submit code="manager.link.form.button.create" action="manager/project-user-story/create?projectId=${projectId}"/>			
+			<acme:submit code="manager.link.form.button.create" action="manager/project-user-story/create?userStoryId=${userStoryId}"/>			
 		</jstl:when>
 	</jstl:choose>	
 </acme:form>

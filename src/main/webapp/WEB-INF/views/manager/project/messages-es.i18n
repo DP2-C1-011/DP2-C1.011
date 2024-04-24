@@ -33,5 +33,5 @@ manager.project.form.error.publish = El proyecto debe de tener todas sus histori
 
 
 manager.project.form.button.add-user-stories=Añadir historias de usuario
-manager.project.form.button.delete-user-stories=Eliminar historias de usuario
+manager.project.form.button.list-user-stories= Proyecto-Historias de usuarios
 

@@ -6,7 +6,6 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
@@ -24,40 +23,39 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 
 	@Override
 	public void authorise() {
-		int projectId = super.getRequest().getData("id", int.class);
-		Project project = this.createRepository.findProjectById(projectId);
-
-		Principal principal = super.getRequest().getPrincipal();
-		int userAccountId = principal.getAccountId();
-
-		boolean status = project != null && project.getDraftMode() && principal.hasRole(Manager.class) && project.getManager().getUserAccount().getId() == userAccountId;
-
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 	}
 	@Override
 	public void load() {
-		int projectId = super.getRequest().getData("projectId", int.class);
-		Project project = this.createRepository.findProjectById(projectId);
+		int userStoryId = super.getRequest().getData("userStoryId", int.class);
+		UserStory us = this.createRepository.findUserStoryById(userStoryId);
 
 		ProjectUserStory object = new ProjectUserStory();
-		object.setProject(project);
+		object.setUserStory(us);
 
 		super.getBuffer().addData(object);
 	}
 	@Override
 	public void bind(final ProjectUserStory object) {
 		assert object != null;
-		super.bind(object, "userStory");
+		int projectId;
+		Project project;
+		projectId = super.getRequest().getData("project", int.class);
+		project = this.createRepository.findProjectById(projectId);
+		super.bind(object, "id");
+		object.setProject(project);
 	}
 	@Override
 	public void validate(final ProjectUserStory object) {
 		assert object != null;
-		int projectId = super.getRequest().getData("projectId", int.class);
-
-		if (!super.getBuffer().getErrors().hasErrors("userStory")) {
-			boolean duplicatedUserStory = this.createRepository.findLinksByProjectId(projectId).stream().anyMatch(x -> x.getUserStory().equals(object.getUserStory()));
-			super.state(!duplicatedUserStory, "userStory", "manager.project.form.error.duplicated-user-story");
+		if (!super.getBuffer().getErrors().hasErrors("UserStory") && !super.getBuffer().getErrors().hasErrors("Project")) {
+			//int masterId;
+			//masterId = super.getRequest().getData("masterId", int.class);
+			final Collection<UserStory> us = this.createRepository.findUserStoryByProject(object.getProject().getId());
+			super.state(us.isEmpty() || !us.contains(object.getUserStory()), "Project", "manager.ProjectUserStory.form.error.UserStory");
 		}
+		if (!super.getBuffer().getErrors().hasErrors("Project"))
+			super.state(object.getProject().getDraftMode(), "Project", "manager.ProjectUserStory.form.error.Project");
 	}
 	@Override
 	public void perform(final ProjectUserStory object) {
@@ -67,19 +65,21 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 	@Override
 	public void unbind(final ProjectUserStory object) {
 		assert object != null;
-		int projectId = super.getRequest().getData("projectId", int.class);
+		int userStoryId = super.getRequest().getData("userStoryId", int.class);
 
-		int managerId = object.getProject().getManager().getUserAccount().getId();
-		Collection<UserStory> userStories = this.createRepository.findUserStoriesByManagerId(managerId).stream().filter(x -> !this.createRepository.findLinksByProjectId(projectId).stream().map(ProjectUserStory::getUserStory).anyMatch(x2 -> x2.equals(x)))
-			.toList();
+		Collection<Project> projects = this.createRepository.findProjects();
 
-		SelectChoices choices = SelectChoices.from(userStories, "title", object.getUserStory());
+		SelectChoices choices = SelectChoices.from(projects, "title", object.getProject());
 
 		Dataset dataset = super.unbind(object, "userStory");
 
-		dataset.put("userStories", choices);
-		dataset.put("projectId", projectId);
+		dataset.put("project", choices.getSelected().getKey());
+		dataset.put("projects", choices);
+		dataset.put("userStoryId", userStoryId);
 
 		super.getResponse().addData(dataset);
+		super.getResponse().addGlobal("userStoryId", super.getRequest().getData("userStoryId", int.class));
+
 	}
+
 }

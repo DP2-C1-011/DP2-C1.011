@@ -30,7 +30,7 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 		sponsorshipId = super.getRequest().getData("sponsorshipId", int.class);
 		sponsorship = this.repository.findOneSponsorshipById(sponsorshipId);
 		sponsor = sponsorship == null ? null : sponsorship.getSponsor();
-		status = sponsorship != null && sponsorship.getFinancial() && super.getRequest().getPrincipal().hasRole(sponsor);
+		status = sponsorship != null && sponsorship.getDraftMode() && super.getRequest().getPrincipal().hasRole(sponsor);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -42,7 +42,7 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 		Sponsorship sponsorship;
 
 		object = new Invoice();
-		object.setFinancial(true);
+		object.setDraftMode(true);
 		sponsorshipId = super.getRequest().getData("sponsorshipId", int.class);
 		sponsorship = this.repository.findOneSponsorshipById(sponsorshipId);
 		object.setSponsorship(sponsorship);
@@ -67,7 +67,7 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("registrationDate"))
-			super.state(MomentHelper.isAfter(object.getRegistrationDate(), object.getSponsorship().getStart()), "start", "sponsor.invoice.form.error.startBeforeCreate");
+			super.state(MomentHelper.isAfter(object.getRegistrationDate(), object.getSponsorship().getStartDate()), "start", "sponsor.invoice.form.error.startBeforeCreate");
 
 		if (!super.getBuffer().getErrors().hasErrors("registrationDate") && !super.getBuffer().getErrors().hasErrors("dueDate")) {
 			super.state(MomentHelper.isAfter(object.getDueDate(), object.getRegistrationDate()), "dueDate", "sponsor.invoice.form.error.finishBeforeStart");

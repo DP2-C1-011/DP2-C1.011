@@ -29,7 +29,7 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 		invoiceId = super.getRequest().getData("id", int.class);
 		invoice = this.repository.findInvoiceById(invoiceId);
 		sponsor = invoice == null ? null : invoice.getSponsorship().getSponsor();
-		status = invoice != null && invoice.getFinancial() && super.getRequest().getPrincipal().hasRole(sponsor);
+		status = invoice != null && invoice.getDraftMode() && super.getRequest().getPrincipal().hasRole(sponsor);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -48,18 +48,18 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 	@Override
 	public void bind(final Invoice object) {
 		assert object != null;
-		super.bind(object, "code", "registrationDate", "dueDate", "quantity", "tax", "financial", "optionalLink");
+		super.bind(object, "code", "registrationDate", "dueDate", "quantity", "tax", "optionalLink", "draftMode");
 	}
 
 	@Override
 	public void validate(final Invoice object) {
 		assert object != null;
 
-		if (!super.getBuffer().getErrors().hasErrors("financial"))
-			super.state(object.getFinancial(), "financial", "sponsor.invoice.form.error.financial");
+		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
+			super.state(object.getDraftMode(), "draftMode", "sponsor.invoice.form.error.draftMode");
 
 		if (!super.getBuffer().getErrors().hasErrors("registrationDate"))
-			super.state(MomentHelper.isAfter(object.getRegistrationDate(), object.getSponsorship().getStart()), "registrationDate", "sponsor.invoice.form.error.registrationDateBeforeCreate");
+			super.state(MomentHelper.isAfter(object.getRegistrationDate(), object.getSponsorship().getStartDate()), "registrationDate", "sponsor.invoice.form.error.registrationDateBeforeCreate");
 
 		if (!super.getBuffer().getErrors().hasErrors("registrationDate") && !super.getBuffer().getErrors().hasErrors("dueDate")) {
 			super.state(MomentHelper.isAfter(object.getDueDate(), object.getRegistrationDate()), "dueDate", "sponsor.invoice.form.error.finishBeforeStart");
@@ -77,7 +77,7 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 	public void unbind(final Invoice object) {
 		assert object != null;
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "registrationDate", "dueDate", "quantity", "tax", "financial", "optionalLink");
+		dataset = super.unbind(object, "code", "registrationDate", "dueDate", "quantity", "tax", "optionalLink", "draftMode");
 		super.getResponse().addData(dataset);
 	}
 }

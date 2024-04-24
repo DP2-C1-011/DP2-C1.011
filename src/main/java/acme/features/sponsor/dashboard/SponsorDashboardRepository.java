@@ -13,7 +13,7 @@ public interface SponsorDashboardRepository extends AbstractRepository {
 	@Query("select count(s) from Invoice s where s.sponsorship.sponsor.id = :sid and s.tax <= 21. ")
 	Integer getTaxUnder21(int sid);
 
-	@Query("select count(s) from Sponsorship s where s.sponsor.id = :sid and s.optionalLink is not null")
+	@Query("select count(s) from Sponsorship s where s.sponsor.id = :sid and s.link != null")
 	Integer getLinkedSponsorships(int sid);
 
 	@Query("select avg(s.amount) from Sponsorship s where s.sponsor.id = :sid")
@@ -28,15 +28,15 @@ public interface SponsorDashboardRepository extends AbstractRepository {
 	@Query("select max(s.amount) from Sponsorship s where s.sponsor.id = :sid")
 	Money maxSponsorshipAmount(int sid);
 
-	@Query("select avg(s.amount) from Invoice s where s.sponsorship.sponsor.id = :sid")
+	@Query("select avg(s.quantity) from Invoice s where s.sponsorship.sponsor.id = :sid")
 	Money avgInvoiceAmount(int sid);
 
-	@Query("select stddev(s.amount) from Invoice s where s.sponsorship.sponsor.id = :sid")
+	@Query("select stddev(s.quantity) from Invoice s where s.sponsorship.sponsor.id = :sid")
 	Money stdInvoiceAmount(int sid);
 
-	@Query("select min(s.amount) from Invoice s where s.sponsorship.sponsor.id = :sid")
+	@Query("select min(s.quantity) from Invoice s where s.sponsorship.sponsor.id = :sid")
 	Money minInvoiceAmount(int sid);
 
-	@Query("select max(s.amount) from Invoice s where s.sponsorship.sponsor.id = :sid")
+	@Query("select max(s.quantity) from Invoice s where s.sponsorship.sponsor.id = :sid")
 	Money maxInvoiceAmount(int sid);
 }

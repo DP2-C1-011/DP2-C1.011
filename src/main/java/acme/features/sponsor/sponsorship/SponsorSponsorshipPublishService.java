@@ -4,6 +4,7 @@ package acme.features.sponsor.sponsorship;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.sponsor.Sponsorship;
@@ -26,7 +27,7 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 		sponsorshipId = super.getRequest().getData("id", int.class);
 		sponsorship = this.repository.findSponsorshipById(sponsorshipId);
 		sponsor = sponsorship == null ? null : sponsorship.getSponsor();
-		status = sponsorship != null && sponsorship.getFinancial() && super.getRequest().getPrincipal().hasRole(sponsor);
+		status = sponsorship != null && sponsorship.getDraftMode() && super.getRequest().getPrincipal().hasRole(sponsor);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -45,7 +46,7 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 	@Override
 	public void bind(final Sponsorship object) {
 		assert object != null;
-		super.bind(object, "code", "start", "end", "duration", "amount", "financial", "optionalEmail", "optionalLink");
+		super.bind(object, "code", "moment", "startDate", "endDate", "amount", "financial", "email", "link");
 	}
 
 	@Override
@@ -53,17 +54,26 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 		assert object != null;
 		int sponsorshipId;
 		sponsorshipId = super.getRequest().getData("id", int.class);
+		
+		Money totalInvoices = this.repository.sumInvoicesBySponsorshipId(sponsorshipId);
+		Money totalSponsorship = this.repository.findSponsorshipAmountById(sponsorshipId);
 
 		if (!super.getBuffer().getErrors().hasErrors("invoices")) {
 			Integer numInvoices = this.repository.findInvoicesBySponsorshipId(sponsorshipId).size();
 			super.state(numInvoices > 0, "invoices", "sponsor.invoice.form.error.invoice");
 		}
+
+		if (!super.getBuffer().getErrors().hasErrors("totalAmount")) {
+			super.state(totalSponsorship.equals(totalInvoices), "totalAmount", "sponsor.invoice.form.error.invoice");
+		}
+		
+
 	}
 
 	@Override
 	public void perform(final Sponsorship object) {
 		assert object != null;
-		object.setFinancial(false);
+		object.setDraftMode(false);
 		this.repository.save(object);
 	}
 
@@ -71,7 +81,7 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 	public void unbind(final Sponsorship object) {
 		assert object != null;
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "start", "end", "duration", "amount", "financial", "optionalEmail", "optionalLink");
+		dataset = super.unbind(object, "code", "moment", "startDate", "endDate", "amount", "financial", "email", "link");
 
 		super.getResponse().addGlobal("sponsorshipId", object.getId());
 		super.getResponse().addData(dataset);

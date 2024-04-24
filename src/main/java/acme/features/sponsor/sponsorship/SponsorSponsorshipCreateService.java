@@ -31,7 +31,7 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 
 		sponsor = this.repository.findSponsorById(super.getRequest().getPrincipal().getActiveRoleId());
 		object = new Sponsorship();
-		object.setFinancial(true);
+		object.setDraftMode(true);
 		object.setSponsor(sponsor);
 
 		super.getBuffer().addData(object);
@@ -41,7 +41,7 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 	public void bind(final Sponsorship object) {
 		assert object != null;
 
-		super.bind(object, "code", "start", "end", "duration", "amount", "optionalEmail", "optionalLink");
+		super.bind(object, "code", "moment", "startDate", "endDate", "amount", "financial", "email", "link");
 	}
 
 	@Override
@@ -55,8 +55,8 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 			super.state(existing == null, "code", "sponsor.sponsorship.form.error.duplicateCode");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("end") && !super.getBuffer().getErrors().hasErrors("creationMoment") && object.getEnd() != null)
-			super.state(MomentHelper.isAfter(object.getEnd(), object.getStart()), "end", "sponsor.sponsorship.form.error.finishBeforeStart");
+		if (!super.getBuffer().getErrors().hasErrors("endDate") && !super.getBuffer().getErrors().hasErrors("creationMoment") && object.getEndDate() != null)
+			super.state(MomentHelper.isAfter(object.getEndDate(), object.getStartDate()), "endDate", "sponsor.sponsorship.form.error.finishBeforeStartDate");
 	}
 
 	@Override
@@ -70,7 +70,7 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 	public void unbind(final Sponsorship object) {
 		assert object != null;
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "start", "end", "duration", "amount", "optionalEmail", "optionalLink");
+		dataset = super.unbind(object, "code", "moment", "startDate", "endDate", "amount", "financial", "email", "link");
 
 		super.getResponse().addData(dataset);
 	}

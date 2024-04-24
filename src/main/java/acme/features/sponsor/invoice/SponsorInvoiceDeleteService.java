@@ -26,7 +26,7 @@ public class SponsorInvoiceDeleteService extends AbstractService<Sponsor, Invoic
 		invoiceId = super.getRequest().getData("id", int.class);
 		invoice = this.repository.findInvoiceById(invoiceId);
 		sponsor = invoice == null ? null : invoice.getSponsorship().getSponsor();
-		status = invoice != null && invoice.getFinancial() && super.getRequest().getPrincipal().hasRole(sponsor);
+		status = invoice != null && invoice.getDraftMode() && super.getRequest().getPrincipal().hasRole(sponsor);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -45,7 +45,7 @@ public class SponsorInvoiceDeleteService extends AbstractService<Sponsor, Invoic
 	@Override
 	public void bind(final Invoice object) {
 		assert object != null;
-		super.bind(object, "code", "registrationDate", "dueDate", "quantity", "tax", "financial", "optionalLink");
+		super.bind(object, "code", "registrationDate", "dueDate", "quantity", "tax", "optionalLink", "draftMode");
 	}
 
 	@Override
@@ -63,7 +63,7 @@ public class SponsorInvoiceDeleteService extends AbstractService<Sponsor, Invoic
 	public void unbind(final Invoice object) {
 		assert object != null;
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "registrationDate", "dueDate", "quantity", "tax", "financial", "optionalLink");
+		dataset = super.unbind(object, "code", "registrationDate", "dueDate", "quantity", "tax", "draftMode", "optionalLink");
 		super.getResponse().addData(dataset);
 	}
 }

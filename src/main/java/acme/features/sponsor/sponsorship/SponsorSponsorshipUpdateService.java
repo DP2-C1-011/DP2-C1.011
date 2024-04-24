@@ -27,7 +27,7 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 		sponsorshipId = super.getRequest().getData("id", int.class);
 		sponsorship = this.repository.findSponsorshipById(sponsorshipId);
 		sponsor = sponsorship == null ? null : sponsorship.getSponsor();
-		status = sponsorship != null && sponsorship.getFinancial() && super.getRequest().getPrincipal().hasRole(sponsor);
+		status = sponsorship != null && sponsorship.getDraftMode() && super.getRequest().getPrincipal().hasRole(sponsor);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -46,18 +46,18 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 	@Override
 	public void bind(final Sponsorship object) {
 		assert object != null;
-		super.bind(object, "code", "start", "end", "duration", "amount", "financial", "optionalEmail", "optionalLink");
+		super.bind(object, "code", "moment", "startDate", "endDate", "amount", "financial", "email", "link");
 	}
 
 	@Override
 	public void validate(final Sponsorship object) {
 		assert object != null;
 
-		if (!super.getBuffer().getErrors().hasErrors("financial"))
-			super.state(object.getFinancial(), "financial", "sponsor.sponsorship.form.error.financial");
+		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
+			super.state(object.getDraftMode(), "draftMode", "sponsor.sponsorship.form.error.draftMode");
 
-		if (!super.getBuffer().getErrors().hasErrors("end") && !super.getBuffer().getErrors().hasErrors("start") && object.getEnd() != null)
-			super.state(MomentHelper.isAfter(object.getEnd(), object.getStart()), "end", "sponsor.sponsorship.form.error.updateBeforeCreate");
+		if (!super.getBuffer().getErrors().hasErrors("endDate") && !super.getBuffer().getErrors().hasErrors("startDate") && object.getEndDate() != null)
+			super.state(MomentHelper.isAfter(object.getEndDate(), object.getStartDate()), "endDate", "sponsor.sponsorship.form.error.updateBeforeCreate");
 	}
 
 	@Override
@@ -71,7 +71,7 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 	public void unbind(final Sponsorship object) {
 		assert object != null;
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "start", "end", "duration", "amount", "financial", "optionalEmail", "optionalLink");
+		dataset = super.unbind(object, "code", "moment", "startDate", "endDate", "amount", "financial", "email", "link");
 
 		super.getResponse().addGlobal("sponsorshipId", object.getId());
 		super.getResponse().addData(dataset);

@@ -26,7 +26,7 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 		sessionId = super.getRequest().getData("id", int.class);
 		session = this.repository.findInvoiceById(sessionId);
 		developer = session == null ? null : session.getSponsorship().getSponsor();
-		status = session != null && session.getFinancial() && super.getRequest().getPrincipal().hasRole(developer);
+		status = session != null && session.getDraftMode() && super.getRequest().getPrincipal().hasRole(developer);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -45,7 +45,7 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 	@Override
 	public void bind(final Invoice object) {
 		assert object != null;
-		super.bind(object, "code", "registrationDate", "dueDate", "quantity", "tax", "financial", "optionalLink");
+		super.bind(object, "code", "registrationDate", "dueDate", "quantity", "tax", "optionalLink", "draftMode");
 	}
 
 	@Override
@@ -56,7 +56,7 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 	@Override
 	public void perform(final Invoice object) {
 		assert object != null;
-		object.setFinancial(false);
+		object.setDraftMode(false);
 		this.repository.save(object);
 	}
 
@@ -64,7 +64,7 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 	public void unbind(final Invoice object) {
 		assert object != null;
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "registrationDate", "dueDate", "quantity", "tax", "financial", "optionalLink");
+		dataset = super.unbind(object, "code", "registrationDate", "dueDate", "quantity", "tax", "draftMode", "draftMode");
 		super.getResponse().addData(dataset);
 	}
 

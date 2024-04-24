@@ -6,10 +6,10 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Future;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -29,24 +29,25 @@ import lombok.Setter;
 @Setter
 public class Sponsorship extends AbstractEntity {
 
-	/**
-	 * 
-	 */
 	private static final long	serialVersionUID	= 1L;
 
-	@NotNull
-	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}")
 	@NotBlank
 	@Column(unique = true)
+	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}")
 	private String				code;
 
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
 	@Past
-	@NotNull
-	private Date				start;
+	private Date				moment;
 
-	@Future
 	@NotNull
-	private Date				end;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				startDate;
+
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				endDate;
 
 	@NotNull
 	private Money				amount;
@@ -55,25 +56,21 @@ public class Sponsorship extends AbstractEntity {
 	private Boolean				financial;
 
 	@Email
-	private String				optionalEmail;
+	private String				email;
 
 	@URL
-	private String				optionalLink;
+	private String				link;
 
 	@NotNull
-	@Valid
-	@ManyToOne
-	private Sponsor				sponsor;
+	private Boolean				draftMode;
 
-	@NotNull
+	//Relationships
+
 	@Valid
 	@ManyToOne(optional = false)
 	private Project				project;
 
-
-	@Transient
-	public Integer duration() {
-		int res = (int) (this.end.getTime() - this.start.getTime());
-		return Integer.valueOf(res);
-	}
+	@Valid
+	@ManyToOne(optional = false)
+	private Sponsor				sponsor;
 }

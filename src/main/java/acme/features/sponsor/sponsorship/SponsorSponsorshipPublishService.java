@@ -4,7 +4,6 @@ package acme.features.sponsor.sponsorship;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.sponsor.Sponsorship;
@@ -54,19 +53,17 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 		assert object != null;
 		int sponsorshipId;
 		sponsorshipId = super.getRequest().getData("id", int.class);
-		
-		Money totalInvoices = this.repository.sumInvoicesBySponsorshipId(sponsorshipId);
-		Money totalSponsorship = this.repository.findSponsorshipAmountById(sponsorshipId);
+
+		Double totalInvoices = this.repository.sumInvoicesBySponsorshipId(sponsorshipId);
+		Double totalSponsorship = this.repository.findSponsorshipAmountById(sponsorshipId);
 
 		if (!super.getBuffer().getErrors().hasErrors("invoices")) {
 			Integer numInvoices = this.repository.findInvoicesBySponsorshipId(sponsorshipId).size();
 			super.state(numInvoices > 0, "invoices", "sponsor.invoice.form.error.invoice");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("totalAmount")) {
-			super.state(totalSponsorship.equals(totalInvoices), "totalAmount", "sponsor.invoice.form.error.invoice");
-		}
-		
+		if (!super.getBuffer().getErrors().hasErrors("totalAmount"))
+			super.state(totalSponsorship >= totalInvoices, "totalAmount", "sponsor.invoice.form.error.invoice");
 
 	}
 

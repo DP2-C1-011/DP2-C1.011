@@ -1,10 +1,11 @@
 
 package acme.features.sponsor.dashboard;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.form.SponsorDashboard;
@@ -34,15 +35,15 @@ public class SponsorDashboardShowService extends AbstractService<Sponsor, Sponso
 		Integer taxUnder21;
 		Integer linkedSponsorships;
 
-		Money averageSponsorship;
-		Money deviationSponsorship;
-		Money minimumSponsorship;
-		Money maximumSponsorship;
+		Map<String, Double> averageSponsorship;
+		Map<String, Double> deviationSponsorship;
+		Map<String, Double> minimumSponsorship;
+		Map<String, Double> maximumSponsorship;
 
-		Money averageInvoice;
-		Money deviationInvoice;
-		Money minimumInvoice;
-		Money maximumInvoice;
+		Map<String, Double> averageInvoice;
+		Map<String, Double> deviationInvoice;
+		Map<String, Double> minimumInvoice;
+		Map<String, Double> maximumInvoice;
 
 		id = super.getRequest().getPrincipal().getActiveRoleId();
 		taxUnder21 = this.r.getTaxUnder21(id);

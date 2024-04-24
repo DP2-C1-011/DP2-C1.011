@@ -1,5 +1,5 @@
 
-package acme.features.manager.project_user_story;
+package acme.features.manager.projectUserstory;
 
 import java.util.Collection;
 
@@ -39,23 +39,26 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 	public void bind(final ProjectUserStory object) {
 		assert object != null;
 		int projectId;
+		int userStoryId;
 		Project project;
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.createRepository.findProjectById(projectId);
-		super.bind(object, "id");
+		userStoryId = super.getRequest().getData("userStoryId", int.class);
+		UserStory us = this.createRepository.findUserStoryById(userStoryId);
+		object.setUserStory(us);
 		object.setProject(project);
 	}
 	@Override
 	public void validate(final ProjectUserStory object) {
 		assert object != null;
-		if (!super.getBuffer().getErrors().hasErrors("UserStory") && !super.getBuffer().getErrors().hasErrors("Project")) {
+		if (!super.getBuffer().getErrors().hasErrors("project")) {
 			//int masterId;
 			//masterId = super.getRequest().getData("masterId", int.class);
 			final Collection<UserStory> us = this.createRepository.findUserStoryByProject(object.getProject().getId());
-			super.state(us.isEmpty() || !us.contains(object.getUserStory()), "Project", "manager.ProjectUserStory.form.error.UserStory");
+			super.state(us.isEmpty() || !us.contains(object.getUserStory()), "project", "manager.projectUserStory.form.error.userStory");
 		}
-		if (!super.getBuffer().getErrors().hasErrors("Project"))
-			super.state(object.getProject().getDraftMode(), "Project", "manager.ProjectUserStory.form.error.Project");
+		if (!super.getBuffer().getErrors().hasErrors("project"))
+			super.state(object.getProject().getDraftMode(), "project", "manager.projectUserStory.form.error.project");
 	}
 	@Override
 	public void perform(final ProjectUserStory object) {
@@ -78,7 +81,6 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 		dataset.put("userStoryId", userStoryId);
 
 		super.getResponse().addData(dataset);
-		super.getResponse().addGlobal("userStoryId", super.getRequest().getData("userStoryId", int.class));
 
 	}
 

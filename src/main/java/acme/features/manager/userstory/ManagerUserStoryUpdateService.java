@@ -1,7 +1,5 @@
 
-package acme.features.manager.user_story;
-
-import java.util.Collection;
+package acme.features.manager.userstory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,13 +7,12 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
-import acme.entities.project.ProjectUserStory;
 import acme.entities.project.UsPriority;
 import acme.entities.project.UserStory;
 import acme.roles.Manager;
 
 @Service
-public class ManagerUserStoryDeleteService extends AbstractService<Manager, UserStory> {
+public class ManagerUserStoryUpdateService extends AbstractService<Manager, UserStory> {
 
 	@Autowired
 	ManagerUserStoryRepository mur;
@@ -58,15 +55,17 @@ public class ManagerUserStoryDeleteService extends AbstractService<Manager, User
 	@Override
 	public void validate(final UserStory object) {
 		assert object != null;
+		if (!super.getBuffer().getErrors().hasErrors("estimatedCost"))
+			super.state(object.getEstimatedCost() > 1, "estimatedCost", "manager.user-story.form.error.negative-cost");
+		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
+			super.state(object.getDraftMode(), "draftMode", "manager.project.form.error.draft-mode");
 	}
 
 	@Override
 	public void perform(final UserStory object) {
 		assert object != null;
-		Collection<ProjectUserStory> us;
-		us = this.mur.findProjectUserStoryByUserStoryId(object.getId());
-		this.mur.deleteAll(us);
-		this.mur.delete(object);
+
+		this.mur.save(object);
 	}
 
 	//coge el objeto y lo pone en el formulario

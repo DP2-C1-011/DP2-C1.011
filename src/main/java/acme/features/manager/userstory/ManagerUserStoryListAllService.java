@@ -1,5 +1,5 @@
 
-package acme.features.manager.user_story;
+package acme.features.manager.userstory;
 
 import java.util.Collection;
 
@@ -12,7 +12,7 @@ import acme.entities.project.UserStory;
 import acme.roles.Manager;
 
 @Service
-public class ManagerUserStoryListService extends AbstractService<Manager, UserStory> {
+public class ManagerUserStoryListAllService extends AbstractService<Manager, UserStory> {
 
 	@Autowired
 	ManagerUserStoryRepository mur;
@@ -26,9 +26,7 @@ public class ManagerUserStoryListService extends AbstractService<Manager, UserSt
 	@Override
 	public void load() {
 		Collection<UserStory> objects;
-		int projectId;
-		projectId = super.getRequest().getData("projectId", int.class);
-		objects = this.mur.findUserStoryByProjectId(projectId);
+		objects = this.mur.findUserStoryByManagerId(super.getRequest().getPrincipal().getActiveRoleId());
 		super.getBuffer().addData(objects);
 	}
 
@@ -40,7 +38,6 @@ public class ManagerUserStoryListService extends AbstractService<Manager, UserSt
 
 		//project title puede dar error
 		dataset = super.unbind(object, "title", "description");
-
 		super.getResponse().addData(dataset);
 
 	}

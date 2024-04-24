@@ -1,6 +1,8 @@
 
 package acme.features.manager.dashboard;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +11,9 @@ import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.components.MoneyService;
 import acme.components.SystemCurrencyRepository;
+import acme.entities.project.Project;
 import acme.entities.project.UsPriority;
+import acme.entities.project.UserStory;
 import acme.form.ManagerDashboard;
 import acme.roles.Manager;
 
@@ -62,30 +66,55 @@ public class ManagerDashboardShowService extends AbstractService<Manager, Manage
 
 		Double maxProjectCost;
 
-		mustNumber = this.repository.countUSbyPriority(UsPriority.Must);
+		Collection<UserStory> us = this.repository.findAllUserStories(managerId);
+		Collection<Project> p = this.repository.findAllProjects(managerId);
 
-		shouldNumber = this.repository.countUSbyPriority(UsPriority.Should);
+		if (us.isEmpty()) {
+			averageUsCost = 0.0;
+			desviationUsCost = 0.0;
+			minUsCost = 0.0;
+			maxUsCost = 0.0;
+			mustNumber = 0;
 
-		couldNumber = this.repository.countUSbyPriority(UsPriority.Could);
+			shouldNumber = 0;
 
-		wontNumber = this.repository.countUSbyPriority(UsPriority.Wont);
+			couldNumber = 0;
 
-		averageUsCost = this.repository.averageEstimationUserStories(managerId);
-		desviationUsCost = this.repository.deviationEstimationUserStories(managerId);
-		minUsCost = this.repository.minEstimationUserStories(managerId);
-		maxUsCost = this.repository.maxEstimationUserStories(managerId);
+			wontNumber = 0;
+
+		} else {
+			averageUsCost = this.repository.averageEstimationUserStories(managerId);
+			desviationUsCost = this.repository.deviationEstimationUserStories(managerId);
+			minUsCost = this.repository.minEstimationUserStories(managerId);
+			maxUsCost = this.repository.maxEstimationUserStories(managerId);
+			mustNumber = this.repository.countUSbyPriority(UsPriority.Must);
+
+			shouldNumber = this.repository.countUSbyPriority(UsPriority.Should);
+
+			couldNumber = this.repository.countUSbyPriority(UsPriority.Could);
+
+			wontNumber = this.repository.countUSbyPriority(UsPriority.Wont);
+
+		}
 
 		managerDashboard = new ManagerDashboard();
 
-		String systemCurrency = this.systemRepository.getSystemConfiguration().get(0).getSystemCurrency();
+		if (p.isEmpty()) {
+			averageProjectCost = 0.0;
+			deviationProjectCost = 0.0;
+			minProjectCost = 0.0;
+			maxProjectCost = 0.0;
 
-		averageProjectCost = this.repository.averageProjectCost(managerId);
+		} else {
+			averageProjectCost = this.repository.averageProjectCost(managerId);
 
-		deviationProjectCost = this.repository.deviationProjectCost(managerId);
+			deviationProjectCost = this.repository.deviationProjectCost(managerId);
 
-		minProjectCost = this.repository.minProjectCost(managerId);
+			minProjectCost = this.repository.minProjectCost(managerId);
 
-		maxProjectCost = this.repository.maxProjectCost(managerId);
+			maxProjectCost = this.repository.maxProjectCost(managerId);
+
+		}
 
 		managerDashboard.setMustNumber(mustNumber);
 		managerDashboard.setShouldNumber(shouldNumber);
@@ -100,22 +129,22 @@ public class ManagerDashboardShowService extends AbstractService<Manager, Manage
 		Money averageMoney = new Money();
 		averageMoney.setAmount(averageProjectCost);
 		averageMoney.setCurrency("EUR");
-		managerDashboard.setAverageProjectCost(this.moneyService.computeMoneyExchange(averageMoney, systemCurrency).getTarget());
+		managerDashboard.setAverageProjectCost(averageMoney);
 
 		Money maxMoney = new Money();
 		maxMoney.setAmount(maxProjectCost);
 		maxMoney.setCurrency("EUR");
-		managerDashboard.setMaxProjectCost(this.moneyService.computeMoneyExchange(maxMoney, systemCurrency).getTarget());
+		managerDashboard.setMaxProjectCost(maxMoney);
 
 		Money minMoney = new Money();
 		minMoney.setAmount(minProjectCost);
 		minMoney.setCurrency("EUR");
-		managerDashboard.setMinProjectCost(this.moneyService.computeMoneyExchange(minMoney, systemCurrency).getTarget());
+		managerDashboard.setMinProjectCost(minMoney);
 
 		Money deviationMoney = new Money();
 		deviationMoney.setAmount(deviationProjectCost);
 		deviationMoney.setCurrency("EUR");
-		managerDashboard.setDeviationProjectCost(this.moneyService.computeMoneyExchange(deviationMoney, systemCurrency).getTarget());
+		managerDashboard.setDeviationProjectCost(deviationMoney);
 
 		super.getBuffer().addData(managerDashboard);
 	}

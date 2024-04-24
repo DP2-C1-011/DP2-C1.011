@@ -1,5 +1,5 @@
 
-package acme.features.manager.user_story;
+package acme.features.manager.userstory;
 
 import java.util.Collection;
 

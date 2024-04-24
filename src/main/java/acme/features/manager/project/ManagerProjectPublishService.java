@@ -8,7 +8,7 @@ import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.components.MoneyService;
 import acme.entities.project.Project;
-import acme.features.manager.user_story.ManagerUserStoryRepository;
+import acme.features.manager.userstory.ManagerUserStoryRepository;
 import acme.roles.Manager;
 
 @Service

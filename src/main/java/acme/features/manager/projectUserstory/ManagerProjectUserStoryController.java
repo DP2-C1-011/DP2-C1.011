@@ -1,5 +1,5 @@
 
-package acme.features.manager.project_user_story;
+package acme.features.manager.projectUserstory;
 
 import javax.annotation.PostConstruct;
 
@@ -13,13 +13,6 @@ import acme.roles.Manager;
 @Controller
 public class ManagerProjectUserStoryController extends AbstractController<Manager, ProjectUserStory> {
 
-	/*
-	 * @Autowired
-	 * private ManagerProjectUserStoryListService listService;
-	 * 
-	 * @Autowired
-	 * private ManagerProjectUserStoryShowService showService;
-	 */
 	@Autowired
 	private ManagerProjectUserStoryCreateService	createService;
 	@Autowired
@@ -28,8 +21,6 @@ public class ManagerProjectUserStoryController extends AbstractController<Manage
 
 	@PostConstruct
 	public void initialise() {
-		//super.addBasicCommand("list", this.listService);
-		//super.addBasicCommand("show", this.showService);
 		super.addBasicCommand("create", this.createService);
 		super.addBasicCommand("delete", this.deleteService);
 	}

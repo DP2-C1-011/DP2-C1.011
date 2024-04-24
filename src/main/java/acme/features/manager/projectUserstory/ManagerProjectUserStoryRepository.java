@@ -1,5 +1,5 @@
 
-package acme.features.manager.project_user_story;
+package acme.features.manager.projectUserstory;
 
 import java.util.Collection;
 
@@ -48,4 +48,5 @@ public interface ManagerProjectUserStoryRepository extends AbstractRepository {
 
 	@Query("SELECT p FROM Project p " + "WHERE p.manager.userAccount.id = :managerId " + "AND p NOT IN (SELECT pus.project FROM ProjectUserStory pus WHERE pus.userStory.id = :userStoryId)")
 	Collection<Project> findProjectsByManagerIdAndNotAssociatedWithUserStory(int managerId, int userStoryId);
+
 }

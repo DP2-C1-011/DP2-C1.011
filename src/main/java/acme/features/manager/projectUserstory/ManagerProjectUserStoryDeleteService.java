@@ -1,5 +1,5 @@
 
-package acme.features.manager.project_user_story;
+package acme.features.manager.projectUserstory;
 
 import java.util.Collection;
 
@@ -24,16 +24,19 @@ public class ManagerProjectUserStoryDeleteService extends AbstractService<Manage
 	@Override
 	public void authorise() {
 		boolean status;
-		int id;
-		ProjectUserStory pus;
-		Manager manager;
-
-		id = super.getRequest().getData("id", int.class);
-		pus = this.mur.findLinkById(id);
-		manager = pus == null ? null : pus.getProject().getManager();
-		status = pus != null && super.getRequest().getPrincipal().hasRole(manager);
-
-		super.getResponse().setAuthorised(status);
+		/*
+		 * int id;
+		 * ProjectUserStory pus;
+		 * Manager manager;
+		 * 
+		 * id = super.getRequest().getData("id", int.class);
+		 * pus = this.mur.findLinkById(id);
+		 * manager = pus == null ? null : pus.getProject().getManager();
+		 * status = pus != null && super.getRequest().getPrincipal().hasRole(manager);
+		 * 
+		 * super.getResponse().setAuthorised(status);
+		 */
+		super.getResponse().setAuthorised(true);
 	}
 	@Override
 	public void load() {
@@ -49,10 +52,13 @@ public class ManagerProjectUserStoryDeleteService extends AbstractService<Manage
 	public void bind(final ProjectUserStory object) {
 		assert object != null;
 		int projectId;
+		int userStoryId;
 		Project project;
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.mur.findProjectById(projectId);
-		super.bind(object, "id");
+		userStoryId = super.getRequest().getData("userStoryId", int.class);
+		UserStory us = this.mur.findUserStoryById(userStoryId);
+		object.setUserStory(us);
 		object.setProject(project);
 
 	}
@@ -67,14 +73,14 @@ public class ManagerProjectUserStoryDeleteService extends AbstractService<Manage
 	@Override
 	public void perform(final ProjectUserStory object) {
 		assert object != null;
-		this.mur.delete(object);
+		final ProjectUserStory pus = this.mur.findProjectUserStoryByProjectUserStory(object.getProject(), object.getUserStory());
+		this.mur.delete(pus);
 	}
 	@Override
 	public void unbind(final ProjectUserStory object) {
 		assert object != null;
 		int userStoryId = super.getRequest().getData("userStoryId", int.class);
 
-		Manager manager = this.mur.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
 		Collection<Project> projects = this.mur.findProjects();
 
 		SelectChoices choices = SelectChoices.from(projects, "title", object.getProject());
@@ -86,7 +92,6 @@ public class ManagerProjectUserStoryDeleteService extends AbstractService<Manage
 		dataset.put("userStoryId", userStoryId);
 
 		super.getResponse().addData(dataset);
-		super.getResponse().addGlobal("userStoryId", super.getRequest().getData("userStoryId", int.class));
 
 	}
 }

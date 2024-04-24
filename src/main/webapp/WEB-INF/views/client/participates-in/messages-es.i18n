@@ -1,0 +1,17 @@
+client.participates-in.form.title = Detalles de Participando En
+client.participates-in.list.title = Lista de Participando En
+
+client.participatesIn.form.label.project = Proyecto:
+client.participatesIn.form.label.code = Código:
+
+client.participatesIn.list.button.create = Crear
+
+client.participatesIn.list.label.project = Proyecto
+client.participatesIn.list.label.code = Código
+
+client.participatesIn.form.button.delete = Borrar
+client.participatesIn.form.button.create = Crear
+
+client.participatesIn.form.error.duplicatedCode = Este código ya existe
+client.participatesIn.form.error.duplicated = Usted ya está participando en este proyecto
+client.participatesIn.error.contractError = Existe un contrato asociado a este proyecto

@@ -49,16 +49,15 @@ public class MoneyService {
 				sourceCurrency = source.getCurrency();
 				sourceAmount = source.getAmount();
 
+				String baseUrl = "https://v6.exchangerate-api.com/v6/";
+				String apiKey = "4bcc0c3ea0675efdbc6f6b4d";
+				String url = baseUrl + apiKey + "/pair/" + sourceCurrency + "/" + targetCurrency;
+
 				record = api.getForObject( //				
-					"http://apilayer.net/api/live?source={0}&currencies={1}&access_key={2}&format=1", //
-					ExchangeRate.class, //
-					sourceCurrency, //
-					targetCurrency, //
-					"63259d4389193b9554785f5cea807177");
+					url, ExchangeRate.class);
 
 				assert record != null;
-				key = String.format("%s%s", sourceCurrency, targetCurrency);
-				rate = record.getQuotes().get(key);
+				rate = record.getConversion_rate();
 				assert rate != null;
 				targetAmount = rate * sourceAmount;
 
@@ -66,7 +65,7 @@ public class MoneyService {
 				target.setAmount(targetAmount);
 				target.setCurrency(targetCurrency);
 
-				moment = new Date(record.getTimestamp() * 1000L);
+				moment = new Date();
 
 				result = new MoneyExchange();
 				result.setSource(source);

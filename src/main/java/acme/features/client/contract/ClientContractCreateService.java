@@ -73,18 +73,21 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("budget")) {
+			Double budget;
+			budget = object.getBudget().getAmount();
+			super.state(budget > 0, "budget", "client.contract.error.budget-negative");
 			Project project;
-
 			project = object.getProject();
 			Double objectAmount;
 			Boolean currencyState = this.moneyService.checkContains(object.getBudget().getCurrency());
 			super.state(currencyState, "budget", "client.contract.form.error.budget.invalid-currency");
-			Double projectCost = this.moneyService.computeMoneyExchange(project.getCost(), "EUR").getTarget().getAmount();
-			if (currencyState) {
-				objectAmount = this.moneyService.computeMoneyExchange(object.getBudget(), "EUR").getTarget().getAmount();
-				super.state(projectCost >= objectAmount, "budget", "client.contract.form.error.above-cost");
+			if (project != null) {
+				Double projectCost = this.moneyService.computeMoneyExchange(project.getCost(), "EUR").getTarget().getAmount();
+				if (currencyState) {
+					objectAmount = this.moneyService.computeMoneyExchange(object.getBudget(), "EUR").getTarget().getAmount();
+					super.state(projectCost >= objectAmount, "budget", "client.contract.form.error.above-cost");
+				}
 			}
-
 		}
 
 	}

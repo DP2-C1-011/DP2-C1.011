@@ -20,6 +20,7 @@
 	<acme:menu-left>
 		<acme:menu-option code="master.menu.any">
 			<acme:menu-suboption code="master.menu.any.training-modules" action="/any/training-module/list"/>
+			<acme:menu-suboption code="master.menu.any.contracts" action="/any/contract/list"/>
 		</acme:menu-option>
 	
 	
@@ -51,6 +52,7 @@
 		<acme:menu-option code="master.menu.client" access="hasRole('Client')">
 			<acme:menu-suboption code="master.menu.client.contracts" action="/client/contract/list"/>
 			<acme:menu-suboption code="master.menu.client.dashboard" action="/client/client-dashboard/show"/>
+			<acme:menu-suboption code="master.menu.client.participatesIn" action="/client/participates-in/list"/>
 		</acme:menu-option>
 		
 

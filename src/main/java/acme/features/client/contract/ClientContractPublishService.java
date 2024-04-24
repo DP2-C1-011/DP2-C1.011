@@ -74,18 +74,22 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 		assert object != null;
 
 		if (!super.getBuffer().getErrors().hasErrors("budget")) {
+			Double budget;
+			budget = object.getBudget().getAmount();
+			super.state(budget > 0, "budget", "client.contract.error.budget-negative");
 			Project project;
 
 			project = object.getProject();
 			Double objectAmount;
 			Boolean currencyState = this.moneyService.checkContains(object.getBudget().getCurrency());
 			super.state(currencyState, "budget", "client.contract.form.error.budget.invalid-currency");
-			Double projectCost = this.moneyService.computeMoneyExchange(project.getCost(), "EUR").getTarget().getAmount();
-			if (currencyState) {
-				objectAmount = this.moneyService.computeMoneyExchange(object.getBudget(), "EUR").getTarget().getAmount();
-				super.state(projectCost >= objectAmount, "budget", "client.contract.form.error.above-cost");
+			if (project != null) {
+				Double projectCost = this.moneyService.computeMoneyExchange(project.getCost(), "EUR").getTarget().getAmount();
+				if (currencyState) {
+					objectAmount = this.moneyService.computeMoneyExchange(object.getBudget(), "EUR").getTarget().getAmount();
+					super.state(projectCost >= objectAmount, "budget", "client.contract.form.error.above-cost");
+				}
 			}
-
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
@@ -103,9 +107,12 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 		super.state(totalPublishedProgressLogs != null && totalPublishedProgressLogs == numberProgressLogsPerContract, "*", "client.contract.form.error.not-published-progressLogs");
 
 		Double totalBudgets;
-		Double projectCost = this.moneyService.computeMoneyExchange(object.getProject().getCost(), "EUR").getTarget().getAmount();
-		totalBudgets = this.repository.computeTotalBudgetsByProject(object.getProject().getId());
-		super.state(totalBudgets != null && totalBudgets <= projectCost, "*", "client.contract.form.error.bad-budget");
+		Project project = object.getProject();
+		if (project != null) {
+			Double projectCost = this.moneyService.computeMoneyExchange(project.getCost(), "EUR").getTarget().getAmount();
+			totalBudgets = this.repository.computeTotalBudgetsByProject(project.getId());
+			super.state(totalBudgets != null && totalBudgets <= projectCost, "*", "client.contract.form.error.bad-budget");
+		}
 	}
 
 	@Override

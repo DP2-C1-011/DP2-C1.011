@@ -1,8 +1,6 @@
 
 package acme.components;
 
-import java.util.Map;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,11 +10,15 @@ public class ExchangeRate {
 
 	// Attributes -------------------------------------------------------------
 
-	public boolean				success;
-	public String				terms;
-	public String				privacy;
-	public long					timestamp;
-	public String				source;
-	public Map<String, Double>	quotes;
+	private String	result;
+	private String	documentation;
+	private String	terms_of_use;
+	private long	time_last_update_unix;
+	private String	time_last_update_utc;
+	private long	time_next_update_unix;
+	private String	time_next_update_utc;
+	private String	base_code;
+	private String	target_code;
+	private double	conversion_rate;
 
 }

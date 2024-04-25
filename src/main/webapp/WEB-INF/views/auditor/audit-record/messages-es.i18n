@@ -1,0 +1,13 @@
+auditor.audit-record.form.title = Detalles de registros de auditorías
+auditor.audit-record.list.title = Listado de registros de auditorías
+
+auditor.audit-record.form.label.code = Código
+auditor.audit-record.form.label.period-start = Inicio del periodo
+auditor.audit-record.form.label.period-end = Final del periodo
+auditor.audit-record.form.label.mark = Nota
+auditor.audit-record.form.label.optional-link = Link opcional
+
+
+auditor.code-audit.form.error.duplicateCode = El código ya existe
+auditor.audit-record.list.label.code = Código
+auditor.audit-record.list.label.mark = Nota

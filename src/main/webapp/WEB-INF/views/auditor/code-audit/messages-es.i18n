@@ -1,5 +1,5 @@
-auditor.code-audit.form.title = Detalles auditoría
-auditor.code-audit.list.title = Listado de auditorías
+auditor.code-audit.form.title = Detalles de auditorías de código
+auditor.code-audit.list.title = Listado de auditorías de código
 
 
 auditor.audit.form.error.duplicateCode = El código ya existe

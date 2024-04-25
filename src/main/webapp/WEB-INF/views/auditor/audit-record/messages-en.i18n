@@ -1,0 +1,12 @@
+auditor.audit-record.form.title = Audit Record Details
+auditor.audit-record.list.title = Audit Record List
+
+auditor.audit-record.form.label.code = Code
+auditor.audit-record.form.label.period-start = Period Start
+auditor.audit-record.form.label.period-end = Period End
+auditor.audit-record.form.label.mark = Mark
+auditor.audit-record.form.label.optional-link = Optional Link
+
+auditor.code-audit.form.error.duplicateCode = The code already exists
+auditor.audit-record.list.label.code = Code
+auditor.audit-record.list.label.mark = Mark

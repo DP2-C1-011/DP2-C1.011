@@ -13,7 +13,7 @@ import acme.entities.audit.Mark;
 import acme.roles.Auditor;
 
 @Service
-public class AuditorAuditRecordShowService extends AbstractService<Auditor, AuditRecord> {
+public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, AuditRecord> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -25,22 +25,19 @@ public class AuditorAuditRecordShowService extends AbstractService<Auditor, Audi
 
 	@Override
 	public void authorise() {
-
 		boolean status;
 		int auditRecordId;
 		CodeAudit codeAudit;
 
 		auditRecordId = super.getRequest().getData("id", int.class);
 		codeAudit = this.repository.findOneCodeAuditByAuditRecordId(auditRecordId);
-		status = codeAudit != null && super.getRequest().getPrincipal().hasRole(codeAudit.getAuditor());
+		status = codeAudit != null && codeAudit.isDraftMode() && super.getRequest().getPrincipal().hasRole(codeAudit.getAuditor());
 
 		super.getResponse().setAuthorised(status);
-
 	}
 
 	@Override
 	public void load() {
-
 		AuditRecord object;
 		int id;
 
@@ -48,6 +45,25 @@ public class AuditorAuditRecordShowService extends AbstractService<Auditor, Audi
 		object = this.repository.findOneAuditRecordById(id);
 
 		super.getBuffer().addData(object);
+	}
+
+	@Override
+	public void bind(final AuditRecord object) {
+		assert object != null;
+
+		super.bind(object, "code", "periodStart", "periodEnd", "mark", "optionalLink");
+	}
+
+	@Override
+	public void validate(final AuditRecord object) {
+		assert object != null;
+	}
+
+	@Override
+	public void perform(final AuditRecord object) {
+		assert object != null;
+
+		this.repository.save(object);
 	}
 
 	@Override
@@ -67,5 +83,4 @@ public class AuditorAuditRecordShowService extends AbstractService<Auditor, Audi
 
 		super.getResponse().addData(dataset);
 	}
-
 }

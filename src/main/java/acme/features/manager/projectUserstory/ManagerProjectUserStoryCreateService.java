@@ -69,8 +69,8 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 	public void unbind(final ProjectUserStory object) {
 		assert object != null;
 		int userStoryId = super.getRequest().getData("userStoryId", int.class);
-
-		Collection<Project> projects = this.createRepository.findProjects();
+		Manager manager = this.createRepository.findOneManagerByUserStoryId(userStoryId);
+		Collection<Project> projects = this.createRepository.findProjectsByManagerId(manager.getId());
 
 		SelectChoices choices = SelectChoices.from(projects, "title", object.getProject());
 

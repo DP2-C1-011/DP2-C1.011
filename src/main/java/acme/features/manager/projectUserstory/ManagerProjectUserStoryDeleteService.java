@@ -81,7 +81,8 @@ public class ManagerProjectUserStoryDeleteService extends AbstractService<Manage
 		assert object != null;
 		int userStoryId = super.getRequest().getData("userStoryId", int.class);
 
-		Collection<Project> projects = this.mur.findProjects();
+		Manager manager = this.mur.findOneManagerByUserStoryId(userStoryId);
+		Collection<Project> projects = this.mur.findProjectsByManagerId(manager.getId());
 
 		SelectChoices choices = SelectChoices.from(projects, "title", object.getProject());
 

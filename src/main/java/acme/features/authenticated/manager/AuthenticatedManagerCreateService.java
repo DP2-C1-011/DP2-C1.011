@@ -24,7 +24,9 @@ public class AuthenticatedManagerCreateService extends AbstractService<Authentic
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		status = !super.getRequest().getPrincipal().hasRole(Manager.class);
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -65,6 +67,8 @@ public class AuthenticatedManagerCreateService extends AbstractService<Authentic
 
 	@Override
 	public void unbind(final Manager object) {
+		assert object != null;
+
 		Dataset dataset;
 
 		dataset = super.unbind(object, "degree", "overview", "certifications", "link");

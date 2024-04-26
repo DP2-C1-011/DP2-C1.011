@@ -6,8 +6,9 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.components.MoneyService;
 import acme.entities.project.Project;
-import acme.features.manager.user_story.ManagerUserStoryRepository;
+import acme.features.manager.userstory.ManagerUserStoryRepository;
 import acme.roles.Manager;
 
 @Service
@@ -19,6 +20,8 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 	@Autowired
 	ManagerUserStoryRepository			mur;
 
+	@Autowired
+	MoneyService						moneyService;
 	// AbstractService interface ----------------------------------------------
 
 
@@ -54,7 +57,7 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 	@Override
 	public void bind(final Project object) {
 		assert object != null;
-		super.bind(object, "code", "title", "abstracto", "fatal-error", "cost", "link");
+		super.bind(object, "code", "title", "abstracto", "fatalError", "cost", "link");
 	}
 
 	// Comprueba que se cumplen las condiciones para poder publicar el proyecto
@@ -64,10 +67,11 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 		int projectId;
 		projectId = super.getRequest().getData("id", int.class);
 
-		if (!super.getBuffer().getErrors().hasErrors("stories")) {
-			Integer numStories = this.mur.findUserStoryByProjectId(projectId).size();
-			super.state(numStories > 0, "stories", "manager.project.form.error.user-story");
-		}
+		Integer numStories = this.mur.findUserStoryByProjectId(projectId).size();
+		super.state(numStories > 0, "*", "manager.project.form.error.user-story");
+
+		Integer numStoriesPublished = this.mur.findUserStoryPublishedByProjectId(projectId).size();
+		super.state(numStories == numStoriesPublished, "*", "manager.project.form.error.publish");
 
 	}
 
@@ -75,18 +79,15 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 	@Override
 	public void perform(final Project object) {
 		assert object != null;
-
 		object.setDraftMode(false);
-		;
 		this.repository.save(object);
 	}
-
 	//Muestra los datos en el formulario
 	@Override
 	public void unbind(final Project object) {
 		assert object != null;
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "title", "abstracto", "fatal-error", "cost", "link", "draft-mode");
+		dataset = super.unbind(object, "code", "title", "abstracto", "fatalError", "cost", "link", "draft-mode");
 		super.getResponse().addData(dataset);
 	}
 

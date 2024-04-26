@@ -1,0 +1,14 @@
+any.project.form.title = Detalles de los proyectos
+any.project.list.title = Lista de proyectos
+
+any.project.form.label.code = Código:
+any.project.form.label.title = Título:
+any.project.form.label.abstracto = Abstract:
+any.project.form.label.fatal-error = Error fatal:
+any.project.form.label.cost = Coste: 
+any.project.form.label.link = Enlace:
+any.project.form.label.draft-mode = Modo borrador:
+
+any.project.list.label.code = Código
+any.project.list.label.title = Título
+any.project.list.button.create = Crear nuevo proyecto

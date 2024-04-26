@@ -46,6 +46,7 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 		moduleId = super.getRequest().getData("trainingModuleId", int.class);
 		module = this.repository.findTrainingModuleById(moduleId);
 		object.setTrainingModule(module);
+		object.setDraftMode(true);
 		super.getBuffer().addData(object);
 	}
 
@@ -88,6 +89,6 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 		Dataset dataset;
 		dataset = super.unbind(object, "code", "startMoment", "finishMoment", "location", "instructor", "contactEmail", "optionalLink");
 		super.getResponse().addData(dataset);
-		super.getResponse().addGlobal("trainingModuleId", super.getRequest().getData("trainingModuleId", int.class));
+		super.getResponse().addGlobal("trainingModuleId", object.getTrainingModule().getId());
 	}
 }

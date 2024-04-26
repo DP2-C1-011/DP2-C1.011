@@ -54,12 +54,18 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 	public void validate(final TrainingModule object) {
 		assert object != null;
 		int moduleId;
+		Integer tsInTm, totalPublishedTm;
+		
 		moduleId = super.getRequest().getData("id", int.class);
 
 		if (!super.getBuffer().getErrors().hasErrors("sessions")) {
 			Integer numSessions = this.repository.findTrainingSessionsByTrainingModuleId(moduleId).size();
-			super.state(numSessions > 0, "sessions", "developer.training-session.form.error.training-session");
+			super.state(numSessions > 0, "*", "developer.training-module.form.error.training-session");
 		}
+		
+		tsInTm = this.repository.findTrainingSessionsByTrainingModuleId(object.getId()).size();
+		totalPublishedTm = this.repository.findPublishedTrainingSessionsByTrainingModuleId(object.getId()).size();
+		super.state(tsInTm != null && totalPublishedTm == tsInTm, "*", "developer.training-module.form.error.not-published-trainingSessions");
 	}
 
 	@Override

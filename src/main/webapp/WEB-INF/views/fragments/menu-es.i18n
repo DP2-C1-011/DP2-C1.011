@@ -19,6 +19,8 @@ master.menu.sign-out = Salir
 
 master.menu.any = Cualquiera
 master.menu.any.training-modules = Módulos de Entrenamiento Publicados
+master.menu.any.projects = Proyectos publicados
+master.menu.any.contracts = Contratos publicados
 
 # master.menu.anonymous #######################################################
 
@@ -30,6 +32,7 @@ master.menu.anonymous.favourite-link = Enlace favorito
 master.menu.administrator = Administrador
 master.menu.administrator.dashboard = Panel de indicadores
 master.menu.administrator.user-accounts = Cuentas de usuario
+master.menu.administrator.banner = Banners
 master.menu.administrator.populate-initial = Poblar BD (inicial)
 master.menu.administrator.populate-sample = Poblar BD (ejemplos)
 master.menu.administrator.shut-down = Parar el sistema
@@ -58,12 +61,15 @@ master.menu.user-account.client = Datos de cliente
 master.menu.user-account.become-client = Hazte cliente
 master.menu.user-account.sponsor = Datos de mecenas
 master.menu.user-account.become-sponsor = Hazte mecenas
+master.menu.user-account.manager = Datos del manager
+master.menu.user-account.become-manager = Hazte manager
 
 # master.menu.manager ####################################################
 
 master.menu.manager = Manager
 master.menu.manager.projects = Proyectos
 master.menu.manager.userStories = Historias de Usuario
+master.menu.manager.dashboard = Panel de indicadores
 
 # master.menu.client ####################################################
 
@@ -72,6 +78,7 @@ master.menu.client.contracts = Contratos
 
 master.menu.client.progressLogs = Registros de progreso
 master.menu.client.dashboard = Panel de indicadores
+master.menu.client.participatesIn = Participando En
 
 
 # master.menu.developer ####################################################
@@ -84,3 +91,8 @@ master.menu.developer.dashboard = Panel de Desarrollador
 master.menu.sponsor = Mecenas
 master.menu.sponsor.sponsorship = Patrocinios
 master.menu.sponsor.dashboard = Panel de Mecenas
+master.menu.manager.user-story = Historias de usuario
+# master.menu.auditor ####################################################
+master.menu.auditor = Auditor
+master.menu.auditor.code-audits = Auditorías de código
+master.menu.auditor.audit-records = Registros de auditoría

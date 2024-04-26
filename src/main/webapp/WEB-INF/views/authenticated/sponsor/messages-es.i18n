@@ -1,0 +1,9 @@
+authenticated.sponsor.form.title = Formulario de Mecenas
+
+authenticated.sponsor.form.label.name = Nombre
+authenticated.sponsor.form.label.expectedBenefits = Beneficios esperados
+authenticated.sponsor.form.label.optionalEmail = Correo de Contacto
+authenticated.sponsor.form.label.optionalLink = Enlace Personal
+
+authenticated.sponsor.form.button.create = Registrarse
+authenticated.sponsor.form.button.update = Actualizar

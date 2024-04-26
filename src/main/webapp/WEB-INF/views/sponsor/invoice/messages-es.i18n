@@ -1,0 +1,28 @@
+sponsor.invoice.form.title = Detalles de recibos
+sponsor.invoice.list.title = Listado de recibos
+
+sponsor.invoice.form.label.code = Código
+sponsor.invoice.form.label.registration-date = Fecha de registro
+sponsor.invoice.form.label.due-date = Fecha de entrega
+sponsor.invoice.form.label.quantity = Valor
+sponsor.invoice.form.label.tax = Impuesto
+sponsor.invoice.form.label.optional-link = Enlace informativo
+sponsor.invoice.form.label.draft-mode = Modo borrador
+
+sponsor.invoice.list.label.code = Código
+sponsor.invoice.list.label.quantity = Cantidad
+sponsor.invoice.list.label.tax = Impuesto
+sponsor.invoice.list.label.registration-date = Fecha de registro
+sponsor.invoice.list.label.due-date = Fecha de entrega
+
+sponsor.invoice.list.button.create = Crear
+sponsor.invoice.form.button.create = Crear
+sponsor.invoice.form.button.delete = Borrar
+sponsor.invoice.form.button.update = Actualizar
+sponsor.invoice.form.button.publish = Publicar
+
+sponsor.invoice.form.error.duplicateCode = Otro recibo ya tiene este código
+sponsor.invoice.form.error.startBeforeCreate = El Recibo debe comenzar tras la creación del patrocinio correspondiente
+sponsor.invoice.form.error.finishBeforeStart = La fecha de entrega debe ser después de la de registro
+sponsor.invoice.form.error.periodTooShort = La fecha de entrega debe ser al menos un mes después de la de registro
+sponsor.invoice.form.error.draftMode = El recibo debe mantenerse en modo borrador

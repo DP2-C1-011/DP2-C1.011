@@ -68,6 +68,8 @@ master.menu.user-account.developer = Developer data
 master.menu.user-account.become-developer = Become a developer
 master.menu.user-account.client = Client data
 master.menu.user-account.become-client = Become a client
+master.menu.user-account.sponsor = Sponsor data
+master.menu.user-account.become-sponsor = Become a sponsor
 master.menu.user-account.manager = Manager data
 master.menu.user-account.become-manager = Become a manager
 
@@ -82,6 +84,11 @@ master.menu.manager = Manager
 master.menu.manager.projects = Projects
 master.menu.manager.userStories = Users Stories
 master.menu.manager.projects = Projects
+
+# master.menu.sponsor ####################################################
+master.menu.sponsor = Sponsor
+master.menu.sponsor.sponsorship = Sponsorships
+master.menu.sponsor.dashboard = Sponsor Dashboard
 master.menu.manager.dashboard = Dashboard
 master.menu.manager.user-story = User Stories
 

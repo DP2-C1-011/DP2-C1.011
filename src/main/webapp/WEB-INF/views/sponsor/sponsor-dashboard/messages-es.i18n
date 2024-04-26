@@ -1,0 +1,14 @@
+sponsor.sponsor-dashboard.form.title = Panel de Mecenas
+
+sponsor.dashboard.form.title.general-indicators = Indicadores Generales
+
+sponsor.dashboard.form.label.num-tax-under-21 =  Recibos con impuesto igual o menor al 21%
+sponsor.dashboard.form.label.num-link-sponsorships =  Número de patrocinios con enlaces informativos
+sponsor.dashboard.form.label.avg-sponsorship-amount =  Importe medio de los patrocinios
+sponsor.dashboard.form.label.dev-sponsorship-amount =  Desviación típica del importe de los patrocinios
+sponsor.dashboard.form.label.min-sponsorship-amount =  Importe mínimo de los patrocinios
+sponsor.dashboard.form.label.max-sponsorship-amount =  Importe máximo de los patrocinios
+sponsor.dashboard.form.label.avg-invoice-quantity =  Importe medio de los recibos
+sponsor.dashboard.form.label.dev-invoice-quantity =  Desviación típica del importe de los recibos
+sponsor.dashboard.form.label.min-invoice-quantity =  Importe mínimo de los recibos
+sponsor.dashboard.form.label.max-invoice-quantity =  Importe máximo de los recibos

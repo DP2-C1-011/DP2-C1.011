@@ -65,13 +65,16 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 	public void validate(final Project object) {
 		assert object != null;
 		int projectId;
+		Project project;
 		projectId = super.getRequest().getData("id", int.class);
-
+		project = this.repository.findProjectById(projectId);
 		Integer numStories = this.mur.findUserStoryByProjectId(projectId).size();
 		super.state(numStories > 0, "*", "manager.project.form.error.user-story");
 
 		Integer numStoriesPublished = this.mur.findUserStoryPublishedByProjectId(projectId).size();
 		super.state(numStories == numStoriesPublished, "*", "manager.project.form.error.publish");
+
+		super.state(project.getFatalError() == null, "*", "manager.project.form.error.fatal");
 
 	}
 

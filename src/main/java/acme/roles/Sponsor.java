@@ -33,7 +33,7 @@ public class Sponsor extends AbstractRole {
 	@NotNull
 	@NotBlank
 	@Length(max = 100)
-	private String				benefits;
+	private String				expectedBenefits;
 
 	@Email
 	private String				optionalEmail;

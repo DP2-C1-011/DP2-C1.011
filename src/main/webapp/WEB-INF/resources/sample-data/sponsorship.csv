@@ -1,0 +1,16 @@
+key,code,moment,startDate,endDate,amount,financial,email,link,key:sponsor,draftMode
+sponsorship-01,A-001,2020/08/11 20:44,2020/08/11 09:03,2020/08/11 11:12,"USD 0.12",true,example@example.com,https://hola.com,sponsor-02,false
+sponsorship-02,AA-010,2020/09/15 10:22,2020/09/15 00:00,2020/09/15 00:00,"USD 0.25",true,sponsorship@example.com,https://random.com/124,sponsor-02,false
+sponsorship-03,AAA-010,2020/10/20 15:38,2018/10/20 00:00,2018/10/20 00:00,"EUR 0.10",false,example@sponsor.com,,sponsor-01,false
+sponsorship-04,BAB-990,2020/11/25 08:55,2019/11/25 00:00,2019/11/25 00:00,"USD 0.20",true,,,sponsor-01,false
+sponsorship-05,ABC-222,2020/12/30 16:10,2021/12/30 00:00,2021/12/30 00:00,"EUR 0.15",false,javier@jav.com,https://typing.com/url/url,sponsor-02,false
+sponsorship-06,ABC-999,1974/12/30 16:10,1975/12/30 00:00,1975/12/30 00:00,"EUR 2.00",false,,,sponsor-01,false
+sponsorship-07,AAB-000,2016/02/10 08:30,2016/02/09 12:00,2016/02/10 12:00,"EUR 600.99",false,,https://link.com/sponsorship7,sponsor-02,false
+sponsorship-08,AB-001,2017/05/20 14:45,2017/05/19 10:00,2017/06/20 10:00,"EUR 132.00",true,sponsorship@example.com,https://link.com/sponsorship8,sponsor-01,false
+sponsorship-09,AB-900,2018/08/30 18:20,2018/08/29 15:00,2018/08/30 15:00,"USD 568,756.00",true,sponsor@example.com,https://link.com/sponsorship9,sponsor-02,false
+sponsorship-10,ACC-999,2019/11/10 11:10,2019/11/09 08:00,2019/11/10 08:00,"EUR 137,123.38",true,sponsors@example.com,,sponsor-02,false
+sponsorship-11,BB-123,2016/03/15 13:30,2016/03/14 09:00,2016/03/15 09:00,"USD 350.75",false,,https://link.com/sponsorship11,sponsor-02,false
+sponsorship-12,CCC-456,2017/04/20 09:45,2017/04/19 08:00,2017/04/20 08:00,"EUR 29.99",true,,https://link.com/sponsorship12,sponsor-02,false
+sponsorship-13,ACC-789,2018/06/25 17:15,2018/06/24 15:30,2018/06/25 15:30,"USD 500.00",false,,https://link.com/sponsorship13,sponsor-01,true
+sponsorship-14,ABB-987,2019/09/30 10:00,2019/09/29 08:00,2019/09/30 08:00,"EUR 99.50",false,sponsors@example.com,https://link.com/sponsorship14,sponsor-02,true
+sponsorship-15,AAB-654,2021/01/05 14:00,2021/01/04 12:00,2021/01/05 12:00,"USD 999.99",false,sponsorship@example.com,,sponsor-01,false

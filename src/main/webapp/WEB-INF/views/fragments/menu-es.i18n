@@ -60,6 +60,8 @@ master.menu.user-account.developer = Datos de desarrollador
 master.menu.user-account.become-developer = Hazte desarrollador
 master.menu.user-account.client = Datos de cliente
 master.menu.user-account.become-client = Hazte cliente
+master.menu.user-account.sponsor = Datos de mecenas
+master.menu.user-account.become-sponsor = Hazte mecenas
 master.menu.user-account.manager = Datos del manager
 master.menu.user-account.become-manager = Hazte manager
 
@@ -85,6 +87,11 @@ master.menu.developer = Desarrollador
 master.menu.developer.training-modules = Módulos de Entrenamiento
 master.menu.developer.training-sessions = Sesiones de Entrenamiento
 master.menu.developer.dashboard = Panel de Desarrollador
+
+# master.menu.sponsor ####################################################
+master.menu.sponsor = Mecenas
+master.menu.sponsor.sponsorship = Patrocinios
+master.menu.sponsor.dashboard = Panel de Mecenas
 master.menu.manager.user-story = Historias de usuario
 # master.menu.auditor ####################################################
 master.menu.auditor = Auditor

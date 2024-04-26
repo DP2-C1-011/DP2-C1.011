@@ -1,7 +1,7 @@
 
 package acme.features.sponsor.dashboard;
 
-import java.util.Map;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,15 +35,15 @@ public class SponsorDashboardShowService extends AbstractService<Sponsor, Sponso
 		Integer taxUnder21;
 		Integer linkedSponsorships;
 
-		Map<String, Double> averageSponsorship;
-		Map<String, Double> deviationSponsorship;
-		Map<String, Double> minimumSponsorship;
-		Map<String, Double> maximumSponsorship;
+		List<Object[]> averageSponsorship;
+		List<Object[]> deviationSponsorship;
+		List<Object[]> minimumSponsorship;
+		List<Object[]> maximumSponsorship;
 
-		Map<String, Double> averageInvoice;
-		Map<String, Double> deviationInvoice;
-		Map<String, Double> minimumInvoice;
-		Map<String, Double> maximumInvoice;
+		List<Object[]> averageInvoice;
+		List<Object[]> deviationInvoice;
+		List<Object[]> minimumInvoice;
+		List<Object[]> maximumInvoice;
 
 		id = super.getRequest().getPrincipal().getActiveRoleId();
 		taxUnder21 = this.r.getTaxUnder21(id);
@@ -80,7 +80,7 @@ public class SponsorDashboardShowService extends AbstractService<Sponsor, Sponso
 	@Override
 	public void unbind(final SponsorDashboard object) {
 		Dataset dataset;
-		dataset = super.unbind(object, "numTrainingModulesUpdated", "numTrainingSessionsLink", "avgTrainingModulesTime", "devTrainingModulesTime", "minTrainingModulesTime", "maxTrainingModulesTime");
+		dataset = super.unbind(object, "taxUnder21", "linkedSponsorships", "averageSponsorship", "deviationSponsorship", "minimumSponsorship", "maximumSponsorship", "averageInvoice", "deviationInvoice", "minimumInvoice", "maximumInvoice");
 		super.getResponse().addData(dataset);
 	}
 

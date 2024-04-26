@@ -57,13 +57,8 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 		Double totalInvoices = this.repository.sumInvoicesBySponsorshipId(sponsorshipId);
 		Double totalSponsorship = this.repository.findSponsorshipAmountById(sponsorshipId);
 
-		if (!super.getBuffer().getErrors().hasErrors("invoices")) {
-			Integer numInvoices = this.repository.findInvoicesBySponsorshipId(sponsorshipId).size();
-			super.state(numInvoices > 0, "invoices", "sponsor.invoice.form.error.invoice");
-		}
-
 		if (!super.getBuffer().getErrors().hasErrors("totalAmount"))
-			super.state(totalSponsorship >= totalInvoices, "totalAmount", "sponsor.invoice.form.error.invoice");
+			super.state(totalSponsorship >= totalInvoices, "totalAmount", "sponsor.invoice.form.error.invoice-amount");
 
 	}
 

@@ -57,7 +57,7 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 			super.state(object.getDraftMode(), "draftMode", "sponsor.sponsorship.form.error.draftMode");
 
 		if (!super.getBuffer().getErrors().hasErrors("endDate") && !super.getBuffer().getErrors().hasErrors("startDate") && object.getEndDate() != null)
-			super.state(MomentHelper.isAfter(object.getEndDate(), object.getStartDate()), "endDate", "sponsor.sponsorship.form.error.updateBeforeCreate");
+			super.state(MomentHelper.isAfter(object.getEndDate(), object.getStartDate()), "endDate", "sponsor.sponsorship.form.error.finishBeforeStart");
 	}
 
 	@Override

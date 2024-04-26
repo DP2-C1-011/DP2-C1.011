@@ -1,0 +1,28 @@
+sponsor.sponsorship.form.title = Sponsorship Details
+sponsor.sponsorship.list.title = Sponsorship List
+
+sponsor.sponsorship.form.label.code = Code
+sponsor.sponsorship.form.label.moment = Moment
+sponsor.sponsorship.form.label.start-date = Start Date
+sponsor.sponsorship.form.label.end-date = End Date
+sponsor.sponsorship.form.label.amount = Amount
+sponsor.sponsorship.form.label.financial = Financial/In kind
+sponsor.sponsorship.form.label.email = Email
+sponsor.sponsorship.form.label.link = Link
+sponsor.sponsorship.form.label.draft-mode = Draft mode
+
+sponsor.sponsorship.form.button.invoices = Invoices
+
+sponsor.sponsorship.list.button.create = Create
+sponsor.sponsorship.form.button.create = Create
+sponsor.sponsorship.form.button.delete = Delete
+sponsor.sponsorship.form.button.update = Update
+sponsor.sponsorship.form.button.publish = Publish
+
+sponsor.sponsorship.list.label.code = Code
+sponsor.sponsorship.list.label.details = Details
+
+sponsor.sponsorship.form.error.invoice-amount = Sponsorships can't be published until the total value of all Invoices equates to the Sponsorship's total value
+sponsor.sponsorship.form.error.draftMode = Current Sponsorship must stay in Draft Mode
+sponsor.sponsorship.form.error.duplicateCode = Another Sponsorship has this code
+sponsor.sponsorship.form.error.finishBeforeStart = Sponsorships must end after creation

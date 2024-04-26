@@ -1,0 +1,27 @@
+developer.training-session.form.title = Detalles Sesión de Entrenamiento
+developer.training-session.list.title = Listado Sesiones de Entrenamiento
+
+developer.training-session.form.label.code = Código
+developer.training-session.form.label.start-moment = Momento Inicio
+developer.training-session.form.label.finish-moment = Momento Fin
+developer.training-session.form.label.location = Localización
+developer.training-session.form.label.instructor = Instructor
+developer.training-session.form.label.contact-email = Email de Contacto
+developer.training-session.form.label.optional-link = Link Opcional
+developer.training-session.form.label.draft-mode = Draft mode
+
+developer.training-session.list.label.code = Código
+developer.training-session.list.label.instructor = Instructor
+developer.training-session.list.label.start-moment = Momento Inicio
+
+developer.training-session.list.button.create = Crear
+developer.training-session.form.button.create = Crear
+developer.training-session.form.button.delete = Eliminar
+developer.training-session.form.button.update = Actualizar
+developer.training-session.form.button.publish = Publicar
+
+developer.training-session.form.error.duplicateCode = Otra Sesión de Entrenamiento tiene este código
+developer.training-session.form.error.startBeforeCreate = La Sesión de Entrenamiento debe comenzar tras la creación del Módulo de Entrenamiento
+developer.training-session.form.error.finishBeforeStart = El momento de fin debe ser posterior al momento de inicio
+developer.training-session.form.error.periodTooShort = El momento de fin debe ser al menos una semana posterior al momento de inicio
+developer.training-session.form.error.draftMode = La Sesión de Entrenamiento debe quedarse en Draft Mode

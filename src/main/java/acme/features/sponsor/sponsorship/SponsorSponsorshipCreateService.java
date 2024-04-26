@@ -56,7 +56,7 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("endDate") && !super.getBuffer().getErrors().hasErrors("creationMoment") && object.getEndDate() != null)
-			super.state(MomentHelper.isAfter(object.getEndDate(), object.getStartDate()), "endDate", "sponsor.sponsorship.form.error.finishBeforeStartDate");
+			super.state(MomentHelper.isAfter(object.getEndDate(), object.getStartDate()), "endDate", "sponsor.sponsorship.form.error.finishBeforeStart");
 	}
 
 	@Override

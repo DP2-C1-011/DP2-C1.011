@@ -70,8 +70,6 @@ public class Invoice extends AbstractEntity {
 		return res;
 	}
 
-	//Relationships
-
 
 	@Valid
 	@ManyToOne(optional = false)

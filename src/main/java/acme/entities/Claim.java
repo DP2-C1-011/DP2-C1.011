@@ -3,14 +3,15 @@ package acme.entities;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
-import org.checkerframework.common.aliasing.qual.Unique;
-import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
@@ -23,35 +24,37 @@ import lombok.Setter;
 @Entity
 public class Claim extends AbstractEntity {
 
-	/**
-	 * 
-	 */
-	private static final long	serialVersionUID	= 1L;
-	@NotBlank
-	@Unique
-	@Pattern(regexp = "C-[0-9]{4}")
-	String						code;
+	// Serialisation identifier
 
-	@NotNull
+	private static final long	serialVersionUID	= 1L;
+
+	// Attributes
+	@NotBlank
+	@Column(unique = true)
+	@Pattern(regexp = "^C-[0-9]{4}$", message = "Patron incorrecto, ha de comenzar por C y contener cuatro digitos enteros entre cero y nueve. Debe ser unico.")
+	private String				code;
+
 	@Past
-	Date						instantiationMoment;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				instantiationMoment;
 
 	@NotBlank
 	@Length(max = 75)
-	String						heading;
+	private String				heading;
 
 	@NotBlank
 	@Length(max = 100)
-	String						description;
+	private String				description;
 
 	@NotBlank
 	@Length(max = 100)
-	String						department;
+	private String				department;
 
 	@Email
-	String						optionalEmailAddress;
+	private String				email;
 
 	@URL
-	String						optionalLink;
+	private String				link;
 
+	private boolean				publishIndication;
 }

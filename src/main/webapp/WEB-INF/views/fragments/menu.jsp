@@ -21,6 +21,8 @@
 		<acme:menu-option code="master.menu.any">
 			<acme:menu-suboption code="master.menu.any.training-modules" action="/any/training-module/list"/>
 			<acme:menu-suboption code="master.menu.any.projects" action="/any/project/list"/>
+
+			<acme:menu-suboption code="master.menu.any.contracts" action="/any/contract/list"/>
 		</acme:menu-option>
 	
 	
@@ -36,6 +38,7 @@
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
 			<acme:menu-suboption code="master.menu.administrator.user-accounts" action="/administrator/user-account/list"/>
+			<acme:menu-suboption code="master.menu.administrator.banner" action="/administrator/banner/list"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.populate-initial" action="/administrator/system/populate-initial"/>
 			<acme:menu-suboption code="master.menu.administrator.populate-sample" action="/administrator/system/populate-sample"/>			
@@ -69,6 +72,10 @@
 		<acme:menu-option code="master.menu.developer" access="hasRole('Developer')">
 			<acme:menu-suboption code="master.menu.developer.training-modules" action="/developer/training-module/list"/>
 			<acme:menu-suboption code="master.menu.developer.dashboard" action="/developer/developer-dashboard/show"/>
+		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.auditor" access="hasRole('Auditor')">
+			<acme:menu-suboption code="master.menu.auditor.code-audits" action="/auditor/code-audit/list"/>
 		</acme:menu-option>
 	</acme:menu-left>
 

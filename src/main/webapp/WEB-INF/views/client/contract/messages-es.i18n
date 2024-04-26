@@ -24,6 +24,7 @@ client.contract.form.button.delete = Borrar
 client.contract.form.button.publish = Publicar
 client.contract.form.button.create = Crear
 
+client.contract.error.budget-negative = Cantidad negativa
 client.contract.form.error.budget.invalid-currency = Devisa no válida
 client.contract.form.error.not-published-progressLogs = Todos los registros de progreso deben estar publicados
 client.contract.form.error.duplicated = Este código ya existe

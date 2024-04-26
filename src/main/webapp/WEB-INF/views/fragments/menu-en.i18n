@@ -21,6 +21,7 @@ master.menu.any = Any
 master.menu.any.training-modules = Published Training Modules
 master.menu.any.projects = Published Projects 
 
+master.menu.any.contracts = Published Contracts
 
 # master.menu.anonymous #######################################################
 
@@ -32,6 +33,7 @@ master.menu.anonymous.favourite-link = Favourite link
 master.menu.administrator = Administrator
 master.menu.administrator.dashboard = Dashboard
 master.menu.administrator.user-accounts = User accounts
+master.menu.administrator.banner = Banners
 master.menu.administrator.populate-initial = Populate DB (initial)
 master.menu.administrator.populate-sample = Populate DB (samples)
 master.menu.administrator.shut-down = Shut down
@@ -42,6 +44,7 @@ master.menu.client = Client
 master.menu.client.contracts = Contracts
 master.menu.client.progressLogs = Progress logs
 master.menu.client.dashboard = Dashboard
+master.menu.client.participatesIn = Participates In
 
 # master.menu.provider ########################################################
 
@@ -82,3 +85,9 @@ master.menu.manager.projects = Projects
 master.menu.manager.dashboard = Dashboard
 master.menu.manager.user-story = User Stories
 
+
+# master.menu.auditor ####################################################
+
+master.menu.auditor = Auditor
+master.menu.auditor.code-audits = Code Audits
+master.menu.auditor.audit-records =  Audit Records

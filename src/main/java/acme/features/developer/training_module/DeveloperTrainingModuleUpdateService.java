@@ -58,6 +58,13 @@ public class DeveloperTrainingModuleUpdateService extends AbstractService<Develo
 		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
 			super.state(object.getDraftMode(), "draftMode", "developer.training-module.form.error.draftMode");
 
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			TrainingModule existing;
+
+			existing = this.repository.findTrainingModuleByCode(object.getCode());
+			super.state(existing == null, "code", "developer.training-module.form.error.duplicateCode");
+		}
+
 		if (!super.getBuffer().getErrors().hasErrors("updateMoment") && !super.getBuffer().getErrors().hasErrors("creationMoment") && object.getUpdateMoment() != null)
 			super.state(MomentHelper.isAfter(object.getUpdateMoment(), object.getCreationMoment()), "updateMoment", "developer.training-module.form.error.updateBeforeCreate");
 	}

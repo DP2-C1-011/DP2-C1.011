@@ -4,9 +4,9 @@ package acme.entities.sponsor;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -16,7 +16,12 @@ import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
 import acme.client.data.datatypes.Money;
+import lombok.Getter;
+import lombok.Setter;
 
+@Entity
+@Getter
+@Setter
 public class Invoice extends AbstractEntity {
 
 	/**
@@ -46,9 +51,6 @@ public class Invoice extends AbstractEntity {
 
 	@NotNull
 	private Boolean				financial;
-
-	@Email
-	private String				optionalEmail;
 
 	@URL
 	private String				optionalLink;

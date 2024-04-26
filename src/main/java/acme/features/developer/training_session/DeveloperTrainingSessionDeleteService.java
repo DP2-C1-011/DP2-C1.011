@@ -64,6 +64,7 @@ public class DeveloperTrainingSessionDeleteService extends AbstractService<Devel
 		assert object != null;
 		Dataset dataset;
 		dataset = super.unbind(object, "code", "startMoment", "finishMoment", "location", "instructor", "contactEmail", "optionalLink", "draftMode");
+		super.getResponse().addGlobal("trainingModuleId", object.getTrainingModule().getId());
 		super.getResponse().addData(dataset);
 	}
 }

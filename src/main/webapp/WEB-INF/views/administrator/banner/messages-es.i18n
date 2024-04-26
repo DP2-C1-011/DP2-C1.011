@@ -1,0 +1,21 @@
+administrator.banner.form.title = Detalles del Banner
+administrator.banner.list.title = Listado de Banner
+
+administrator.banner.form.label.instantiationMoment = Momento de Instanciación
+administrator.banner.form.label.displayPeriodStart = Inicio del Periódo de Visualización
+administrator.banner.form.label.displayPeriodEnd = Fin del Periódo de Visualización
+administrator.banner.form.label.linkPicture = Enlace a imagen
+administrator.banner.form.label.slogan = Slogan
+administrator.banner.form.label.linkDoc = Enlace a web
+
+administrator.banner.list.button.create = Crear
+administrator.banner.form.button.create = Crear
+administrator.banner.form.button.delete = Eliminar
+administrator.banner.form.button.update = Actualizar
+
+administrator.banner.training-module.list.label.instantiationMoment = Momento de Instanciación
+administrator.banner.training-module.list.label.slogan = Slogan
+
+administrator.banner.form.error.startBeforeInstantiate = Momento de inicio debe ser posterior al de instanciación
+administrator.banner.form.error.startBeforeEnd = Momento de fin debe ser posterior al de inicio
+administrator.banner.form.error.periodTooShort = Momento de fin debe ser al menos una semana posterior al de inicio

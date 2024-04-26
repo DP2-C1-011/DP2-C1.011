@@ -11,5 +11,4 @@
 	<acme:input-moment code="any.training-module.form.label.update-moment" path="updateMoment"/>	
 	<acme:input-url code="any.training-module.form.label.optional-link" path="optionalLink"/>
 	<acme:input-integer code="any.training-module.form.label.total-time" path="totalTime"/>
-	<acme:input-checkbox code="any.training-module.form.label.draft-mode" path="draftMode"/>	
 </acme:form>

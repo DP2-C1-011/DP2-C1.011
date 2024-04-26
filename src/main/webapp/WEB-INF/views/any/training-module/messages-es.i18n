@@ -8,7 +8,6 @@ any.training-module.form.label.difficulty-level = Dificultad
 any.training-module.form.label.update-moment = Momento de Actualización 
 any.training-module.form.label.optional-link = Enlace Opcional
 any.training-module.form.label.total-time = Tiempo Total
-any.training-module.form.label.draft-mode = Draft Mode
 
 any.training-module.list.label.code = Código
 any.training-module.list.label.details = Detalles

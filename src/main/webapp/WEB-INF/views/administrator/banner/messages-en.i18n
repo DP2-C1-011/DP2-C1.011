@@ -1,0 +1,21 @@
+administrator.banner.form.title = Banner Details
+administrator.banner.list.title = Banner List
+
+administrator.banner.form.label.instantiationMoment = Instantiation Moment
+administrator.banner.form.label.displayPeriodStart = Display Period Start
+administrator.banner.form.label.displayPeriodEnd = Display Period End
+administrator.banner.form.label.linkPicture = Image Link
+administrator.banner.form.label.slogan = Slogan
+administrator.banner.form.label.linkDoc = Link to web
+
+administrator.banner.list.button.create = Create
+administrator.banner.form.button.create = Create
+administrator.banner.form.button.delete = Delete
+administrator.banner.form.button.update = Update
+
+administrator.banner.list.label.instantiationMoment = Instantiation Moment
+administrator.banner.list.label.slogan = Slogan
+
+administrator.banner.form.error.startBeforeInstantiate = Start Moment must be after Instantiation Moment
+administrator.banner.form.error.startBeforeEnd = End Moment must be after Start Moment
+administrator.banner.form.error.periodTooShort = End Moment must be at least a week after start Moment

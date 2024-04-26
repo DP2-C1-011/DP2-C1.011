@@ -1,5 +1,5 @@
 
-package acme.features.manager.user_story;
+package acme.features.authenticated.manager;
 
 import javax.annotation.PostConstruct;
 
@@ -7,30 +7,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import acme.client.controllers.AbstractController;
-import acme.entities.project.UserStory;
+import acme.client.data.accounts.Authenticated;
 import acme.roles.Manager;
 
 @Controller
-public class ManagerUserStoryController extends AbstractController<Manager, UserStory> {
+public class AuthenticatedManagerController extends AbstractController<Authenticated, Manager> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerUserStoryListService		listService;
+	private AuthenticatedManagerCreateService	createService;
 
 	@Autowired
-	private ManagerUserStoryShowService		showService;
-
-	@Autowired
-	private ManagerUserStoryCreateService	createService;
+	private AuthenticatedManagerUpdateService	updateService;
 
 	// Constructors -----------------------------------------------------------
 
 
 	@PostConstruct
 	protected void initialise() {
-		super.addBasicCommand("list", this.listService);
-		super.addBasicCommand("show", this.showService);
 		super.addBasicCommand("create", this.createService);
+		super.addBasicCommand("update", this.updateService);
 	}
 
 }

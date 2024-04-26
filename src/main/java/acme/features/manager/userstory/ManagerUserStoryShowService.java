@@ -1,11 +1,13 @@
 
-package acme.features.manager.user_story;
+package acme.features.manager.userstory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
+import acme.entities.project.UsPriority;
 import acme.entities.project.UserStory;
 import acme.roles.Manager;
 
@@ -20,11 +22,13 @@ public class ManagerUserStoryShowService extends AbstractService<Manager, UserSt
 	public void authorise() {
 		boolean status;
 		int id;
-		UserStory userStory;
+		UserStory us;
+		Manager manager;
+
 		id = super.getRequest().getData("id", int.class);
-		userStory = this.mur.findUserStoryById(id);
-		//comprobamos que la us existe y que la persona que intenta acceder tiene rol de manager.
-		status = userStory != null && super.getRequest().getPrincipal().hasRole(userStory.getProject().getManager());
+		us = this.mur.findUserStoryById(id);
+		manager = us == null ? null : us.getManager();
+		status = us != null && super.getRequest().getPrincipal().hasRole(manager);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -46,9 +50,12 @@ public class ManagerUserStoryShowService extends AbstractService<Manager, UserSt
 		assert object != null;
 
 		Dataset dataset;
+		SelectChoices choices;
+		choices = SelectChoices.from(UsPriority.class, object.getPriority());
 
-		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "link", "draft-mode");
-
+		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "link", "draft-mode", "priority");
+		dataset.put("priority", choices.getSelected().getKey());
+		dataset.put("priorities", choices);
 		super.getResponse().addData(dataset);
 	}
 

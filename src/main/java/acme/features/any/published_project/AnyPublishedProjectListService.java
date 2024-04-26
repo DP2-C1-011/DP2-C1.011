@@ -1,21 +1,21 @@
 
-package acme.features.manager.project;
+package acme.features.any.published_project;
 
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.accounts.Any;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.project.Project;
-import acme.roles.Manager;
 
 @Service
-public class ManagerProjectListService extends AbstractService<Manager, Project> {
+public class AnyPublishedProjectListService extends AbstractService<Any, Project> {
 
 	@Autowired
-	ManagerProjectRepository mpr;
+	AnyPublishedProjectRepository mpr;
 
 
 	@Override
@@ -25,11 +25,8 @@ public class ManagerProjectListService extends AbstractService<Manager, Project>
 
 	@Override
 	public void load() {
-		//Si la persona tiene rol de manager se traeran todos los proyectos asociados a su id
 		Collection<Project> objects;
-		int managerId;
-		managerId = super.getRequest().getPrincipal().getActiveRoleId();
-		objects = this.mpr.findProjectByManagerId(managerId);
+		objects = this.mpr.findAllPublishedProjects();
 
 		super.getBuffer().addData(objects);
 	}

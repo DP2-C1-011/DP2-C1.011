@@ -21,6 +21,7 @@ master.menu.any = Cualquiera
 master.menu.any.training-modules = Módulos de Entrenamiento Publicados
 master.menu.any.projects = Proyectos publicados
 master.menu.any.contracts = Contratos publicados
+master.menu.any.claim = Reclamaciones
 
 # master.menu.anonymous #######################################################
 

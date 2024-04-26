@@ -81,5 +81,4 @@ master.menu.manager.projects = Projects
 # master.menu.sponsor ####################################################
 master.menu.sponsor = Sponsor
 master.menu.sponsor.sponsorship = Sponsorships
-master.menu.sponsor.invoice = Invoices
 master.menu.sponsor.dashboard = Sponsor Dashboard

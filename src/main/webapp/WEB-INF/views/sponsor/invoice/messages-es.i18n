@@ -1,27 +1,27 @@
-developer.training-session.form.title = Detalles Sesión de Entrenamiento
-developer.training-session.list.title = Listado Sesiones de Entrenamiento
+sponsor.invoice.form.title = Detalles de recibos
+sponsor.invoice.list.title = Listado de recibos
 
-developer.training-session.form.label.code = Código
-developer.training-session.form.label.start-moment = Momento Inicio
-developer.training-session.form.label.finish-moment = Momento Fin
-developer.training-session.form.label.location = Localización
-developer.training-session.form.label.instructor = Instructor
-developer.training-session.form.label.contact-email = Email de Contacto
-developer.training-session.form.label.optional-link = Link Opcional
-developer.training-session.form.label.draft-mode = Draft mode
+sponsor.invoice.form.label.code = Código
+sponsor.invoice.form.label.registration-date = Fecha de registro
+sponsor.invoice.form.label.due-date = Fecha de entrega
+sponsor.invoice.form.label.quantity = Valor
+sponsor.invoice.form.label.tax = Impuesto
+sponsor.invoice.form.label.optional-link = Enlace informativo
+sponsor.invoice.form.label.draft-mode = Modo borrador
 
-developer.training-session.list.label.code = Código
-developer.training-session.list.label.instructor = Instructor
-developer.training-session.list.label.start-moment = Momento Inicio
+sponsor.invoice.list.label.code = Código
+sponsor.invoice.list.label.tax = Impuesto
+sponsor.invoice.list.label.registration-date = Fecha de registro
+sponsor.invoice.list.label.due-date = Fecha de entrega
 
-developer.training-session.list.button.create = Crear
-developer.training-session.form.button.create = Crear
-developer.training-session.form.button.delete = Eliminar
-developer.training-session.form.button.update = Actualizar
-developer.training-session.form.button.publish = Publicar
+sponsor.invoice.list.button.create = Crear
+sponsor.invoice.form.button.create = Crear
+sponsor.invoice.form.button.delete = Borrar
+sponsor.invoice.form.button.update = Actualizar
+sponsor.invoice.form.button.publish = Publicar
 
-developer.training-session.form.error.duplicateCode = Otra Sesión de Entrenamiento tiene este código
-developer.training-session.form.error.startBeforeCreate = La Sesión de Entrenamiento debe comenzar tras la creación del Módulo de Entrenamiento
-developer.training-session.form.error.finishBeforeStart = El momento de fin debe ser posterior al momento de inicio
-developer.training-session.form.error.periodTooShort = El momento de fin debe ser al menos una semana posterior al momento de inicio
-developer.training-session.form.error.draftMode = La Sesión de Entrenamiento debe quedarse en Draft Mode
+sponsor.invoice.form.error.duplicateCode = Otro recibo ya tiene este código
+sponsor.invoice.form.error.startBeforeCreate = El Recibo debe comenzar tras la creación del patrocinio correspondiente
+sponsor.invoice.form.error.finishBeforeStart = La fecha de entrega debe ser después de la de registro
+sponsor.invoice.form.error.periodTooShort = La fecha de entrega debe ser al menos un mes después de la de registro
+sponsor.invoice.form.error.draftMode = El recibo debe mantenerse en modo borrador

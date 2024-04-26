@@ -5,7 +5,10 @@
 
 <acme:list>
 	<acme:list-column code="sponsor.sponsorship.list.label.code" path="code" width="10%"/>
-	<acme:list-column code="sponsor.sponsorship.list.label.details" path="details" width="10%"/>
+	<acme:list-column code="sponsor.sponsorship.list.label.amount" path="amount" width="10%"/>
+	<acme:list-column code="sponsor.sponsorship.list.label.email" path="email" width="10%"/>
+	<acme:list-column code="sponsor.sponsorship.list.label.link" path="link" width="10%"/>
+	
 </acme:list>
 
 <acme:button test = "${showCreate}" code="sponsor.sponsorship.list.button.create" action="/sponsor/sponsorship/create"/>

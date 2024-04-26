@@ -1,27 +1,27 @@
-developer.training-session.form.title = Training Session Details
-developer.training-session.list.title = Training Session List
+sponsor.invoice.form.title = Invoice Details
+sponsor.invoice.list.title = Invoice List
 
-developer.training-session.form.label.code = Code
-developer.training-session.form.label.start-moment = Start Moment
-developer.training-session.form.label.finish-moment = Finish Moment
-developer.training-session.form.label.location = Location
-developer.training-session.form.label.instructor = Instructor
-developer.training-session.form.label.contact-email = Contact Email
-developer.training-session.form.label.optional-link = Optional Link
-developer.training-session.form.label.draft-mode = Draft mode
+sponsor.invoice.form.label.code = Code
+sponsor.invoice.form.label.registration-date = Registration Date
+sponsor.invoice.form.label.due-date = Due Date
+sponsor.invoice.form.label.quantity = Quantity
+sponsor.invoice.form.label.tax = Tax
+sponsor.invoice.form.label.optional-link = Optional Link
+sponsor.invoice.form.label.draft-mode = Draft mode
 
-developer.training-session.list.label.code = Code
-developer.training-session.list.label.instructor = Instructor
-developer.training-session.list.label.start-moment = Start Moment
+sponsor.invoice.list.label.code = Code
+sponsor.invoice.list.label.tax = Tax
+sponsor.invoice.list.label.registration-date = Registration Date
+sponsor.invoice.list.label.due-date = Due Date
 
-developer.training-session.list.button.create = Create
-developer.training-session.form.button.create = Create
-developer.training-session.form.button.delete = Delete
-developer.training-session.form.button.update = Update
-developer.training-session.form.button.publish = Publish
+sponsor.invoice.list.button.create = Create
+sponsor.invoice.form.button.create = Create
+sponsor.invoice.form.button.delete = Delete
+sponsor.invoice.form.button.update = Update
+sponsor.invoice.form.button.publish = Publish
 
-developer.training-session.form.error.duplicateCode = Another Training Session has this code
-developer.training-session.form.error.startBeforeCreate = The Training Session must start after the Training Module's creation
-developer.training-session.form.error.finishBeforeStart = FinishMoment must be after StartMoment
-developer.training-session.form.error.periodTooShort = FinishMoment must be at least a week after StartMoment
-developer.training-session.form.error.draftMode = Training Session must stay in Draft Mode
+sponsor.invoice.form.error.duplicateCode = Another Invoice has this code
+sponsor.invoice.form.error.startBeforeCreate = The Invoice must start after its Sponsorship's creation
+sponsor.invoice.form.error.finishBeforeStart = Due Date must be after Registration Date
+sponsor.invoice.form.error.periodTooShort = Due Date must be at least a month after Registration Date
+sponsor.invoice.form.error.draftMode = Invoice must stay in Draft Mode

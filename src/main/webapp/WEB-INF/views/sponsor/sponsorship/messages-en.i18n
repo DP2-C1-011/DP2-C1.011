@@ -20,7 +20,9 @@ sponsor.sponsorship.form.button.update = Update
 sponsor.sponsorship.form.button.publish = Publish
 
 sponsor.sponsorship.list.label.code = Code
-sponsor.sponsorship.list.label.details = Details
+sponsor.sponsorship.list.label.amount = Amount
+sponsor.sponsorship.list.label.email = Email
+sponsor.sponsorship.list.label.link = Link
 
 sponsor.sponsorship.form.error.invoice-amount = Sponsorships can't be published until the total value of all Invoices equates to the Sponsorship's total value
 sponsor.sponsorship.form.error.draftMode = Current Sponsorship must stay in Draft Mode

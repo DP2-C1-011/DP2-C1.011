@@ -50,12 +50,12 @@ public class SponsorInvoiceListService extends AbstractService<Sponsor, Invoice>
 	public void unbind(final Collection<Invoice> objects) {
 		assert objects != null;
 		int sponsorshipId;
-		Sponsorship tm;
+		Sponsorship sp;
 		final boolean showCreate;
 
 		sponsorshipId = super.getRequest().getData("sponsorshipId", int.class);
-		tm = this.repository.findOneSponsorshipById(sponsorshipId);
-		showCreate = tm.getFinancial() && super.getRequest().getPrincipal().hasRole(Sponsor.class);
+		sp = this.repository.findOneSponsorshipById(sponsorshipId);
+		showCreate = sp.getDraftMode() && super.getRequest().getPrincipal().hasRole(Sponsor.class);
 
 		super.getResponse().addGlobal("sponsorshipId", sponsorshipId);
 		super.getResponse().addGlobal("showCreate", showCreate);

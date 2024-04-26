@@ -50,7 +50,7 @@ public class ClientDashboardShowService extends AbstractService<Client, ClientDa
 		Integer progressLogsCompletenessBetween50And75;
 		Integer progressLogsCompletenessAbove75;
 
-		//averageContractBudget = this.repository.averageBudgetOfContractsPerClient(clientId);
+		averageContractBudget = this.repository.averageBudgetOfContractsPerClient(clientId);
 		//maxContractBudget = this.repository.maximumBudgetOfContractsPerClient(clientId);
 		//minContractBudget = this.repository.minimumBudgetOfContractsPerClient(clientId);
 		//deviationContractBudget = this.repository.deviationBudgetOfContractsPerClient(averageContractBudget, clientId);
@@ -64,14 +64,21 @@ public class ClientDashboardShowService extends AbstractService<Client, ClientDa
 		String systemCurrency = this.systemRepository.getSystemConfiguration().get(0).getSystemCurrency();
 
 		Collection<Contract> contracts = this.repository.findManyContractsByClientId(clientId);
-		averageContractBudget = contracts.stream().map(c -> c.getSystemCurrencyBudget().getAmount()).mapToDouble(Double::doubleValue).average().getAsDouble();
+		//averageContractBudget = contracts.stream().map(c -> c.getSystemCurrencyBudget().getAmount()).mapToDouble(Double::doubleValue).average().orElse(0);
 		double total = 0.;
-		for (Contract c : contracts)
-			total += (c.getSystemCurrencyBudget().getAmount() - averageContractBudget) * (c.getSystemCurrencyBudget().getAmount() - averageContractBudget);
-		deviationContractBudget = Math.sqrt(total / contracts.size());
+		if (contracts.size() == 0) {
+			deviationContractBudget = 0.;
+			maxContractBudget = 0.;
+			minContractBudget = 0.;
+			averageContractBudget = 0.;
+		} else {
+			for (Contract c : contracts)
+				total += (c.getSystemCurrencyBudget().getAmount() - averageContractBudget) * (c.getSystemCurrencyBudget().getAmount() - averageContractBudget);
+			deviationContractBudget = Math.sqrt(total / contracts.size());
 
-		maxContractBudget = contracts.stream().map(c -> c.getSystemCurrencyBudget().getAmount()).max(Double::compare).get();
-		minContractBudget = contracts.stream().map(c -> c.getSystemCurrencyBudget().getAmount()).min(Double::compare).get();
+			maxContractBudget = contracts.stream().map(c -> c.getSystemCurrencyBudget().getAmount()).filter(c -> c != null).max(Double::compare).orElse(0.);
+			minContractBudget = contracts.stream().map(c -> c.getSystemCurrencyBudget().getAmount()).filter(c -> c != null).min(Double::compare).orElse(0.);
+		}
 
 		Money averageMoney = new Money();
 		averageMoney.setAmount(averageContractBudget);

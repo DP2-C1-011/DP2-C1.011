@@ -19,6 +19,7 @@ master.menu.sign-out = Sign out
 
 master.menu.any = Any
 master.menu.any.training-modules = Published Training Modules
+master.menu.any.contracts = Published Contracts
 
 # master.menu.anonymous #######################################################
 
@@ -41,6 +42,7 @@ master.menu.client = Client
 master.menu.client.contracts = Contracts
 master.menu.client.progressLogs = Progress logs
 master.menu.client.dashboard = Dashboard
+master.menu.client.participatesIn = Participates In
 
 # master.menu.provider ########################################################
 

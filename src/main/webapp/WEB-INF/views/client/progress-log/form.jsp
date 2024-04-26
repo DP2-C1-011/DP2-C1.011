@@ -9,7 +9,6 @@
 	<acme:input-textarea code="client.progressLog.form.label.comment" path="comment"/>
 	<acme:input-moment code="client.progressLog.form.label.registartionMoment" path="registrationMoment"/>
 	<acme:input-textbox code="client.progressLog.form.label.responsible" path="responsible"/>
-	<acme:input-checkbox code="client.progressLog.form.label.draftMode" path="draftMode" readonly="true"/>
 	
 	
 	<jstl:choose>

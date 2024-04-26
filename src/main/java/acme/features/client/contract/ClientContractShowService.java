@@ -76,7 +76,7 @@ public class ClientContractShowService extends AbstractService<Client, Contract>
 			projects = this.ccr.findAllProjects();
 		else {
 			clientId = super.getRequest().getPrincipal().getActiveRoleId();
-			projects = this.ccr.findManyProjectsByClientId(clientId);
+			projects = this.ccr.findAllPublishedProjects();
 		}
 		choices = SelectChoices.from(projects, "code", object.getProject());
 

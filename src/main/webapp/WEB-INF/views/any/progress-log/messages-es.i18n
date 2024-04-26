@@ -1,0 +1,12 @@
+any.progress-log.form.title = Detalles de los registros de progreso
+any.progress-log.list.title = Lista de los registros de progreso
+
+any.progressLog.form.label.recordId = RegistroId:
+any.progressLog.form.label.completeness = Completitud:
+any.progressLog.form.label.comment = Comentario:
+any.progressLog.form.label.registartionMoment = Momento de registro:
+any.progressLog.form.label.responsible = Responsable:
+any.progressLog.form.label.draftMode = Modo borrador:
+
+any.progressLog.list.label.recordId = RegistroId
+any.progressLog.list.label.completeness = Completitud

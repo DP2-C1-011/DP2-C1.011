@@ -2,12 +2,14 @@
 package acme.features.client.contract;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.components.MoneyService;
@@ -59,12 +61,14 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 
 		int projectId;
 		Project project;
-
+		Date date;
+		date = MomentHelper.getCurrentMoment();
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findOneProjectById(projectId);
 
 		super.bind(object, "code", "instantiationMoment", "provider", "customer", "goals", "budget");
 		object.setProject(project);
+		object.setInstantiationMoment(date);
 	}
 
 	@Override
@@ -72,18 +76,22 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 		assert object != null;
 
 		if (!super.getBuffer().getErrors().hasErrors("budget")) {
+			Double budget;
+			budget = object.getBudget().getAmount();
+			super.state(budget > 0, "budget", "client.contract.error.budget-negative");
 			Project project;
 
 			project = object.getProject();
 			Double objectAmount;
 			Boolean currencyState = this.moneyService.checkContains(object.getBudget().getCurrency());
 			super.state(currencyState, "budget", "client.contract.form.error.budget.invalid-currency");
-			Double projectCost = this.moneyService.computeMoneyExchange(project.getCost(), "EUR").getTarget().getAmount();
-			if (currencyState) {
-				objectAmount = this.moneyService.computeMoneyExchange(object.getBudget(), "EUR").getTarget().getAmount();
-				super.state(projectCost >= objectAmount, "budget", "client.contract.form.error.above-cost");
+			if (project != null) {
+				Double projectCost = this.moneyService.computeMoneyExchange(project.getCost(), "EUR").getTarget().getAmount();
+				if (currencyState) {
+					objectAmount = this.moneyService.computeMoneyExchange(object.getBudget(), "EUR").getTarget().getAmount();
+					super.state(projectCost >= objectAmount, "budget", "client.contract.form.error.above-cost");
+				}
 			}
-
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
@@ -113,13 +121,11 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 	public void unbind(final Contract object) {
 		assert object != null;
 
-		int clientId;
 		Collection<Project> projects;
 		SelectChoices choices;
 		Dataset dataset;
 
-		clientId = super.getRequest().getPrincipal().getActiveRoleId();
-		projects = this.repository.findManyProjectsByClientId(clientId);
+		projects = this.repository.findAllPublishedProjects();
 		choices = SelectChoices.from(projects, "code", object.getProject());
 
 		dataset = super.unbind(object, "code", "instantiationMoment", "provider", "customer", "goals", "budget", "draftMode", "systemCurrencyBudget");

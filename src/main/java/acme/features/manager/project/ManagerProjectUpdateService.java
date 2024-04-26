@@ -6,8 +6,9 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.components.MoneyService;
 import acme.entities.project.Project;
-import acme.features.manager.user_story.ManagerUserStoryRepository;
+import acme.features.manager.userstory.ManagerUserStoryRepository;
 import acme.roles.Manager;
 
 @Service
@@ -20,6 +21,9 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 
 	@Autowired
 	ManagerUserStoryRepository			mur;
+
+	@Autowired
+	MoneyService						moneyService;
 
 
 	//Lo que hace authorise es traer la id del projecto a publicar, si este existe y tiene manager se podra publicar
@@ -54,20 +58,20 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 	@Override
 	public void bind(final Project object) {
 		assert object != null;
-		super.bind(object, "code", "title", "abstracto", "fatal-error", "cost", "link");
+		super.bind(object, "code", "title", "abstracto", "fatalError", "cost", "link");
 	}
 
 	@Override
 	public void validate(final Project object) {
 		assert object != null;
-		if (!super.getBuffer().getErrors().hasErrors("draft-mode"))
-			super.state(object.getDraftMode(), "draft-mode", "manager.project.form.error.draft-mode");
+		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
+			super.state(object.getDraftMode(), "draftMode", "manager.project.form.error.draft-mode");
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Project existing;
 
 			existing = this.repository.findOneProjectByCode(object.getCode());
-			super.state(existing == null, "code", "manager.project.form.error.duplicated");
+			super.state(existing == null || existing.equals(object), "code", "manager.project.form.error.duplicated");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("cost"))
@@ -77,7 +81,6 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 	@Override
 	public void perform(final Project object) {
 		assert object != null;
-
 		this.repository.save(object);
 	}
 
@@ -85,7 +88,7 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 	public void unbind(final Project object) {
 		assert object != null;
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "title", "abstracto", "fatal-error", "cost", "link", "draft-mode");
+		dataset = super.unbind(object, "code", "title", "abstracto", "fatalError", "cost", "link", "draft-mode");
 		super.getResponse().addData(dataset);
 	}
 

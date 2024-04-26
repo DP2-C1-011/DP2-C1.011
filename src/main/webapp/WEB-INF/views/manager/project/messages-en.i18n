@@ -8,12 +8,14 @@ manager.project.form.label.fatal-error = Fatal Error:
 manager.project.form.label.cost = Cost: 
 manager.project.form.label.link = Link:
 manager.project.form.label.draft-mode = Draft mode:
+manager.project.form.label.systemCurrencyBudget = System currency cost:
+
 
 manager.project.form.button.update = Update
 manager.project.form.button.userStories = User Stories
-manager.project.form.button.apply = Add User Story
 manager.project.form.button.publish = Publish
 manager.project.form.button.delete = Delete
+manager.project.form.button.create = Create
 
 manager.project.list.label.code = Code
 manager.project.list.label.title = Title
@@ -23,3 +25,6 @@ manager.project.form.error.negative-salary = Cost must be higher than 0
 manager.project.form.error.duplicated = This code exists, please change it.
 manager.project.form.error.user-story = Project must have user stories
 manager.project.form.error.draft-mode = Project must stay in draft mode
+manager.project.form.error.publish = Project must have all his user stories published
+
+manager.project.form.button.list-user-stories= Project-User stories

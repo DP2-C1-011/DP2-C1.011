@@ -19,6 +19,9 @@ master.menu.sign-out = Sign out
 
 master.menu.any = Any
 master.menu.any.training-modules = Published Training Modules
+master.menu.any.projects = Published Projects 
+
+master.menu.any.contracts = Published Contracts
 
 # master.menu.anonymous #######################################################
 
@@ -30,6 +33,7 @@ master.menu.anonymous.favourite-link = Favourite link
 master.menu.administrator = Administrator
 master.menu.administrator.dashboard = Dashboard
 master.menu.administrator.user-accounts = User accounts
+master.menu.administrator.banner = Banners
 master.menu.administrator.populate-initial = Populate DB (initial)
 master.menu.administrator.populate-sample = Populate DB (samples)
 master.menu.administrator.shut-down = Shut down
@@ -40,6 +44,7 @@ master.menu.client = Client
 master.menu.client.contracts = Contracts
 master.menu.client.progressLogs = Progress logs
 master.menu.client.dashboard = Dashboard
+master.menu.client.participatesIn = Participates In
 
 # master.menu.provider ########################################################
 
@@ -63,8 +68,13 @@ master.menu.user-account.developer = Developer data
 master.menu.user-account.become-developer = Become a developer
 master.menu.user-account.client = Client data
 master.menu.user-account.become-client = Become a client
+<<<<<<< HEAD
 master.menu.user-account.sponsor = Sponsor data
 master.menu.user-account.become-sponsor = Become a sponsor
+=======
+master.menu.user-account.manager = Manager data
+master.menu.user-account.become-manager = Become a manager
+>>>>>>> refs/remotes/origin/master
 
 # master.menu.developer ####################################################
 master.menu.developer = Developer
@@ -77,8 +87,20 @@ master.menu.manager = Manager
 master.menu.manager.projects = Projects
 master.menu.manager.userStories = Users Stories
 master.menu.manager.projects = Projects
+<<<<<<< HEAD
 
 # master.menu.sponsor ####################################################
 master.menu.sponsor = Sponsor
 master.menu.sponsor.sponsorship = Sponsorships
 master.menu.sponsor.dashboard = Sponsor Dashboard
+=======
+master.menu.manager.dashboard = Dashboard
+master.menu.manager.user-story = User Stories
+
+
+# master.menu.auditor ####################################################
+
+master.menu.auditor = Auditor
+master.menu.auditor.code-audits = Code Audits
+master.menu.auditor.audit-records =  Audit Records
+>>>>>>> refs/remotes/origin/master

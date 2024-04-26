@@ -20,7 +20,6 @@ public class ManagerProjectListService extends AbstractService<Manager, Project>
 
 	@Override
 	public void authorise() {
-		//TODO  creo que aqui tengo que comprobar que la persona tiene rol de manager
 		super.getResponse().setAuthorised(true);
 	}
 

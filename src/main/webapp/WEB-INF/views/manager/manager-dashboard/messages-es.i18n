@@ -1,0 +1,14 @@
+manager.manager-dashboard.form.title = Panel de indicadores del manager
+
+manager.dashboard.form.title.general-indicators = Indicadores generales
+manager.dashboard.form.title.progressLogs-completeness = Completitud de registros de progreso
+
+manager.dashboard.form.label.average-project-cost =  Media de los presupuestos de los contratos
+manager.dashboard.form.label.max-project-cost =  Maximo presupuesto de los contratos
+manager.dashboard.form.label.min-project-cost =  Mínimo presupuesto de los contratos
+manager.dashboard.form.label.deviation-project-cost =  Desviación de los presupuestos de los contratos
+
+manager.dashboard.form.label.average-us-cost =  Media de los coste de las historias de usuario
+manager.dashboard.form.label.max-us-cost =  Maximo coste de las historias de usuario
+manager.dashboard.form.label.min-us-cost =  Mínimo coste de las historias de usuario
+manager.dashboard.form.label.deviation-us-cost =  Desviación de los costes de las historias de usuario

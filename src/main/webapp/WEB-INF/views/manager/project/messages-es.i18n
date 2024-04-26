@@ -8,12 +8,16 @@ manager.project.form.label.fatal-error = Error fatal:
 manager.project.form.label.cost = Coste: 
 manager.project.form.label.link = Enlace:
 manager.project.form.label.draft-mode = Modo borrador:
+manager.contract.form.label.systemCurrencyBudget = Coste en devisa del sistema:
+
 
 manager.project.form.button.update = Actualizar
 manager.project.form.button.userStories = Historias de usuario
 manager.project.form.button.apply = Añadir Historia de usuario
 manager.project.form.button.publish = Publicar
 manager.project.form.button.delete = Borrar
+manager.project.form.button.create = Crear
+
 
 
 manager.project.list.label.code = Código
@@ -25,4 +29,9 @@ manager.project.form.error.negative-salary = El coste debe de ser superior a 0
 manager.project.form.error.duplicated = Este código ya existe, cambialo
 manager.project.form.error.user-story = El proyecto tiene que tener historias de usuario
 manager.project.form.error.draft-mode = El proyecto debe de estar en draft mode
+manager.project.form.error.publish = El proyecto debe de tener todas sus historias de usuario publicadas
+
+
+manager.project.form.button.add-user-stories=Añadir historias de usuario
+manager.project.form.button.list-user-stories= Proyecto-Historias de usuarios
 

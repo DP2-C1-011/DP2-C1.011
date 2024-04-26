@@ -1,0 +1,21 @@
+any.contract.form.title = Contracts's details
+any.contract.list.title = Contracts's list
+
+any.contract.form.label.code = Code:
+any.contract.form.label.project = Project:
+any.contract.form.label.instantiationMoment = Instantiation moment:
+any.contract.form.label.provider = Provider:
+any.contract.form.label.customer = Customer:
+any.contract.form.label.goals = Goals: 
+any.contract.form.label.budget = Budget:
+any.contract.form.label.draftMode = Draft mode:
+any.contract.form.label.systemCurrencyBudget = System currency budget:
+
+any.contract.list.label.code = Code
+any.contract.list.label.instantiationMoment = Instantiation moment
+
+any.contract.form.button.progressLogs = Progress Logs
+any.contract.form.button.update = Update
+any.contract.form.button.delete = Delete
+any.contract.form.button.publish = Publish
+any.contract.form.button.create = Create

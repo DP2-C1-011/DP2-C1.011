@@ -1,0 +1,16 @@
+any.project.form.title = Projects's detail
+any.project.list.title = Projects's list
+
+any.project.form.label.code = Code:
+any.project.form.label.title = Title:
+any.project.form.label.abstracto = Abstract:
+any.project.form.label.fatal-error = Fatal Error:
+any.project.form.label.cost = Cost: 
+any.project.form.label.link = Link:
+any.project.form.label.draft-mode = Draft mode:
+any.project.form.label.systemCurrencyBudget = System currency cost:
+
+
+any.project.list.label.code = Code
+any.project.list.label.title = Title
+any.project.list.button.create = Create new project

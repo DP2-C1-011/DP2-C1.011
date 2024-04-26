@@ -11,6 +11,7 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.roles.Manager;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -45,7 +46,10 @@ public class UserStory extends AbstractEntity {
 	Boolean						draftMode;
 
 	@NotNull
+	UsPriority					priority;
+
+	@NotNull
 	@ManyToOne(optional = false)
-	Project						project;
+	Manager						manager;
 
 }

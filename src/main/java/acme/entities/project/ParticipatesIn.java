@@ -26,6 +26,8 @@ public class ParticipatesIn extends AbstractEntity {
 
 	// Relationships ----------------------------------------------------------
 
+	private String				code;
+
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)

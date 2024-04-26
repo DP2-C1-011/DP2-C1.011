@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.components.MoneyService;
 import acme.entities.project.Project;
 import acme.roles.Manager;
 
@@ -15,7 +16,9 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 	//Poner validación de que coste es mayor que 0
 	//Poner validación de que el código del proyecto es unico
 	@Autowired
-	ManagerProjectRepository mpr;
+	ManagerProjectRepository	mpr;
+	@Autowired
+	MoneyService				moneyService;
 
 
 	@Override
@@ -41,7 +44,7 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 	@Override
 	public void bind(final Project object) {
 		assert object != null;
-		super.bind(object, "code", "title", "abstracto", "fatal-error", "cost", "link");
+		super.bind(object, "code", "title", "abstracto", "fatalError", "cost", "link");
 	}
 
 	@Override
@@ -54,15 +57,22 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 			existing = this.mpr.findOneProjectByCode(object.getCode());
 			super.state(existing == null, "code", "manager.project.form.error.duplicated");
 		}
+		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
+			super.state(object.getDraftMode(), "draftMode", "manager.project.form.error.draft-mode");
 
 		if (!super.getBuffer().getErrors().hasErrors("cost"))
 			super.state(object.getCost().getAmount() > 0, "cost", "manager.project.form.error.negative-salary");
+
+		if (!super.getBuffer().getErrors().hasErrors("cost")) {
+			Boolean currencyState = this.moneyService.checkContains(object.getCost().getCurrency());
+			super.state(currencyState, "cost", "client.contract.form.error.budget.invalid-currency");
+
+		}
 	}
 
 	@Override
 	public void perform(final Project object) {
 		assert object != null;
-
 		this.mpr.save(object);
 	}
 
@@ -72,7 +82,7 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 		assert object != null;
 
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "title", "abstracto", "fatal-error", "cost", "link", "draft-mode");
+		dataset = super.unbind(object, "code", "title", "abstracto", "fatalError", "cost", "link", "draft-mode");
 		super.getResponse().addData(dataset);
 	}
 

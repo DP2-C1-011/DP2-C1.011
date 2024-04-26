@@ -1,6 +1,0 @@
-key,code,start,end,duration,amount,financial,optionalEmail,optionalLink,key:sponsor
-sponsorship-01,A-1,2010/06/12 17:30,2010/07/13 17:30,31,"EUR 1,000.00",true,lili@solarlinxinnovations.net,http://www.solarlinxinnovations.net,sponsor-01
-sponsorship-02,A-2,2019/08/15 12:00,2019/10/21 12:00,67,"EUR 1,500.00",true,lili@solarlinxinnovations.net,http://www.solarlinxinnovations.net,sponsor-01
-sponsorship-03,A-3,2021/01/23 15:45,2021/03/20 15:45,56,"EUR 1,000.00",true,lili@solarlinxinnovations.net,http://www.solarlinxinnovations.net,sponsor-01
-sponsorship-04,A-4,2016/09/11 17:30,2016/10/20 17:30,39,"EUR 1,000.00",true,pepe@techgrovesolutions.com,http://www.techgrovesolutions.com,sponsor-02
-sponsorship-05,A-5,2023/02/21 18:59,2023/04/8 18:59,46,"EUR 1,000.00",true,pepe@techgrovesolutions.com,http://www.techgrovesolutions.com,sponsor-02

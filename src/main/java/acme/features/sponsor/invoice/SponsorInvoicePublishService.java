@@ -64,7 +64,7 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 	public void unbind(final Invoice object) {
 		assert object != null;
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "registrationDate", "dueDate", "quantity", "tax", "draftMode", "draftMode");
+		dataset = super.unbind(object, "code", "registrationDate", "dueDate", "quantity", "tax", "optionalLink", "draftMode");
 		super.getResponse().addData(dataset);
 	}
 

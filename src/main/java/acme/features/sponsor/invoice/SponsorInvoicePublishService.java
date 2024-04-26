@@ -19,14 +19,14 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 	@Override
 	public void authorise() {
 		boolean status;
-		int sessionId;
-		Invoice session;
+		int invoiceId;
+		Invoice invoice;
 		Sponsor developer;
 
-		sessionId = super.getRequest().getData("id", int.class);
-		session = this.repository.findInvoiceById(sessionId);
-		developer = session == null ? null : session.getSponsorship().getSponsor();
-		status = session != null && session.getDraftMode() && super.getRequest().getPrincipal().hasRole(developer);
+		invoiceId = super.getRequest().getData("id", int.class);
+		invoice = this.repository.findInvoiceById(invoiceId);
+		developer = invoice == null ? null : invoice.getSponsorship().getSponsor();
+		status = invoice != null && invoice.getDraftMode() && super.getRequest().getPrincipal().hasRole(developer);
 
 		super.getResponse().setAuthorised(status);
 	}

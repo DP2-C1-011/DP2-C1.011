@@ -66,12 +66,9 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 			super.state(existing == null, "code", "sponsor.invoice.form.error.duplicateCode");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("registrationDate"))
-			super.state(MomentHelper.isAfter(object.getRegistrationDate(), object.getSponsorship().getStartDate()), "start", "sponsor.invoice.form.error.startBeforeCreate");
-
-		if (!super.getBuffer().getErrors().hasErrors("registrationDate") && !super.getBuffer().getErrors().hasErrors("dueDate")) {
-			super.state(MomentHelper.isAfter(object.getDueDate(), object.getRegistrationDate()), "dueDate", "sponsor.invoice.form.error.finishBeforeStart");
-			super.state(MomentHelper.isAfter(object.getDueDate(), MomentHelper.deltaFromMoment(object.getRegistrationDate(), 30, ChronoUnit.DAYS)), "dueDate", "sponsor.invoice.form.error.periodTooShort");
+		if (!super.getBuffer().getErrors().hasErrors("*") && !super.getBuffer().getErrors().hasErrors("dueDate")) {
+			super.state(MomentHelper.isAfter(object.getDueDate(), object.getRegistrationDate()), "*", "sponsor.invoice.form.error.finishBeforeStart");
+			super.state(MomentHelper.isAfter(object.getDueDate(), MomentHelper.deltaFromMoment(object.getRegistrationDate(), 30, ChronoUnit.DAYS)), "*", "sponsor.invoice.form.error.periodTooShort");
 		}
 
 	}

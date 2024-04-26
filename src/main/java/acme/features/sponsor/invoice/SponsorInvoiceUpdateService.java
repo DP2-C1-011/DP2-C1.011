@@ -58,9 +58,6 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
 			super.state(object.getDraftMode(), "draftMode", "sponsor.invoice.form.error.draftMode");
 
-		if (!super.getBuffer().getErrors().hasErrors("registrationDate"))
-			super.state(MomentHelper.isAfter(object.getRegistrationDate(), object.getSponsorship().getStartDate()), "registrationDate", "sponsor.invoice.form.error.registrationDateBeforeCreate");
-
 		if (!super.getBuffer().getErrors().hasErrors("registrationDate") && !super.getBuffer().getErrors().hasErrors("dueDate")) {
 			super.state(MomentHelper.isAfter(object.getDueDate(), object.getRegistrationDate()), "dueDate", "sponsor.invoice.form.error.finishBeforeStart");
 			super.state(MomentHelper.isAfter(object.getDueDate(), MomentHelper.deltaFromMoment(object.getRegistrationDate(), 30, ChronoUnit.DAYS)), "dueDate", "sponsor.invoice.form.error.periodTooShort");

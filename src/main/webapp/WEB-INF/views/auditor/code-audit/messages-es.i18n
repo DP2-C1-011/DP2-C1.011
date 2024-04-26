@@ -1,0 +1,24 @@
+auditor.code-audit.form.title = Detalles auditoría
+auditor.code-audit.list.title = Listado de auditorías
+
+
+auditor.audit.form.error.duplicateCode = El código ya existe
+auditor.code-audit.list.label.code = Código
+auditor.code-audit.list.label.corrective-actions = Acciones correctivas
+auditor.code-audit.form.button.audit-records = Registros de auditorías
+
+auditor.code-audit.form.label.code = Código
+auditor.code-audit.form.label.execution-date = 	Fecha de ejecución
+auditor.code-audit.form.label.code-audit-type = Tipo de auditoría de código
+auditor.code-audit.form.label.corrective-actions = Acciones correctivas
+auditor.code-audit.form.label.optional-link = Link opcional
+auditor.code-audit.form.label.draft-mode = Modo borrador
+auditor.code-audit.form.label.project = Proyecto
+
+auditor.code-audit.list.button.create = Crear
+auditor.code-audit.form.button.create = Crear
+auditor.code-audit.form.button.delete = Borrar
+auditor.code-audit.form.button.update = Actualizar
+auditor.code-audit.form.button.publish = Publicar
+auditor.code-audit.error.codeAudit = Debe haber al menos un registro de auditoria
+auditor.code-audit.form.draftMode = Modo borrador

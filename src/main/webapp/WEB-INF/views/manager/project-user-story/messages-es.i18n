@@ -23,3 +23,4 @@ manager.project-user-story.form.title=Asignación
 
 
 manager.project.form.error.duplicated-user-story= Historia de usuario duplicada
+manager.projectUserStory.form.error.project = El proyecto ya esta publicado

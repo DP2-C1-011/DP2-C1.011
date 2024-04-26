@@ -30,6 +30,8 @@ manager.project.form.error.duplicated = Este código ya existe, cambialo
 manager.project.form.error.user-story = El proyecto tiene que tener historias de usuario
 manager.project.form.error.draft-mode = El proyecto debe de estar en draft mode
 manager.project.form.error.publish = El proyecto debe de tener todas sus historias de usuario publicadas
+manager.project.form.error.fatal = El proyecto no debe tener errores
+
 
 
 manager.project.form.button.add-user-stories=Añadir historias de usuario

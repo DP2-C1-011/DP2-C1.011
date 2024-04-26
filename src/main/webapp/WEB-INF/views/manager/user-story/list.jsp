@@ -7,5 +7,6 @@
 	<acme:list-column code="manager.user_story.list.label.title" path="title" width="20%"/>
 	<acme:list-column code="manager.user_story.list.label.description" path="description" width="20%"/>
 </acme:list>
-
+<jstl:if test="${_command == 'list-all'}">
 <acme:button test = "${showCreate}" code="manager.user-story.list.button.create" action="/manager/user-story/create"/>
+</jstl:if>	

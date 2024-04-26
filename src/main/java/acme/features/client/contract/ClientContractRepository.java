@@ -51,4 +51,7 @@ public interface ClientContractRepository extends AbstractRepository {
 	@Query("select sum(c.systemCurrencyBudget.amount) from Contract c where c.project.id = :projectId")
 	Double computeTotalBudgetsByProject(int projectId);
 
+	@Query("select p from Project p where p.draftMode = false")
+	Collection<Project> findAllPublishedProjects();
+
 }

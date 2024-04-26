@@ -2,12 +2,14 @@
 package acme.features.client.contract;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.components.MoneyService;
@@ -38,12 +40,13 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 	public void load() {
 		Contract object;
 		Client client;
-
+		Date date;
+		date = MomentHelper.getCurrentMoment();
 		client = this.repository.findOneClientById(super.getRequest().getPrincipal().getActiveRoleId());
 		object = new Contract();
 		object.setDraftMode(true);
 		object.setClient(client);
-
+		object.setInstantiationMoment(date);
 		super.getBuffer().addData(object);
 	}
 
@@ -57,7 +60,7 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findOneProjectById(projectId);
 
-		super.bind(object, "code", "instantiationMoment", "provider", "customer", "goals", "budget");
+		super.bind(object, "code", "provider", "customer", "goals", "budget");
 		object.setProject(project);
 	}
 
@@ -110,13 +113,11 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 	public void unbind(final Contract object) {
 		assert object != null;
 
-		int clientId;
 		Collection<Project> projects;
 		SelectChoices choices;
 		Dataset dataset;
 
-		clientId = super.getRequest().getPrincipal().getActiveRoleId();
-		projects = this.repository.findManyProjectsByClientId(clientId);
+		projects = this.repository.findAllPublishedProjects();
 		choices = SelectChoices.from(projects, "code", object.getProject());
 
 		dataset = super.unbind(object, "code", "instantiationMoment", "provider", "customer", "goals", "budget", "draftMode", "systemCurrencyBudget");

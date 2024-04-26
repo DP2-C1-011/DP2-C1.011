@@ -10,6 +10,7 @@ sponsor.invoice.form.label.optional-link = Optional Link
 sponsor.invoice.form.label.draft-mode = Draft mode
 
 sponsor.invoice.list.label.code = Code
+sponsor.invoice.list.label.quantity = Quantity
 sponsor.invoice.list.label.tax = Tax
 sponsor.invoice.list.label.registration-date = Registration Date
 sponsor.invoice.list.label.due-date = Due Date

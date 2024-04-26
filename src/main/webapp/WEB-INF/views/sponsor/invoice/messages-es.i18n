@@ -10,6 +10,7 @@ sponsor.invoice.form.label.optional-link = Enlace informativo
 sponsor.invoice.form.label.draft-mode = Modo borrador
 
 sponsor.invoice.list.label.code = Código
+sponsor.invoice.list.label.quantity = Cantidad
 sponsor.invoice.list.label.tax = Impuesto
 sponsor.invoice.list.label.registration-date = Fecha de registro
 sponsor.invoice.list.label.due-date = Fecha de entrega

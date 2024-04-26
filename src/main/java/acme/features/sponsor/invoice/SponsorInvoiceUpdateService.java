@@ -48,7 +48,7 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 	@Override
 	public void bind(final Invoice object) {
 		assert object != null;
-		super.bind(object, "code", "registrationDate", "dueDate", "quantity", "tax", "optionalLink", "draftMode");
+		super.bind(object, "code", "registrationDate", "dueDate", "quantity", "tax", "optionalLink");
 	}
 
 	@Override
@@ -74,7 +74,7 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 	public void unbind(final Invoice object) {
 		assert object != null;
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "registrationDate", "dueDate", "quantity", "tax", "optionalLink", "draftMode");
+		dataset = super.unbind(object, "code", "registrationDate", "dueDate", "quantity", "tax", "optionalLink");
 		super.getResponse().addData(dataset);
 	}
 }

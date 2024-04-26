@@ -1,6 +1,8 @@
 
 package acme.features.sponsor.sponsorship;
 
+import java.time.temporal.ChronoUnit;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -55,8 +57,10 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 			super.state(existing == null, "code", "sponsor.sponsorship.form.error.duplicateCode");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("endDate") && !super.getBuffer().getErrors().hasErrors("creationMoment") && object.getEndDate() != null)
+		if (!super.getBuffer().getErrors().hasErrors("endDate") && !super.getBuffer().getErrors().hasErrors("startDate") && object.getEndDate() != null) {
 			super.state(MomentHelper.isAfter(object.getEndDate(), object.getStartDate()), "endDate", "sponsor.sponsorship.form.error.finishBeforeStart");
+			super.state(MomentHelper.isAfter(object.getEndDate(), MomentHelper.deltaFromMoment(object.getStartDate(), 30, ChronoUnit.DAYS)), "endDate", "sponsor.sponsorship.form.error.periodTooShort");
+		}
 	}
 
 	@Override

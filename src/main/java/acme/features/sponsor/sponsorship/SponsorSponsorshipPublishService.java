@@ -1,10 +1,13 @@
 
 package acme.features.sponsor.sponsorship;
 
+import java.time.temporal.ChronoUnit;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.entities.sponsor.Sponsorship;
 import acme.roles.Sponsor;
@@ -55,10 +58,19 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 		sponsorshipId = super.getRequest().getData("id", int.class);
 
 		Double totalInvoices = this.repository.sumInvoicesBySponsorshipId(sponsorshipId);
+
+		if (totalInvoices == null)
+			totalInvoices = 0.;
+
 		Double totalSponsorship = this.repository.findSponsorshipAmountById(sponsorshipId);
 
-		if (!super.getBuffer().getErrors().hasErrors("totalAmount"))
-			super.state(totalSponsorship >= totalInvoices, "totalAmount", "sponsor.invoice.form.error.invoice-amount");
+		if (!super.getBuffer().getErrors().hasErrors("*"))
+			super.state(totalInvoices >= totalSponsorship, "*", "sponsor.sponsorship.form.error.invoice-amount");
+
+		if (!super.getBuffer().getErrors().hasErrors("endDate") && !super.getBuffer().getErrors().hasErrors("startDate") && object.getEndDate() != null) {
+			super.state(MomentHelper.isAfter(object.getEndDate(), object.getStartDate()), "endDate", "sponsor.sponsorship.form.error.finishBeforeStart");
+			super.state(MomentHelper.isAfter(object.getEndDate(), MomentHelper.deltaFromMoment(object.getStartDate(), 30, ChronoUnit.DAYS)), "endDate", "sponsor.sponsorship.form.error.periodTooShort");
+		}
 
 	}
 

@@ -7,10 +7,9 @@
 	<acme:input-textbox code="sponsor.invoice.form.label.code" path="code"/>	
 	<acme:input-moment code="sponsor.invoice.form.label.registration-date" path="registrationDate"/>
 	<acme:input-moment code="sponsor.invoice.form.label.due-date" path="dueDate"/>
-	<acme:input-textbox code="sponsor.invoice.form.label.quantity" path="quantity"/>
-	<acme:input-textbox code="sponsor.invoice.form.label.tax" path="tax"/>	
+	<acme:input-money code="sponsor.invoice.form.label.quantity" path="quantity"/>
+	<acme:input-double code="sponsor.invoice.form.label.tax" path="tax"/>	
 	<acme:input-url code="sponsor.invoice.form.label.optional-link" path="optionalLink"/>
-	<acme:input-checkbox code="sponsor.invoice.form.label.draft-mode" path="draftMode"/>	
 	
 	<jstl:choose>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">

@@ -8,59 +8,42 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.client.views.SelectChoices;
 import acme.entities.audit.AuditRecord;
-import acme.entities.audit.CodeAudit;
-import acme.entities.audit.Mark;
 import acme.roles.Auditor;
 
 @Service
 public class AuditorAuditRecordListService extends AbstractService<Auditor, AuditRecord> {
 
 	// Internal state ---------------------------------------------------------
+
 	@Autowired
-	private AuditorAuditRecordRepository repository;
+	protected AuditorAuditRecordRepository auditorAuditRecordRepository;
+
 
 	// AbstractService interface ----------------------------------------------
-
-
 	@Override
 	public void authorise() {
-		boolean status;
-		int masterId;
-		CodeAudit codeAudit;
-
-		masterId = super.getRequest().getData("masterId", int.class);
-		codeAudit = this.repository.findOneCodeAuditById(masterId);
-
-		status = codeAudit != null && super.getRequest().getPrincipal().hasRole(codeAudit.getAuditor());
-
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
 	public void load() {
-		Collection<AuditRecord> objects;
-		int masterId;
+		Collection<AuditRecord> object;
+		int codeAuditId;
 
-		masterId = super.getRequest().getData("masterId", int.class);
-		objects = this.repository.findManyAuditRecordsByMasterId(masterId);
+		codeAuditId = super.getRequest().getData("codeAuditId", int.class);
+		object = this.auditorAuditRecordRepository.findAllAuditRecordsByCodeAuditId(codeAuditId);
 
-		super.getBuffer().addData(objects);
+		super.getBuffer().addData(object);
 	}
 
 	@Override
 	public void unbind(final AuditRecord object) {
 		assert object != null;
 
-		SelectChoices choices;
 		Dataset dataset;
-
-		dataset = super.unbind(object, "code", "periodStart", "periodEnd", "mark", "optionalLink");
-
-		choices = SelectChoices.from(Mark.class, object.getMark());
-		dataset.put("marks", choices);
-
+		dataset = super.unbind(object, "code", "periodStart", "periodEnd", "mark");
+		dataset.put("draftMode", object.getDraftMode());
 		super.getResponse().addData(dataset);
 	}
 
@@ -68,16 +51,11 @@ public class AuditorAuditRecordListService extends AbstractService<Auditor, Audi
 	public void unbind(final Collection<AuditRecord> objects) {
 		assert objects != null;
 
-		int masterId;
-		CodeAudit codeAudit;
-		final boolean showCreate;
+		int codeAuditId;
 
-		masterId = super.getRequest().getData("masterId", int.class);
-		codeAudit = this.repository.findOneCodeAuditById(masterId);
-		showCreate = codeAudit.isDraftMode() && super.getRequest().getPrincipal().hasRole(codeAudit.getAuditor());
+		codeAuditId = super.getRequest().getData("codeAuditId", int.class);
 
-		super.getResponse().addGlobal("masterId", masterId);
-		super.getResponse().addGlobal("showCreate", showCreate);
+		super.getResponse().addGlobal("codeAuditId", codeAuditId);
 	}
 
 }

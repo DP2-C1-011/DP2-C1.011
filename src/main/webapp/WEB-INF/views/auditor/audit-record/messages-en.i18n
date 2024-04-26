@@ -6,12 +6,20 @@ auditor.audit-record.form.label.period-start = Period Start
 auditor.audit-record.form.label.period-end = Period End
 auditor.audit-record.form.label.mark = Mark
 auditor.audit-record.form.label.optional-link = Optional Link
+auditor.audit-record.form.label.draft-mode = Draft Mode
 
 auditor.audit-record.list.label.code = Code
 auditor.audit-record.list.label.mark = Mark
+auditor.audit-record.list.label.periodStart = Period Start
+auditor.audit-record.list.label.periodEnd = Period End
 
 auditor.audit-record.form.button.create = Create
 auditor.audit-record.list.button.create = Create
 auditor.audit-record.form.button.delete = Delete
 auditor.audit-record.form.button.update = Update
 auditor.audit-record.form.button.publish = Publish
+
+auditor.audit-record.error.duration = The period end can't be before the period start
+auditor.code-audit.error.executionDate = The period end couldn't be equal or after the execution date
+auditor.audit-record.error.publish = DraftMode is equal at true, so you can't publish
+auditor.audit-record.error.code = The code is duplicated

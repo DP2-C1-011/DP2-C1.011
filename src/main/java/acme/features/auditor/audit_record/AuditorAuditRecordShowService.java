@@ -8,7 +8,6 @@ import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.audit.AuditRecord;
-import acme.entities.audit.CodeAudit;
 import acme.entities.audit.Mark;
 import acme.roles.Auditor;
 
@@ -18,34 +17,33 @@ public class AuditorAuditRecordShowService extends AbstractService<Auditor, Audi
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected AuditorAuditRecordRepository repository;
+	private AuditorAuditRecordRepository auditorAuditRecordRepository;
+
 
 	// AbstractService interface ----------------------------------------------
-
-
 	@Override
 	public void authorise() {
-
 		boolean status;
 		int auditRecordId;
-		CodeAudit codeAudit;
+		Auditor auditor;
+		AuditRecord auditRecord;
 
 		auditRecordId = super.getRequest().getData("id", int.class);
-		codeAudit = this.repository.findOneCodeAuditByAuditRecordId(auditRecordId);
-		status = codeAudit != null && super.getRequest().getPrincipal().hasRole(codeAudit.getAuditor());
+		auditRecord = this.auditorAuditRecordRepository.findOneAuditRecordById(auditRecordId);
+		auditor = auditRecord.getCodeAudit().getAuditor();
+
+		status = auditRecord != null && super.getRequest().getPrincipal().hasRole(auditor) && auditRecord.getCodeAudit().getAuditor().equals(auditor);
 
 		super.getResponse().setAuthorised(status);
-
 	}
 
 	@Override
 	public void load() {
-
 		AuditRecord object;
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
-		object = this.repository.findOneAuditRecordById(id);
+		object = this.auditorAuditRecordRepository.findOneAuditRecordById(id);
 
 		super.getBuffer().addData(object);
 	}
@@ -57,15 +55,10 @@ public class AuditorAuditRecordShowService extends AbstractService<Auditor, Audi
 		SelectChoices choices;
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "periodStart", "periodEnd", "mark", "optionalLink");
-
 		choices = SelectChoices.from(Mark.class, object.getMark());
-		dataset.put("marks", choices);
-
-		dataset.put("masterId", object.getCodeAudit().getId());
-		dataset.put("draftMode", object.getCodeAudit().isDraftMode());
+		dataset = super.unbind(object, "code", "periodStart", "periodEnd", "optionalLink", "draftMode");
+		dataset.put("mark", choices);
 
 		super.getResponse().addData(dataset);
 	}
-
 }

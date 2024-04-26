@@ -19,6 +19,7 @@ master.menu.sign-out = Salir
 
 master.menu.any = Cualquiera
 master.menu.any.training-modules = Módulos de Entrenamiento Publicados
+master.menu.any.projects = Proyectos publicados
 master.menu.any.contracts = Contratos publicados
 
 # master.menu.anonymous #######################################################
@@ -58,12 +59,15 @@ master.menu.user-account.developer = Datos de desarrollador
 master.menu.user-account.become-developer = Hazte desarrollador
 master.menu.user-account.client = Datos de cliente
 master.menu.user-account.become-client = Hazte cliente
+master.menu.user-account.manager = Datos del manager
+master.menu.user-account.become-manager = Hazte manager
 
 # master.menu.manager ####################################################
 
 master.menu.manager = Manager
 master.menu.manager.projects = Proyectos
 master.menu.manager.userStories = Historias de Usuario
+master.menu.manager.dashboard = Panel de indicadores
 
 # master.menu.client ####################################################
 
@@ -80,9 +84,8 @@ master.menu.developer = Desarrollador
 master.menu.developer.training-modules = Módulos de Entrenamiento
 master.menu.developer.training-sessions = Sesiones de Entrenamiento
 master.menu.developer.dashboard = Panel de Desarrollador
-
+master.menu.manager.user-story = Historias de usuario
 # master.menu.auditor ####################################################
-
 master.menu.auditor = Auditor
 master.menu.auditor.code-audits = Auditorías de código
 master.menu.auditor.audit-records = Registros de auditoría

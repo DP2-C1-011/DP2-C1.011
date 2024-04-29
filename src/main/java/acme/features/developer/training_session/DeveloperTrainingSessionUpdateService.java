@@ -48,7 +48,7 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 	@Override
 	public void bind(final TrainingSession object) {
 		assert object != null;
-		super.bind(object, "code", "startMoment", "finishMoment", "location", "instructor", "contactEmail", "optionalLink", "draftMode");
+		super.bind(object, "code", "startMoment", "finishMoment", "location", "instructor", "contactEmail", "optionalLink");
 	}
 
 	@Override
@@ -62,7 +62,7 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 			TrainingSession existing;
 
 			existing = this.repository.findTrainingSessionByCode(object.getCode());
-			super.state(existing == null, "code", "developer.training-session.form.error.duplicateCode");
+			super.state(existing == null || existing.equals(object), "code", "developer.training-session.form.error.duplicateCode");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("startMoment"))

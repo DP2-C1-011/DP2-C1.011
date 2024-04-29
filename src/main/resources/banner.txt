@@ -1,12 +1,12 @@
-           _____ __  __ ______      _____ ______      _____   ___ ____  
-     /\   / ____|  \/  |  ____|    / ____|  ____|    |  __ \ / _ \___ \ 
-    /  \ | |    | \  / | |__ _____| (___ | |__ ______| |  | | | | |__) |
-   / /\ \| |    | |\/| |  __|______\___ \|  __|______| |  | | | | |__ < 
-  / ____ \ |____| |  | | |____     ____) | |         | |__| | |_| |__) |
- /_/    \_\_____|_|  |_|______|   |_____/|_|         |_____/ \___/____/ 
+           _____ __  __ ______      _____ ______      _____   ___  _  _   
+     /\   / ____|  \/  |  ____|    / ____|  ____|    |  __ \ / _ \| || |  
+    /  \ | |    | \  / | |__ _____| (___ | |__ ______| |  | | | | | || |_ 
+   / /\ \| |    | |\/| |  __|______\___ \|  __|______| |  | | | | |__   _|
+  / ____ \ |____| |  | | |____     ____) | |         | |__| | |_| |  | |  
+ /_/    \_\_____|_|  |_|______|   |_____/|_|         |_____/ \___/   |_|
                                                                         
                                                                                                         
 Application:          ${acme.application.versioned-name}
-Application endpoint: http://localhost:${server.port}${server.servlet.contextPath}
+Application endpoint: http://localhost:${server.port}${server.servlet.context-path}${server.servlet.initial-query}
 Database endpoint:    ${spring.datasource.url}
 Powered by:           Spring Boot ${spring-boot.version}, ${acme.framework.display-name} ${acme.framework.version}

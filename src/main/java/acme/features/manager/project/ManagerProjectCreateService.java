@@ -65,7 +65,7 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 
 		if (!super.getBuffer().getErrors().hasErrors("cost")) {
 			Boolean currencyState = this.moneyService.checkContains(object.getCost().getCurrency());
-			super.state(currencyState, "cost", "client.contract.form.error.budget.invalid-currency");
+			super.state(currencyState, "cost", "manager.project.form.error.cost.invalid-currency");
 
 		}
 	}

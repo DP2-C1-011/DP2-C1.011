@@ -64,6 +64,10 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 	@Override
 	public void validate(final Project object) {
 		assert object != null;
+		//Money's currency comprobation
+		Boolean currencyState = this.moneyService.checkContains(object.getCost().getCurrency());
+		super.state(currencyState, "cost", "manager.project.form.error.cost.invalid-currency");
+
 		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
 			super.state(object.getDraftMode(), "draftMode", "manager.project.form.error.draft-mode");
 

@@ -27,5 +27,6 @@ manager.project.form.error.user-story = Project must have user stories
 manager.project.form.error.draft-mode = Project must stay in draft mode
 manager.project.form.error.publish = Project must have all his user stories published
 manager.project.form.error.fatal = Project must not contain fatal errors
+manager.project.form.error.cost.invalid-currency = Invalid currency
 
 manager.project.form.button.list-user-stories= Project-User stories

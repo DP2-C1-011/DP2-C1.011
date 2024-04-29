@@ -73,8 +73,7 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 
 		Integer numStoriesPublished = this.mur.findUserStoryPublishedByProjectId(projectId).size();
 		super.state(numStories == numStoriesPublished, "*", "manager.project.form.error.publish");
-
-		super.state(project.getFatalError() == null, "*", "manager.project.form.error.fatal");
+		super.state(object.getFatalError().length() <= 0, "*", "manager.project.form.error.fatal");
 
 	}
 

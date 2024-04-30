@@ -76,6 +76,12 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 
 		if (!super.getBuffer().getErrors().hasErrors("cost"))
 			super.state(object.getCost().getAmount() > 0, "cost", "manager.project.form.error.negative-salary");
+
+		if (!super.getBuffer().getErrors().hasErrors("cost")) {
+			Boolean currencyState = this.moneyService.checkContains(object.getCost().getCurrency());
+			super.state(currencyState, "cost", "client.contract.form.error.budget.invalid-currency");
+
+		}
 	}
 
 	@Override

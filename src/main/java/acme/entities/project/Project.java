@@ -5,7 +5,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -45,7 +44,6 @@ public class Project extends AbstractEntity {
 
 	Boolean						fatalError;
 	@NotNull
-	@Min(0)
 	Money						cost;
 
 	@URL

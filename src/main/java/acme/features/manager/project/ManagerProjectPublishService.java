@@ -75,6 +75,15 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 		super.state(numStories == numStoriesPublished, "*", "manager.project.form.error.publish");
 		super.state(!object.getFatalError(), "*", "manager.project.form.error.fatal");
 
+		if (!super.getBuffer().getErrors().hasErrors("cost"))
+			super.state(object.getCost().getAmount() > 0, "cost", "manager.project.form.error.negative-salary");
+
+		if (!super.getBuffer().getErrors().hasErrors("cost")) {
+			Boolean currencyState = this.moneyService.checkContains(object.getCost().getCurrency());
+			super.state(currencyState, "cost", "client.contract.form.error.budget.invalid-currency");
+
+		}
+
 	}
 
 	// Si todo va bien se pone draftmode a false y se publica el proyecto

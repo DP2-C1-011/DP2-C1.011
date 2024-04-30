@@ -24,6 +24,7 @@ public class SponsorDashboardController extends AbstractController<Sponsor, Spon
 	@PostConstruct
 	protected void initialise() {
 		super.addBasicCommand("show", this.service);
+
 	}
 
 }

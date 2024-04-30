@@ -22,13 +22,13 @@ public class SponsorInvoiceController extends AbstractController<Sponsor, Invoic
 	private SponsorInvoiceShowService		showService;
 
 	@Autowired
-	private SponsorInvoiceCreateService	createService;
+	private SponsorInvoiceCreateService		createService;
 
 	@Autowired
-	private SponsorInvoiceDeleteService	deleteService;
+	private SponsorInvoiceDeleteService		deleteService;
 
 	@Autowired
-	private SponsorInvoiceUpdateService	updateService;
+	private SponsorInvoiceUpdateService		updateService;
 
 	@Autowired
 	private SponsorInvoicePublishService	publishService;

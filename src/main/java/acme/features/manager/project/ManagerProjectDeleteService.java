@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.entities.audit.AuditRecord;
+import acme.entities.audit.CodeAudit;
 import acme.entities.project.ParticipatesIn;
 import acme.entities.project.Project;
 import acme.entities.project.ProjectUserStory;
@@ -74,6 +76,18 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 		pus = this.repository.findProjectUserStoryByProjectId(projectId);
 		Collection<ParticipatesIn> pi;
 		pi = this.repository.findParticipatesInByProjectId(projectId);
+
+		// Eliminar todos los CodeAudit relacionados con el proyecto
+		Collection<CodeAudit> codeAudits = this.repository.findCodeAuditByProjectId(projectId);
+		for (CodeAudit codeAudit : codeAudits) {
+			// Para cada CodeAudit encontrado, eliminar todos los AuditRecord asociados
+			Collection<AuditRecord> auditRecords = this.repository.findManyAuditRecordsByCodeAuditId(codeAudit.getId());
+			this.repository.deleteAll(auditRecords); // Eliminar todos los AuditRecord
+
+			// Finalmente, eliminar el CodeAudit
+			this.repository.delete(codeAudit);
+		}
+
 		this.repository.deleteAll(pi);
 		this.repository.deleteAll(pus);
 		this.repository.delete(object);

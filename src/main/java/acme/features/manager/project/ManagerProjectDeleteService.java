@@ -8,8 +8,9 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.entities.project.ParticipatesIn;
 import acme.entities.project.Project;
-import acme.entities.project.UserStory;
+import acme.entities.project.ProjectUserStory;
 import acme.features.manager.userstory.ManagerUserStoryRepository;
 import acme.roles.Manager;
 
@@ -69,9 +70,12 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 		assert object != null;
 		int projectId;
 		projectId = super.getRequest().getData("id", int.class);
-		Collection<UserStory> us;
-		us = this.mur.findUserStoryByProjectId(projectId);
-		this.repository.deleteAll(us);
+		Collection<ProjectUserStory> pus;
+		pus = this.repository.findProjectUserStoryByProjectId(projectId);
+		Collection<ParticipatesIn> pi;
+		pi = this.repository.findParticipatesInByProjectId(projectId);
+		this.repository.deleteAll(pi);
+		this.repository.deleteAll(pus);
 		this.repository.delete(object);
 	}
 

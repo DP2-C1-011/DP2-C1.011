@@ -82,7 +82,7 @@ public class ManagerProjectUserStoryDeleteService extends AbstractService<Manage
 		int userStoryId = super.getRequest().getData("userStoryId", int.class);
 
 		Manager manager = this.mur.findOneManagerByUserStoryId(userStoryId);
-		Collection<Project> projects = this.mur.findProjectsByManagerId(manager.getId());
+		Collection<Project> projects = this.mur.findProjectsByManagerIdAndNonPublished(manager.getId());
 
 		SelectChoices choices = SelectChoices.from(projects, "title", object.getProject());
 

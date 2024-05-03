@@ -73,7 +73,16 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 
 		Integer numStoriesPublished = this.mur.findUserStoryPublishedByProjectId(projectId).size();
 		super.state(numStories == numStoriesPublished, "*", "manager.project.form.error.publish");
-		super.state(object.getFatalError().length() <= 0, "*", "manager.project.form.error.fatal");
+		super.state(!object.getFatalError(), "*", "manager.project.form.error.fatal");
+
+		if (!super.getBuffer().getErrors().hasErrors("cost"))
+			super.state(object.getCost().getAmount() > 0, "cost", "manager.project.form.error.negative-salary");
+
+		if (!super.getBuffer().getErrors().hasErrors("cost")) {
+			Boolean currencyState = this.moneyService.checkContains(object.getCost().getCurrency());
+			super.state(currencyState, "cost", "client.contract.form.error.budget.invalid-currency");
+
+		}
 
 	}
 

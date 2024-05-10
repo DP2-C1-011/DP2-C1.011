@@ -1,5 +1,5 @@
 
-package acme.components;
+package acme.features.any.banner;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import acme.entities.Banner;
 
 @ControllerAdvice
-public class BannerAdvisor {
+public class AnyBannerAdvisor {
 
 	@Autowired
-	protected BannerRepository repository;
+	protected AnyBannerRepository repository;
 
 
 	@ModelAttribute("banner")

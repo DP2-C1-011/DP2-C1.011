@@ -4,7 +4,7 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form>
-	<acme:input-textbox code="sponsor.sponsorship.form.label.code" path="code"/>
+	<acme:input-textbox code="sponsor.sponsorship.form.label.code" path="code" placeholder="ABC-123"/>
 	<acme:input-moment code="sponsor.sponsorship.form.label.moment" path="moment"/>
 	<acme:input-moment code="sponsor.sponsorship.form.label.start-date" path="startDate"/>
 	<acme:input-moment code="sponsor.sponsorship.form.label.end-date" path="endDate"/>	

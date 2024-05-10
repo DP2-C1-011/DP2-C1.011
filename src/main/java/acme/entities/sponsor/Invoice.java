@@ -40,8 +40,8 @@ public class Invoice extends AbstractEntity {
 	@Past
 	private Date				registrationDate;
 
+	@NotNull
 	@Temporal(TemporalType.DATE)
-	@Past
 	private Date				dueDate;
 
 	@NotNull
@@ -57,8 +57,10 @@ public class Invoice extends AbstractEntity {
 	@NotNull
 	private Boolean				draftMode;
 
-
 	@Transient
+	Money						totalAmount;
+
+
 	public Money getTotalAmount() {
 		double taxToApply = (100.0 - this.tax) / 100.0;
 		Double totalAmount = this.quantity.getAmount() * taxToApply;

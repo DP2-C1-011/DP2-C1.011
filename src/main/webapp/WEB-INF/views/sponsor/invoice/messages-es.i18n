@@ -8,6 +8,7 @@ sponsor.invoice.form.label.quantity = Valor
 sponsor.invoice.form.label.tax = Impuesto
 sponsor.invoice.form.label.optional-link = Enlace informativo
 sponsor.invoice.form.label.draft-mode = Modo borrador
+sponsor.invoice.form.label.total-amount = Cantidad total
 
 sponsor.invoice.list.label.code = Código
 sponsor.invoice.list.label.quantity = Cantidad
@@ -21,6 +22,8 @@ sponsor.invoice.form.button.delete = Borrar
 sponsor.invoice.form.button.update = Actualizar
 sponsor.invoice.form.button.publish = Publicar
 
+sponsor.invoice.form.error.different-currency = La divisa del recibo debe coincidir con su patrocinio
+sponsor.invoice.form.error.invalid-currency = Divisa no válida
 sponsor.invoice.form.error.duplicateCode = Otro recibo ya tiene este código
 sponsor.invoice.form.error.startBeforeCreate = El Recibo debe comenzar tras la creación del patrocinio correspondiente
 sponsor.invoice.form.error.finishBeforeStart = La fecha de entrega debe ser después de la de registro

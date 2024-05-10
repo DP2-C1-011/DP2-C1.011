@@ -1,35 +1,28 @@
 
-package acme.features.sponsor.sponsorship;
+package acme.features.any.published_sponsorships;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.accounts.Any;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.sponsor.Sponsorship;
-import acme.roles.Sponsor;
 
 @Service
-public class SponsorSponsorshipShowService extends AbstractService<Sponsor, Sponsorship> {
+public class AnyPublishedSponsorshipsShowService extends AbstractService<Any, Sponsorship> {
 
 	@Autowired
-	SponsorSponsorshipRepository repository;
+	AnyPublishedSponsorshipsRepository repository;
 
 
 	@Override
 	public void authorise() {
-		boolean status;
 		int id;
-		Sponsorship spo;
-		Sponsor sponsor;
-
+		Sponsorship object;
 		id = super.getRequest().getData("id", int.class);
-		spo = this.repository.findSponsorshipById(id);
-		sponsor = spo == null ? null : spo.getSponsor();
-
-		status = spo != null && super.getRequest().getPrincipal().hasRole(sponsor);
-
-		super.getResponse().setAuthorised(status);
+		object = this.repository.findSponsorshipById(id);
+		super.getResponse().setAuthorised(!object.getDraftMode());
 	}
 
 	@Override
@@ -49,7 +42,6 @@ public class SponsorSponsorshipShowService extends AbstractService<Sponsor, Spon
 
 		Dataset dataset;
 		dataset = super.unbind(object, "code", "moment", "startDate", "endDate", "amount", "financial", "email", "link", "draftMode");
-
 		super.getResponse().addData(dataset);
 	}
 

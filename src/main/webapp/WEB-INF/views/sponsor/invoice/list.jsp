@@ -5,7 +5,7 @@
 
 <acme:list>
 	<acme:list-column code="sponsor.invoice.list.label.code" path="code" width="10%"/>
-		<acme:list-column code="sponsor.invoice.list.label.quantity" path="quantity" width="10%"/>
+	<acme:list-column code="sponsor.invoice.list.label.quantity" path="quantity" width="10%"/>
 	<acme:list-column code="sponsor.invoice.list.label.tax" path="tax" width="10%"/>
 	<acme:list-column code="sponsor.invoice.list.label.registration-date" path="registrationDate" width="10%"/>
 	<acme:list-column code="sponsor.invoice.list.label.due-date" path="dueDate" width="10%"/>

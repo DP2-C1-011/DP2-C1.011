@@ -13,7 +13,13 @@
 			<acme:message code="manager.dashboard.form.label.average-project-cost"/>
 		</th>
 		<td>
-			<acme:print value="${averageProjectCost}"/>
+			<acme:print value="${averageProjectCost[0]}"/>
+		</td>
+		<td>
+			<acme:print value="${averageProjectCost[1]}"/>
+		</td>
+		<td>
+			<acme:print value="${averageProjectCost[2]}"/>
 		</td>
 	</tr>
 	<tr>
@@ -21,7 +27,13 @@
 			<acme:message code="manager.dashboard.form.label.max-project-cost"/>
 		</th>
 		<td>
-			<acme:print value="${maxProjectCost}"/>
+			<acme:print value="${maxProjectCost[0]}"/>
+		</td>
+		<td>
+			<acme:print value="${maxProjectCost[1]}"/>
+		</td>
+		<td>
+			<acme:print value="${maxProjectCost[2]}"/>
 		</td>
 	</tr>
 	<tr>
@@ -29,7 +41,13 @@
 			<acme:message code="manager.dashboard.form.label.min-project-cost"/>
 		</th>
 		<td>
-			<acme:print value="${minProjectCost}"/>
+			<acme:print value="${minProjectCost[0]}"/>
+		</td>
+		<td>
+			<acme:print value="${minProjectCost[1]}"/>
+		</td>
+		<td>
+			<acme:print value="${minProjectCost[2]}"/>
 		</td>
 	</tr>
 	<tr>
@@ -37,7 +55,13 @@
 			<acme:message code="manager.dashboard.form.label.deviation-project-cost"/>
 		</th>
 		<td>
-			<acme:print value="${deviationProjectCost}"/>
+			<acme:print value="${deviationProjectCost[0]}"/>
+		</td>
+		<td>
+			<acme:print value="${deviationProjectCost[1]}"/>
+		</td>
+		<td>
+			<acme:print value="${deviationProjectCost[2]}"/>
 		</td>
 	</tr>
 	

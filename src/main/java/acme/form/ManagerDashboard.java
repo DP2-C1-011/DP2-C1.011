@@ -1,8 +1,9 @@
 
 package acme.form;
 
+import java.util.List;
+
 import acme.client.data.AbstractForm;
-import acme.client.data.datatypes.Money;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -31,12 +32,9 @@ public class ManagerDashboard extends AbstractForm {
 
 	Double						maxUsCost;
 
-	Money						averageProjectCost;
-
-	Money						deviationProjectCost;
-
-	Money						minProjectCost;
-
-	Money						maxProjectCost;
+	List<Object[]>				averageProjectCost;
+	List<Object[]>				deviationProjectCost;
+	List<Object[]>				minProjectCost;
+	List<Object[]>				maxProjectCost;
 
 }

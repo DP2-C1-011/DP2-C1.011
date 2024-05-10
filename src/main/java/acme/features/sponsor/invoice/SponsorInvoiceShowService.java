@@ -20,10 +20,14 @@ public class SponsorInvoiceShowService extends AbstractService<Sponsor, Invoice>
 	public void authorise() {
 		boolean status;
 		int id;
-		Invoice ts;
+		Invoice inv;
+		Sponsor sponsor;
+
 		id = super.getRequest().getData("id", int.class);
-		ts = this.repository.findInvoiceById(id);
-		status = ts != null && super.getRequest().getPrincipal().hasRole(Sponsor.class);
+		inv = this.repository.findInvoiceById(id);
+
+		sponsor = inv == null ? null : inv.getSponsorship().getSponsor();
+		status = inv != null && super.getRequest().getPrincipal().hasRole(sponsor);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -43,7 +47,10 @@ public class SponsorInvoiceShowService extends AbstractService<Sponsor, Invoice>
 	public void unbind(final Invoice object) {
 		assert object != null;
 		Dataset dataset;
+
 		dataset = super.unbind(object, "code", "registrationDate", "dueDate", "quantity", "tax", "optionalLink", "draftMode");
+		dataset.put("totalAmount", object.getTotalAmount());
+
 		super.getResponse().addData(dataset);
 	}
 }

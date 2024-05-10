@@ -1,0 +1,13 @@
+any.sponsorship.form.title = Sponsorship Details
+any.sponsorship.list.title = Sponsorship List
+
+sponsor.sponsorship.form.label.code = Code
+sponsor.sponsorship.form.label.moment = Moment
+sponsor.sponsorship.form.label.start-date = Start Date
+sponsor.sponsorship.form.label.end-date = End Date
+sponsor.sponsorship.form.label.amount = Amount
+sponsor.sponsorship.form.label.financial = Financial/In kind
+sponsor.sponsorship.form.label.email = Email
+sponsor.sponsorship.form.label.link = Link
+sponsor.sponsorship.form.label.draft-mode = Draft mode
+

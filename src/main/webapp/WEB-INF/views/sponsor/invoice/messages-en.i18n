@@ -8,6 +8,7 @@ sponsor.invoice.form.label.quantity = Quantity
 sponsor.invoice.form.label.tax = Tax
 sponsor.invoice.form.label.optional-link = Optional Link
 sponsor.invoice.form.label.draft-mode = Draft mode
+sponsor.invoice.form.label.total-amount = Total Amount
 
 sponsor.invoice.list.label.code = Code
 sponsor.invoice.list.label.quantity = Quantity
@@ -21,6 +22,8 @@ sponsor.invoice.form.button.delete = Delete
 sponsor.invoice.form.button.update = Update
 sponsor.invoice.form.button.publish = Publish
 
+sponsor.invoice.form.error.different-currency = Invoice's Currency must be the same as the associated Sponsorship
+sponsor.invoice.form.error.invalid-currency = Invalid Currency
 sponsor.invoice.form.error.duplicateCode = Another Invoice has this code
 sponsor.invoice.form.error.startBeforeCreate = The Invoice must start after its Sponsorship's creation
 sponsor.invoice.form.error.finishBeforeStart = Due Date must be after Registration Date

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
+import acme.components.MoneyService;
 import acme.entities.sponsor.Invoice;
 import acme.roles.Sponsor;
 
@@ -16,7 +17,9 @@ import acme.roles.Sponsor;
 public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoice> {
 
 	@Autowired
-	SponsorInvoiceRepository repository;
+	SponsorInvoiceRepository	repository;
+	@Autowired
+	MoneyService				moneyService;
 
 
 	@Override
@@ -58,9 +61,26 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
 			super.state(object.getDraftMode(), "draftMode", "sponsor.invoice.form.error.draftMode");
 
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			Invoice existing;
+
+			existing = this.repository.findOneInvoiceByCode(object.getCode());
+			super.state(existing == null || existing.equals(object), "code", "sponsor.invoice.form.error.duplicateCode");
+		}
+
 		if (!super.getBuffer().getErrors().hasErrors("registrationDate") && !super.getBuffer().getErrors().hasErrors("dueDate")) {
 			super.state(MomentHelper.isAfter(object.getDueDate(), object.getRegistrationDate()), "dueDate", "sponsor.invoice.form.error.finishBeforeStart");
 			super.state(MomentHelper.isAfter(object.getDueDate(), MomentHelper.deltaFromMoment(object.getRegistrationDate(), 30, ChronoUnit.DAYS)), "dueDate", "sponsor.invoice.form.error.periodTooShort");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("quantity")) {
+			Boolean currencyState = this.moneyService.checkContains(object.getQuantity().getCurrency());
+			super.state(currencyState, "quantity", "sponsor.invoice.form.error.invalid-currency");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("quantity")) {
+			Boolean currencyState = object.getQuantity().getCurrency().equals(object.getSponsorship().getAmount().getCurrency());
+			super.state(currencyState, "quantity", "sponsor.invoice.form.error.different-currency");
 		}
 	}
 
@@ -75,6 +95,7 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 		assert object != null;
 		Dataset dataset;
 		dataset = super.unbind(object, "code", "registrationDate", "dueDate", "quantity", "tax", "optionalLink");
+
 		super.getResponse().addData(dataset);
 	}
 }

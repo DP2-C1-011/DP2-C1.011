@@ -10,19 +10,33 @@ import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.sponsor.Invoice;
 import acme.entities.sponsor.Sponsorship;
+import acme.features.sponsor.sponsorship.SponsorSponsorshipRepository;
 import acme.roles.Sponsor;
 
 @Service
 public class SponsorInvoiceListService extends AbstractService<Sponsor, Invoice> {
 
 	@Autowired
-	SponsorInvoiceRepository repository;
+	SponsorInvoiceRepository		repository;
+
+	@Autowired
+	SponsorSponsorshipRepository	sporep;
 
 
 	@Override
 	public void authorise() {
 		boolean status;
-		status = super.getRequest().getPrincipal().hasRole(Sponsor.class);
+
+		int id;
+		Sponsorship spo;
+		Sponsor sponsor;
+
+		id = super.getRequest().getData("sponsorshipId", int.class);
+		spo = this.sporep.findSponsorshipById(id);
+		sponsor = spo == null ? null : spo.getSponsor();
+
+		status = spo != null && super.getRequest().getPrincipal().hasRole(sponsor);
+
 		super.getResponse().setAuthorised(status);
 	}
 

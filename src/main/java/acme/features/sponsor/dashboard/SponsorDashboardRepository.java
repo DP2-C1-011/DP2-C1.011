@@ -11,34 +11,34 @@ import acme.client.repositories.AbstractRepository;
 @Repository
 public interface SponsorDashboardRepository extends AbstractRepository {
 
-	@Query("select count(s) from Invoice s where s.sponsorship.sponsor.id = :sid and s.tax <= 21")
+	@Query("select count(s) from Invoice s where s.sponsorship.sponsor.id = :sid and s.tax <= 21 and s.draftMode = false")
 	Integer getTaxUnder21(int sid);
 
-	@Query("select count(s) from Sponsorship s where s.sponsor.id = :sid and s.link is not null")
+	@Query("select count(s) from Sponsorship s where s.sponsor.id = :sid and s.link is not null and s.draftMode = false")
 	Integer getLinkedSponsorships(int sid);
 
-	@Query("select s.amount.currency, avg(s.amount.amount) from Sponsorship s where s.sponsor.id = :sid group by s.amount.currency")
+	@Query("select s.amount.currency, avg(s.amount.amount) from Sponsorship s where s.sponsor.id = :sid and s.draftMode = false group by s.amount.currency")
 	List<Object[]> avgSponsorshipAmount(int sid);
 
-	@Query("select s.amount.currency, stddev(s.amount.amount) from Sponsorship s where s.sponsor.id = :sid group by s.amount.currency")
+	@Query("select s.amount.currency, stddev(s.amount.amount) from Sponsorship s where s.sponsor.id = :sid and s.draftMode = false group by s.amount.currency")
 	List<Object[]> stdSponsorshipAmount(int sid);
 
-	@Query("select s.amount.currency, min(s.amount.amount) from Sponsorship s where s.sponsor.id = :sid group by s.amount.currency")
+	@Query("select s.amount.currency, min(s.amount.amount) from Sponsorship s where s.sponsor.id = :sid and s.draftMode = false group by s.amount.currency")
 	List<Object[]> minSponsorshipAmount(int sid);
 
-	@Query("select s.amount.currency, max(s.amount.amount) from Sponsorship s where s.sponsor.id = :sid group by s.amount.currency")
+	@Query("select s.amount.currency, max(s.amount.amount) from Sponsorship s where s.sponsor.id = :sid and s.draftMode = false group by s.amount.currency")
 	List<Object[]> maxSponsorshipAmount(int sid);
 
-	@Query("select s.quantity.currency, avg(s.quantity.amount) from Invoice s where s.sponsorship.sponsor.id = :sid group by s.quantity.currency")
+	@Query("select s.quantity.currency, avg(s.quantity.amount) from Invoice s where s.sponsorship.sponsor.id = :sid and s.draftMode = false group by s.quantity.currency")
 	List<Object[]> avgInvoiceAmount(int sid);
 
-	@Query("select s.quantity.currency, stddev(s.quantity.amount) from Invoice s where s.sponsorship.sponsor.id = :sid group by s.quantity.currency")
+	@Query("select s.quantity.currency, stddev(s.quantity.amount) from Invoice s where s.sponsorship.sponsor.id = :sid and s.draftMode = false group by s.quantity.currency")
 	List<Object[]> stdInvoiceAmount(int sid);
 
-	@Query("select s.quantity.currency, min(s.quantity.amount) from Invoice s where s.sponsorship.sponsor.id = :sid group by s.quantity.currency")
+	@Query("select s.quantity.currency, min(s.quantity.amount) from Invoice s where s.sponsorship.sponsor.id = :sid and s.draftMode = false group by s.quantity.currency")
 	List<Object[]> minInvoiceAmount(int sid);
 
-	@Query("select s.quantity.currency, max(s.quantity.amount) from Invoice s where s.sponsorship.sponsor.id = :sid group by s.quantity.currency")
+	@Query("select s.quantity.currency, max(s.quantity.amount) from Invoice s where s.sponsorship.sponsor.id = :sid and s.draftMode = false group by s.quantity.currency")
 	List<Object[]> maxInvoiceAmount(int sid);
 
 }

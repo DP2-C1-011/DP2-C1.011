@@ -4,12 +4,14 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form>
-	<acme:input-textbox code="sponsor.invoice.form.label.code" path="code"/>	
+	<acme:input-textbox code="sponsor.invoice.form.label.code" path="code" placeholder="IN-1234-5678"/>	
 	<acme:input-moment code="sponsor.invoice.form.label.registration-date" path="registrationDate"/>
 	<acme:input-moment code="sponsor.invoice.form.label.due-date" path="dueDate"/>
 	<acme:input-money code="sponsor.invoice.form.label.quantity" path="quantity"/>
 	<acme:input-double code="sponsor.invoice.form.label.tax" path="tax"/>	
 	<acme:input-url code="sponsor.invoice.form.label.optional-link" path="optionalLink"/>
+	<acme:input-money code="sponsor.invoice.form.label.total-amount" path="totalAmount" readonly="true"/>
+	
 	
 	<jstl:choose>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">

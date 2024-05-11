@@ -23,7 +23,18 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+
+		int id;
+		UserStory us;
+		Manager manager;
+
+		id = super.getRequest().getData("userStoryId", int.class);
+		us = this.createRepository.findOneUserStoryById(id);
+		manager = us == null ? null : us.getManager();
+		status = us != null && super.getRequest().getPrincipal().hasRole(manager);
+
+		super.getResponse().setAuthorised(status);
 	}
 	@Override
 	public void load() {

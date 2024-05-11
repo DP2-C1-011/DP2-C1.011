@@ -21,5 +21,8 @@ manager.link.form.button.create= Assign
 manager.project-user-story.list.title= Assignments
 manager.project-user-story.form.title= Assignment
 
-manager.project.form.error.duplicated-user-story= Duplicated user story
+manager.projectUserStory.form.error.userStory = Duplicated user story
 manager.projectUserStory.form.error.project = Project is already published
+manager.projectUserStory.form.error.userStoryNotInProject = User story not in project
+
+

@@ -2,6 +2,7 @@
 package acme.features.manager.dashboard;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -44,17 +45,17 @@ public interface ManagerDashboardRepository extends AbstractRepository {
 	@Query("select p from Project p where  p.manager.id =:id")
 	Collection<Project> findAllProjects(int id);
 
-	@Query("select avg(p.cost.amount) from Project p where  p.manager.id = :id and p.draftMode =false")
-	Double averageProjectCost(int id);
+	@Query("select p.cost.currency, avg(p.cost.amount) from Project p where  p.manager.id = :id and p.draftMode =false group by p.cost.currency")
+	List<Object[]> averageProjectCost(int id);
 
-	@Query("select STDDEV(p.cost.amount) from Project p where p.manager.id = :id and p.draftMode =false")
-	Double deviationProjectCost(int id);
+	@Query("select p.cost.currency, STDDEV(p.cost.amount) from Project p where p.manager.id = :id and p.draftMode =false  group by p.cost.currency")
+	List<Object[]> deviationProjectCost(int id);
 
-	@Query("select min(p.cost.amount)from Project p where p.manager.id = :id and p.draftMode =false")
-	Double minProjectCost(int id);
+	@Query("select s.cost.currency, min(s.cost.amount) from Project s where s.manager.id = :id and s.draftMode = false group by s.cost.currency")
+	List<Object[]> minProjectCost(int id);
 
-	@Query("select max(p.cost.amount) from Project p where p.manager.id = :id and p.draftMode =false")
-	Double maxProjectCost(int id);
+	@Query("select s.cost.currency, max(s.cost.amount) from Project s where s.manager.id = :id and s.draftMode = false group by s.cost.currency")
+	List<Object[]> maxProjectCost(int id);
 
 	@Query("select p from Project p where p.manager.id = :managerId and p.draftMode =false")
 	Collection<Project> findManyProjectsByManagerId(int managerId);

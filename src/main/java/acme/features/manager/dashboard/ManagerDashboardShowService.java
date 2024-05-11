@@ -2,16 +2,13 @@
 package acme.features.manager.dashboard;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.components.MoneyService;
-import acme.components.SystemCurrencyRepository;
-import acme.entities.project.Project;
 import acme.entities.project.UsPriority;
 import acme.entities.project.UserStory;
 import acme.form.ManagerDashboard;
@@ -21,13 +18,7 @@ import acme.roles.Manager;
 public class ManagerDashboardShowService extends AbstractService<Manager, ManagerDashboard> {
 
 	@Autowired
-	private ManagerDashboardRepository	repository;
-
-	@Autowired
-	private SystemCurrencyRepository	systemRepository;
-
-	@Autowired
-	private MoneyService				moneyService;
+	private ManagerDashboardRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -58,16 +49,15 @@ public class ManagerDashboardShowService extends AbstractService<Manager, Manage
 
 		Double maxUsCost;
 
-		Double averageProjectCost;
+		List<Object[]> averageProjectCost;
 
-		Double deviationProjectCost;
+		List<Object[]> deviationProjectCost;
 
-		Double minProjectCost;
+		List<Object[]> minProjectCost;
 
-		Double maxProjectCost;
+		List<Object[]> maxProjectCost;
 
 		Collection<UserStory> us = this.repository.findAllUserStories(managerId);
-		Collection<Project> p = this.repository.findAllProjects(managerId);
 
 		if (us.isEmpty()) {
 			averageUsCost = 0.0;
@@ -99,22 +89,13 @@ public class ManagerDashboardShowService extends AbstractService<Manager, Manage
 
 		managerDashboard = new ManagerDashboard();
 
-		if (p.isEmpty()) {
-			averageProjectCost = 0.0;
-			deviationProjectCost = 0.0;
-			minProjectCost = 0.0;
-			maxProjectCost = 0.0;
+		averageProjectCost = this.repository.averageProjectCost(managerId);
 
-		} else {
-			averageProjectCost = this.repository.averageProjectCost(managerId);
+		deviationProjectCost = this.repository.deviationProjectCost(managerId);
 
-			deviationProjectCost = this.repository.deviationProjectCost(managerId);
+		minProjectCost = this.repository.minProjectCost(managerId);
 
-			minProjectCost = this.repository.minProjectCost(managerId);
-
-			maxProjectCost = this.repository.maxProjectCost(managerId);
-
-		}
+		maxProjectCost = this.repository.maxProjectCost(managerId);
 
 		managerDashboard.setMustNumber(mustNumber);
 		managerDashboard.setShouldNumber(shouldNumber);
@@ -126,25 +107,13 @@ public class ManagerDashboardShowService extends AbstractService<Manager, Manage
 		managerDashboard.setMinUsCost(minUsCost);
 		managerDashboard.setMaxUsCost(maxUsCost);
 
-		Money averageMoney = new Money();
-		averageMoney.setAmount(averageProjectCost);
-		averageMoney.setCurrency("EUR");
-		managerDashboard.setAverageProjectCost(averageMoney);
+		managerDashboard.setAverageProjectCost(averageProjectCost);
 
-		Money maxMoney = new Money();
-		maxMoney.setAmount(maxProjectCost);
-		maxMoney.setCurrency("EUR");
-		managerDashboard.setMaxProjectCost(maxMoney);
+		managerDashboard.setDeviationProjectCost(deviationProjectCost);
 
-		Money minMoney = new Money();
-		minMoney.setAmount(minProjectCost);
-		minMoney.setCurrency("EUR");
-		managerDashboard.setMinProjectCost(minMoney);
+		managerDashboard.setMaxProjectCost(maxProjectCost);
 
-		Money deviationMoney = new Money();
-		deviationMoney.setAmount(deviationProjectCost);
-		deviationMoney.setCurrency("EUR");
-		managerDashboard.setDeviationProjectCost(deviationMoney);
+		managerDashboard.setMinProjectCost(minProjectCost);
 
 		super.getBuffer().addData(managerDashboard);
 	}

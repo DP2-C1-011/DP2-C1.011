@@ -83,7 +83,7 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 		Manager manager = this.createRepository.findOneManagerByUserStoryId(userStoryId);
 		Collection<Project> projects = this.createRepository.findProjectsByManagerIdAndNonPublished(manager.getId());
 
-		SelectChoices choices = SelectChoices.from(projects, "title", object.getProject());
+		SelectChoices choices = SelectChoices.from(projects, "code", object.getProject());
 
 		Dataset dataset = super.unbind(object, "userStory");
 

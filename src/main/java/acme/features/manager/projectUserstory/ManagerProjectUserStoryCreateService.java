@@ -62,9 +62,9 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 	@Override
 	public void validate(final ProjectUserStory object) {
 		assert object != null;
+		if (!super.getBuffer().getErrors().hasErrors("project"))
+			super.state(object.getUserStory().getManager().equals(object.getProject().getManager()), "project", "manager.projectUserStory.form.error.projectNotFromManager");
 		if (!super.getBuffer().getErrors().hasErrors("project")) {
-			//int masterId;
-			//masterId = super.getRequest().getData("masterId", int.class);
 			final Collection<UserStory> us = this.createRepository.findUserStoryByProject(object.getProject().getId());
 			super.state(us.isEmpty() || !us.contains(object.getUserStory()), "project", "manager.projectUserStory.form.error.userStory");
 		}

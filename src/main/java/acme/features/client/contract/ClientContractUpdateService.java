@@ -61,14 +61,11 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 
 		int projectId;
 		Project project;
-		Date date;
-		date = MomentHelper.getCurrentMoment();
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findOneProjectById(projectId);
 
-		super.bind(object, "code", "instantiationMoment", "provider", "customer", "goals", "budget");
+		super.bind(object, "code", "provider", "customer", "goals", "budget");
 		object.setProject(project);
-		object.setInstantiationMoment(date);
 	}
 
 	@Override

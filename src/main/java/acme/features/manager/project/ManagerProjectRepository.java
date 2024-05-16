@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
+import acme.entities.audit.AuditRecord;
+import acme.entities.audit.CodeAudit;
 import acme.entities.project.ParticipatesIn;
 import acme.entities.project.Project;
 import acme.entities.project.ProjectUserStory;
@@ -35,4 +37,11 @@ public interface ManagerProjectRepository extends AbstractRepository {
 
 	@Query("select p from ParticipatesIn p where p.project.id = :id")
 	Collection<ParticipatesIn> findParticipatesInByProjectId(int id);
+
+	@Query("select p from CodeAudit p where p.project.id = :id")
+	Collection<CodeAudit> findCodeAuditByProjectId(int id);
+
+	@Query("select ar from AuditRecord ar where ar.codeAudit.id = :codeAuditId")
+	Collection<AuditRecord> findManyAuditRecordsByCodeAuditId(int codeAuditId);
+
 }

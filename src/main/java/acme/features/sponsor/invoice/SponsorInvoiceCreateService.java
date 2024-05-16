@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
+import acme.components.MoneyService;
 import acme.entities.sponsor.Invoice;
 import acme.entities.sponsor.Sponsorship;
 import acme.roles.Sponsor;
@@ -17,7 +18,9 @@ import acme.roles.Sponsor;
 public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoice> {
 
 	@Autowired
-	SponsorInvoiceRepository repository;
+	SponsorInvoiceRepository	repository;
+	@Autowired
+	MoneyService				moneyService;
 
 
 	@Override
@@ -66,9 +69,19 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 			super.state(existing == null, "code", "sponsor.invoice.form.error.duplicateCode");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("*") && !super.getBuffer().getErrors().hasErrors("dueDate")) {
+		if (!super.getBuffer().getErrors().hasErrors("registrationDate") && !super.getBuffer().getErrors().hasErrors("dueDate")) {
 			super.state(MomentHelper.isAfter(object.getDueDate(), object.getRegistrationDate()), "*", "sponsor.invoice.form.error.finishBeforeStart");
 			super.state(MomentHelper.isAfter(object.getDueDate(), MomentHelper.deltaFromMoment(object.getRegistrationDate(), 30, ChronoUnit.DAYS)), "*", "sponsor.invoice.form.error.periodTooShort");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("quantity")) {
+			Boolean currencyState = this.moneyService.checkContains(object.getQuantity().getCurrency());
+			super.state(currencyState, "quantity", "sponsor.invoice.form.error.invalid-currency");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("quantity")) {
+			Boolean currencyState = object.getQuantity().getCurrency() == object.getSponsorship().getAmount().getCurrency();
+			super.state(currencyState, "quantity", "sponsor.invoice.form.error.different-currency");
 		}
 
 	}

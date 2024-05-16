@@ -42,7 +42,7 @@ public class Project extends AbstractEntity {
 	@Column(name = "Abstract")
 	String						abstracto;
 
-	String						fatalError;
+	Boolean						fatalError;
 	@NotNull
 	Money						cost;
 

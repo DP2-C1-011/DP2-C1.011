@@ -1,11 +1,16 @@
-key,key:training-module,code,start-moment,finish-moment,location,instructor,contact-email,optional-link
-training-session-01,training-module-01,TS-A-001,2017/07/30 08:00,2017/08/16 19:30,ETSII,Manolo Puertas,manpuert@gmail.com,
-training-session-02,training-module-02,TS-XYZ-999,2021/01/01 09:20,2021/01/14 14:00,Universidad Pablo Olavide,Javier Castañas,javi23@outlook.es,https://tsxyz.es
-training-session-03,training-module-02,TS-MJT-452,2021/02/04 09:20,2021/03/20 15:00,Universidad Pablo Olavide,Antonio Fuentes,antonf@gmail.com,https://mltraining.org
-training-session-04,training-module-06,TS-PY-025,2014/05/25 15:40,2014/06/07 19:20,ETSII,María Mesa,mmesa@gmail.com,
-training-session-06,training-module-07,TS-DLL-102,2016/10/21 10:00,2016/10/29 10:00,MIT,Bob Brown,jrobinson@gmail.com,
-training-session-05,training-module-07,TS-DLL-101,2017/09/13 10:00,2017/10/03 15:00,MIT,Jacob Robinson,mmesa@gmail.com,
-training-session-07,training-module-04,TS-DP-002,2018/03/05 08:30,2018/03/10 10:20,ETSII,Mateo Fernández,mfernandez@us.es,https://etsii.es
-training-session-08,training-module-04,TS-DP-001,2019/02/02 08:30,2019/02/28 10:20,ETSII,Alfonso García,agarcia@us.es,https://etsii.es
-training-session-09,training-module-10,TS-CYS-092,2019/11/12 10:30,2019/11/20 08:20,Cambridge University,John Peterson,jperterson@gmail.com,https://cys.net
-training-session-10,training-module-10,TS-CYS-194,2020/11/12 10:30,2020/11/20 08:20,Cambridge University,Alice Johnson,alicej@gmail.com,https://cys.net
+key,key:training-module,code,start-moment,finish-moment,location,instructor,contact-email,optional-link,draft-mode
+training-session-01,training-module-01,TS-A-001,2017/07/30 08:00,2017/08/16 19:30,ETSII,Manolo Puertas,manpuert@gmail.com,,true
+training-session-02,training-module-01,TS-A-002,2017/09/30 08:00,2017/10/8 19:30,ETSII,Paloma Jiménez,paljim@gmail.com,,true
+training-session-03,training-module-02,TS-XYZ-999,2021/01/01 09:20,2021/01/14 14:00,Universidad Pablo Olavide,Javier Castañas,javi23@outlook.es,https://tsxyz.es,false
+training-session-04,training-module-02,TS-MJT-452,2021/02/04 09:20,2021/03/20 15:00,Universidad Pablo Olavide,Antonio Fuentes,antonf@gmail.com,https://mltraining.org,false
+training-session-05,training-module-06,TS-PY-025,2014/05/25 15:40,2014/06/07 19:20,ETSII,María Mesa,mmesa@gmail.com,,false
+training-session-06,training-module-07,TS-DLL-102,2016/10/21 10:00,2016/10/29 10:00,MIT,Bob Brown,bbrown@gmail.com,,true
+training-session-07,training-module-07,TS-DLL-101,2017/09/13 10:00,2017/10/03 15:00,MIT,Jacob Robinson,jrobinson@gmail.com,,true
+training-session-08,training-module-04,TS-DP-002,2018/03/05 08:30,2018/03/10 10:20,ETSII,Mateo Fernández,mfernandez@us.es,https://etsii.es,false
+training-session-09,training-module-04,TS-DP-001,2019/02/02 08:30,2019/02/28 10:20,ETSII,Alfonso García,agarcia@us.es,https://etsii.es,false
+training-session-10,training-module-10,TS-CYS-092,2019/11/12 10:30,2019/11/20 08:20,Cambridge University,John Peterson,jperterson@gmail.com,https://cys.net,true
+training-session-11,training-module-10,TS-CYS-194,2020/11/12 10:30,2020/11/20 08:20,Cambridge University,Alice Johnson,alicej@gmail.com,https://cys.net,true
+training-session-12,training-module-03,TS-ML-194,2020/02/12 10:30,2020/11/20 08:20,Google,John Smith,jsmith@gmail.com,,false
+training-session-13,training-module-03,TS-ML-001,2021/02/12 18:30,2022/01/20 14:20,Google,John Smith,jsmith@gmail.com,,false
+training-session-14,training-module-09,TS-GH-999,2018/01/21 10:20,2021/01/12 00:00,MIT,Bob Brown,bbrown@gmail.com,,true
+training-session-15,training-module-05,TS-BLK-999,2018/01/21 10:20,2018/02/20 19:20,Microsoft,Charles Doe,jdoe@gmail.com,,false

@@ -48,7 +48,7 @@ public class DeveloperTrainingSessionPublishService extends AbstractService<Deve
 	@Override
 	public void bind(final TrainingSession object) {
 		assert object != null;
-		super.bind(object, "code", "startMoment", "finishMoment", "location", "instructor", "contactEmail", "optionalLink", "draftMode");
+		super.bind(object, "code", "startMoment", "finishMoment", "location", "instructor", "contactEmail", "optionalLink");
 	}
 
 	@Override

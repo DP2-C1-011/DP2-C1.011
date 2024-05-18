@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.training.DifficultyLevel;
@@ -55,14 +56,21 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 		assert object != null;
 		int moduleId;
 		Integer tsInTm, totalPublishedTm;
-		
+
 		moduleId = super.getRequest().getData("id", int.class);
 
 		if (!super.getBuffer().getErrors().hasErrors("sessions")) {
 			Integer numSessions = this.repository.findTrainingSessionsByTrainingModuleId(moduleId).size();
 			super.state(numSessions > 0, "*", "developer.training-module.form.error.training-session");
 		}
-		
+
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			TrainingModule existing;
+
+			existing = this.repository.findTrainingModuleByCode(object.getCode());
+			super.state(existing == null || existing.equals(object), "code", "developer.training-module.form.error.duplicateCode");
+		}
+
 		tsInTm = this.repository.findTrainingSessionsByTrainingModuleId(object.getId()).size();
 		totalPublishedTm = this.repository.findPublishedTrainingSessionsByTrainingModuleId(object.getId()).size();
 		super.state(tsInTm != null && totalPublishedTm == tsInTm, "*", "developer.training-module.form.error.not-published-trainingSessions");
@@ -71,6 +79,7 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 	@Override
 	public void perform(final TrainingModule object) {
 		assert object != null;
+		object.setUpdateMoment(MomentHelper.getCurrentMoment());
 		object.setDraftMode(false);
 		this.repository.save(object);
 	}

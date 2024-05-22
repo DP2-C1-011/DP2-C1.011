@@ -35,6 +35,7 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 		object = new TrainingModule();
 		object.setDraftMode(true);
 		object.setDeveloper(developer);
+		object.setCreationMoment(MomentHelper.getCurrentMoment());
 
 		super.getBuffer().addData(object);
 	}
@@ -56,9 +57,6 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 			existing = this.repository.findTrainingModuleByCode(object.getCode());
 			super.state(existing == null, "code", "developer.training-module.form.error.duplicateCode");
 		}
-
-		if (!super.getBuffer().getErrors().hasErrors("updateMoment") && !super.getBuffer().getErrors().hasErrors("creationMoment") && object.getUpdateMoment() != null)
-			super.state(MomentHelper.isAfter(object.getUpdateMoment(), object.getCreationMoment()), "updateMoment", "developer.training-module.form.error.updateBeforeCreate");
 	}
 
 	@Override

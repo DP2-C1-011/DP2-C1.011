@@ -1,6 +1,6 @@
 key,key:developer,code,creation-moment,details,difficulty-level,update-moment,optional-link,total-time,draft-mode
-training-module-01,developer-01,A-001,2015/01/29 15:00,Basic Java Module,BASIC,2015/02/22 15:25,https://www.learnjava.com,20,false
-training-module-02,developer-02,MN-653,2020/02/12 20:21,Machine Learning Proficiency,ADVANCED,,https://www.aimastery.com,40,false
+training-module-01,developer-01,A-001,2015/01/29 15:00,Basic Java Module,BASIC,2015/02/22 15:25,https://www.learnjava.com,20,true
+training-module-02,developer-02,ML-653,2020/02/12 20:21,Machine Learning Proficiency,ADVANCED,,https://www.aimastery.com,40,false
 training-module-03,developer-01,JQW-555,2019/10/03 12:02,Intermediate Python Module,INTERMEDIATE,2019/10/30 23:59,https://www.pythoncourses.com,20,false
 training-module-04,developer-02,DP-002,2017/02/01 10:00,Design and Testing 2 Module,INTERMEDIATE,2018/11/29 19:21,https://www.etsii.es,60,false
 training-module-05,developer-01,BLK-101,2013/09/01 10:00,Blockchain Applications,ADVANCED,2017/12/01 19:32,https://www.learningdeeplearning.com,30,false

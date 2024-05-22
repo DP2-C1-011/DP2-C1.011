@@ -17,6 +17,7 @@ import lombok.Setter;
 public class ParticipatesIn extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
+	//prueba token
 
 	private static final long	serialVersionUID	= 1L;
 

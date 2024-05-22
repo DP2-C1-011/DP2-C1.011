@@ -15,7 +15,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ParticipatesIn extends AbstractEntity {
-
+	// comprobar que va bien los cambios
 	// Serialisation identifier -----------------------------------------------
 	//prueba token
 

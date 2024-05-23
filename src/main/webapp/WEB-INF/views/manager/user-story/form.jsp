@@ -20,7 +20,7 @@
 			<acme:button code="manager.user-story.list.button.add" action="/manager/project-user-story/create?userStoryId=${id}"/>
 			<acme:button code="manager.user-story.list.button.deleteFromProject" action="/manager/project-user-story/delete?userStoryId=${id}"/>
 		</jstl:when>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete') && draftMode == true}">
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
 			<acme:submit code="manager.user-story.form.button.update" action="/manager/user-story/update"/>
 			<acme:submit code="manager.user-story.form.button.delete" action="/manager/user-story/delete"/>
 			<acme:submit code="manager.user-story.form.button.publish" action="/manager/user-story/publish"/>

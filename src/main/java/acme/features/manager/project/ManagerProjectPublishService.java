@@ -83,6 +83,12 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 			super.state(currencyState, "cost", "client.contract.form.error.budget.invalid-currency");
 
 		}
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			Project existing;
+
+			existing = this.repository.findOneProjectByCode(object.getCode());
+			super.state(existing == null || existing.equals(object), "code", "manager.project.form.error.duplicated");
+		}
 
 	}
 

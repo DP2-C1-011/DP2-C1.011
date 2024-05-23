@@ -55,9 +55,6 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 	public void validate(final TrainingSession object) {
 		assert object != null;
 
-		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
-			super.state(object.getDraftMode(), "draftMode", "developer.training-session.form.error.draftMode");
-
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			TrainingSession existing;
 

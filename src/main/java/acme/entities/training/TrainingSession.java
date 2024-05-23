@@ -39,12 +39,10 @@ public class TrainingSession extends AbstractEntity {
 
 	@Past
 	@NotNull
-	//Comprobar que es una semana posterior a creationMoment
 	private Date				startMoment;
 
 	@Past
 	@NotNull
-	//Comprobar que es posterior a startMoment
 	private Date				finishMoment;
 
 	@NotBlank

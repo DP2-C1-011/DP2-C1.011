@@ -24,6 +24,7 @@ sponsor.sponsorship.list.label.amount = Amount
 sponsor.sponsorship.list.label.email = Email
 sponsor.sponsorship.list.label.link = Link
 
+sponsor.sponsorship.form.error.periodTooShort = The Sponsorship must last at least a month
 sponsor.sponsorship.form.error.invoice-amount = Sponsorships can't be published until the total value of all Invoices equates to the Sponsorship's total value
 sponsor.sponsorship.form.error.draftMode = Current Sponsorship must stay in Draft Mode
 sponsor.sponsorship.form.error.duplicateCode = Another Sponsorship has this code

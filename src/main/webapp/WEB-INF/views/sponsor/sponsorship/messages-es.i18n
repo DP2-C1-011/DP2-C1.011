@@ -24,6 +24,7 @@ sponsor.sponsorship.list.label.amount = Cantidad
 sponsor.sponsorship.list.label.email = Correo electrónico
 sponsor.sponsorship.list.label.link = Enlace informativo
 
+sponsor.sponsorship.form.error.periodTooShort = El patrocinio debe durar al menos un mes
 sponsor.sponsorship.form.error.invoice-amount = Los patrocinios no se pueden publicar a menos que el total de sus recibos coincida con su valor monetario total
 sponsor.sponsorship.form.error.draftMode = Este patrocinio debe mantenerse en modo borrador
 sponsor.sponsorship.form.error.duplicateCode = Ya existe un patrocinio con este código

@@ -20,7 +20,9 @@ public class AnyPublishedSponsorshipsListService extends AbstractService<Any, Sp
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		status = super.getRequest().getPrincipal().hasRole(Any.class);
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override

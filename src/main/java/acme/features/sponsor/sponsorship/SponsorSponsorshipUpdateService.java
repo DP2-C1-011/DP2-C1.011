@@ -63,6 +63,13 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
 			super.state(object.getDraftMode(), "draftMode", "sponsor.sponsorship.form.error.draftMode");
 
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			Sponsorship existing;
+
+			existing = this.repository.findSponsorshipByCode(object.getCode());
+			super.state(existing == null || existing.equals(object), "code", "sponsor.sponsorship.form.error.duplicateCode");
+		}
+
 		if (!super.getBuffer().getErrors().hasErrors("amount")) {
 			Boolean currencyState = this.moneyService.checkContains(object.getAmount().getCurrency());
 			super.state(currencyState, "amount", "sponsor.sponsorship.form.error.invalid-currency");

@@ -23,7 +23,18 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+
+		int id;
+		UserStory us;
+		Manager manager;
+
+		id = super.getRequest().getData("userStoryId", int.class);
+		us = this.createRepository.findOneUserStoryById(id);
+		manager = us == null ? null : us.getManager();
+		status = us != null && super.getRequest().getPrincipal().hasRole(manager);
+
+		super.getResponse().setAuthorised(status);
 	}
 	@Override
 	public void load() {
@@ -51,9 +62,9 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 	@Override
 	public void validate(final ProjectUserStory object) {
 		assert object != null;
+		if (!super.getBuffer().getErrors().hasErrors("project"))
+			super.state(object.getUserStory().getManager().equals(object.getProject().getManager()), "project", "manager.projectUserStory.form.error.projectNotFromManager");
 		if (!super.getBuffer().getErrors().hasErrors("project")) {
-			//int masterId;
-			//masterId = super.getRequest().getData("masterId", int.class);
 			final Collection<UserStory> us = this.createRepository.findUserStoryByProject(object.getProject().getId());
 			super.state(us.isEmpty() || !us.contains(object.getUserStory()), "project", "manager.projectUserStory.form.error.userStory");
 		}
@@ -72,7 +83,7 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 		Manager manager = this.createRepository.findOneManagerByUserStoryId(userStoryId);
 		Collection<Project> projects = this.createRepository.findProjectsByManagerIdAndNonPublished(manager.getId());
 
-		SelectChoices choices = SelectChoices.from(projects, "title", object.getProject());
+		SelectChoices choices = SelectChoices.from(projects, "code", object.getProject());
 
 		Dataset dataset = super.unbind(object, "userStory");
 

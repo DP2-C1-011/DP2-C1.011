@@ -18,7 +18,12 @@ public class AnyPublishedProjectShowService extends AbstractService<Any, Project
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int id;
+		id = super.getRequest().getData("id", int.class);
+		Project project = this.mpr.findProjectById(id);
+		status = !project.getDraftMode();
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override

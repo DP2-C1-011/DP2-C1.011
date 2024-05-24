@@ -64,14 +64,12 @@ public class DeveloperTrainingModuleUpdateService extends AbstractService<Develo
 			existing = this.repository.findTrainingModuleByCode(object.getCode());
 			super.state(existing == null || existing.equals(object), "code", "developer.training-module.form.error.duplicateCode");
 		}
-
-		if (!super.getBuffer().getErrors().hasErrors("updateMoment") && !super.getBuffer().getErrors().hasErrors("creationMoment") && object.getUpdateMoment() != null)
-			super.state(MomentHelper.isAfter(object.getUpdateMoment(), object.getCreationMoment()), "updateMoment", "developer.training-module.form.error.updateBeforeCreate");
 	}
 
 	@Override
 	public void perform(final TrainingModule object) {
 		assert object != null;
+		object.setUpdateMoment(MomentHelper.getCurrentMoment());
 
 		this.repository.save(object);
 	}

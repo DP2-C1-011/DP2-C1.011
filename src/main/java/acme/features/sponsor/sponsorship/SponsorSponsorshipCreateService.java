@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
+import acme.components.MoneyService;
+import acme.entities.sponsor.Method;
 import acme.entities.sponsor.Sponsorship;
 import acme.roles.Sponsor;
 
@@ -16,7 +19,9 @@ import acme.roles.Sponsor;
 public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sponsorship> {
 
 	@Autowired
-	SponsorSponsorshipRepository repository;
+	SponsorSponsorshipRepository	repository;
+	@Autowired
+	MoneyService					moneyService;
 
 
 	@Override
@@ -57,6 +62,16 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 			super.state(existing == null, "code", "sponsor.sponsorship.form.error.duplicateCode");
 		}
 
+		if (!super.getBuffer().getErrors().hasErrors("amount")) {
+			Boolean currencyState = this.moneyService.checkContains(object.getAmount().getCurrency());
+			super.state(currencyState, "amount", "sponsor.sponsorship.form.error.invalid-currency");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("amount")) {
+			Boolean currencyState = object.getAmount().getAmount() > 0.00;
+			super.state(currencyState, "amount", "sponsor.sponsorship.form.error.negative-amount");
+		}
+
 		if (!super.getBuffer().getErrors().hasErrors("endDate") && !super.getBuffer().getErrors().hasErrors("startDate") && object.getEndDate() != null) {
 			super.state(MomentHelper.isAfter(object.getEndDate(), object.getStartDate()), "endDate", "sponsor.sponsorship.form.error.finishBeforeStart");
 			super.state(MomentHelper.isAfter(object.getEndDate(), MomentHelper.deltaFromMoment(object.getStartDate(), 30, ChronoUnit.DAYS)), "endDate", "sponsor.sponsorship.form.error.periodTooShort");
@@ -74,8 +89,13 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 	public void unbind(final Sponsorship object) {
 		assert object != null;
 		Dataset dataset;
+		SelectChoices choices;
 
-		dataset = super.unbind(object, "code", "moment", "startDate", "endDate", "amount", "financial", "email", "link");
+		choices = SelectChoices.from(Method.class, object.getFinancial());
+
+		dataset = super.unbind(object, "code", "moment", "startDate", "endDate", "amount", "financial", "email", "link", "draftMode");
+
+		dataset.put("methods", choices);
 
 		super.getResponse().addData(dataset);
 	}

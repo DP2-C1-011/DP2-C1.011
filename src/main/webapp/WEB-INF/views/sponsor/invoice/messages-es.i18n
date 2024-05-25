@@ -22,6 +22,8 @@ sponsor.invoice.form.button.delete = Borrar
 sponsor.invoice.form.button.update = Actualizar
 sponsor.invoice.form.button.publish = Publicar
 
+sponsor.invoice.form.error.negative-amount = El dinero no puede ser negativo
+sponsor.invoice.form.error.invalid-tax = Al ser un porcentaje, el impuesto debe estar entre 0 y 100
 sponsor.invoice.form.error.different-currency = La divisa del recibo debe coincidir con su patrocinio
 sponsor.invoice.form.error.invalid-currency = Divisa no válida
 sponsor.invoice.form.error.duplicateCode = Otro recibo ya tiene este código

@@ -22,6 +22,13 @@ import acme.roles.Developer;
 import lombok.Getter;
 import lombok.Setter;
 
+/*
+ * @Table(indexes = {
+ * 
+ * @Index(columnList = "code")
+ * })
+ */
+
 @Entity
 @Getter
 @Setter

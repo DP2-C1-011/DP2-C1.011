@@ -42,7 +42,7 @@ public class MoneyService {
 		Double sourceAmount, targetAmount, rate;
 		Money target;
 		Date moment;
-		if (!source.getCurrency().equals(targetCurrency))
+		if (!source.getCurrency().equals(targetCurrency)) {
 			try {
 				api = new RestTemplate();
 
@@ -77,7 +77,7 @@ public class MoneyService {
 			} catch (final Throwable oops) {
 				result = null;
 			}
-		else {
+		}else {
 			result = new MoneyExchange();
 			result.setSource(source);
 			result.setTargetCurrency(targetCurrency);

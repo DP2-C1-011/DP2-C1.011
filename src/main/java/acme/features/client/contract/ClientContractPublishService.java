@@ -74,6 +74,11 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 	@Override
 	public void validate(final Contract object) {
 		assert object != null;
+		
+		if (!super.getBuffer().getErrors().hasErrors("project")) {
+
+			super.state(object.getProject().getDraftMode().equals(false),"project", "client.contract.form.error.unpublishedproject");
+		}
 
 		if (!super.getBuffer().getErrors().hasErrors("budget")) {
 			Double budget;

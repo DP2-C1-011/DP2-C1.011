@@ -9,8 +9,8 @@
 	<acme:input-moment code="sponsor.sponsorship.form.label.start-date" path="startDate"/>
 	<acme:input-moment code="sponsor.sponsorship.form.label.end-date" path="endDate"/>	
 	<acme:input-money code="sponsor.sponsorship.form.label.amount" path="amount"/>
-	<acme:input-checkbox code="sponsor.sponsorship.form.label.financial" path="financial"/>
-	<acme:input-url code="sponsor.sponsorship.form.label.email" path="email"/>
+	<acme:input-select code="sponsor.sponsorship.form.label.financial" path="financial" choices="${methods}"/>
+	<acme:input-email code="sponsor.sponsorship.form.label.email" path="email"/>
 	<acme:input-url code="sponsor.sponsorship.form.label.link" path="link"/>
 	
 	<jstl:choose>

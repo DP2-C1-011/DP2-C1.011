@@ -9,7 +9,7 @@ import lombok.Setter;
 public class ExchangeRate {
 
 	// Attributes -------------------------------------------------------------
-
+	//Pequeño cambio para poder mergear rama
 	private String	result;
 	private String	documentation;
 	private String	terms_of_use;

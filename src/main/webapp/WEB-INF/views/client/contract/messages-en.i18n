@@ -24,6 +24,7 @@ client.contract.form.button.delete = Delete
 client.contract.form.button.publish = Publish
 client.contract.form.button.create = Create
 
+client.contract.form.error.at-least-one-progressLog = The contract must have at least one progress log to be published
 client.contract.form.error.unpublishedproject = This project is not published
 client.contract.error.budget-negative = Negative amount
 client.contract.form.error.budget.invalid-currency = Invalid currency

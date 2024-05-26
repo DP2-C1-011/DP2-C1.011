@@ -22,6 +22,8 @@ sponsor.invoice.form.button.delete = Delete
 sponsor.invoice.form.button.update = Update
 sponsor.invoice.form.button.publish = Publish
 
+sponsor.invoice.form.error.negative-amount = Money can't be negative
+sponsor.invoice.form.error.invalid-tax = Since it's a percentage, tax must be between 0 and 100
 sponsor.invoice.form.error.different-currency = Invoice's Currency must be the same as the associated Sponsorship
 sponsor.invoice.form.error.invalid-currency = Invalid Currency
 sponsor.invoice.form.error.duplicateCode = Another Invoice has this code

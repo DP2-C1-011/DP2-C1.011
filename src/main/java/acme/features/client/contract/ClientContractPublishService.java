@@ -111,6 +111,7 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 
 		numberProgressLogsPerContract = this.repository.findManyProgressLogsByContractId(object.getId()).size();
 		totalPublishedProgressLogs = this.repository.findTotalPublishedProgressLogsByContractId(object.getId()).size();
+		super.state(numberProgressLogsPerContract>0, "*", "client.contract.form.error.at-least-one-progressLog");;
 		super.state(totalPublishedProgressLogs != null && totalPublishedProgressLogs == numberProgressLogsPerContract, "*", "client.contract.form.error.not-published-progressLogs");
 
 		Double totalBudgets;

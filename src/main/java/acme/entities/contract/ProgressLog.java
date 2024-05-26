@@ -6,7 +6,9 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -24,6 +26,11 @@ import lombok.Setter;
 @Setter
 @Getter
 @Embeddable
+@Table(indexes = { 
+	   @Index(columnList = "contract_id"),
+	   @Index(columnList = "recordId"),
+	   @Index(columnList = "contract_id,draftMode")
+	})
 public class ProgressLog extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;

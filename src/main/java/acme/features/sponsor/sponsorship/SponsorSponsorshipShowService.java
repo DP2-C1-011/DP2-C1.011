@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
+import acme.entities.sponsor.Method;
 import acme.entities.sponsor.Sponsorship;
 import acme.roles.Sponsor;
 
@@ -48,8 +50,13 @@ public class SponsorSponsorshipShowService extends AbstractService<Sponsor, Spon
 		assert object != null;
 
 		Dataset dataset;
+		SelectChoices choices;
+
+		choices = SelectChoices.from(Method.class, object.getFinancial());
+
 		dataset = super.unbind(object, "code", "moment", "startDate", "endDate", "amount", "financial", "email", "link", "draftMode");
 
+		dataset.put("methods", choices);
 		super.getResponse().addData(dataset);
 	}
 

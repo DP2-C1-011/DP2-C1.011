@@ -12,3 +12,5 @@ manager.dashboard.form.label.average-us-cost =  Media de los coste de las histor
 manager.dashboard.form.label.max-us-cost =  Maximo coste de las historias de usuario
 manager.dashboard.form.label.min-us-cost =  Mínimo coste de las historias de usuario
 manager.dashboard.form.label.deviation-us-cost =  Desviación de los costes de las historias de usuario
+
+manager.dashboard.form.title.priority = Prioridad de las Historias de Usuario

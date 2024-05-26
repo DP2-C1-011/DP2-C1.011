@@ -80,10 +80,19 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("quantity")) {
-			Boolean currencyState = object.getQuantity().getCurrency() == object.getSponsorship().getAmount().getCurrency();
+			Boolean currencyState = object.getQuantity().getCurrency().equals(object.getSponsorship().getAmount().getCurrency());
 			super.state(currencyState, "quantity", "sponsor.invoice.form.error.different-currency");
 		}
 
+		if (!super.getBuffer().getErrors().hasErrors("quantity")) {
+			Boolean currencyState = object.getQuantity().getAmount() > 0.00;
+			super.state(currencyState, "quantity", "sponsor.invoice.form.error.negative-amount");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("tax")) {
+			Boolean taxState = object.getTax() < 100.00;
+			super.state(taxState, "tax", "sponsor.invoice.form.error.invalid-tax");
+		}
 	}
 
 	@Override
@@ -96,7 +105,7 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 	public void unbind(final Invoice object) {
 		assert object != null;
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "registrationDate", "dueDate", "quantity", "tax", "optionalLink");
+		dataset = super.unbind(object, "code", "registrationDate", "dueDate", "quantity", "tax", "optionalLink", "draftMode");
 		super.getResponse().addData(dataset);
 		super.getResponse().addGlobal("sponsorshipId", super.getRequest().getData("sponsorshipId", int.class));
 	}

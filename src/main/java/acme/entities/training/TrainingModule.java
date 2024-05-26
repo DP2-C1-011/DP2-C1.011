@@ -22,6 +22,12 @@ import acme.roles.Developer;
 import lombok.Getter;
 import lombok.Setter;
 
+/*
+ * @Table(indexes = {
+ * 
+ * @Index(columnList = "code")
+ * })
+ */
 @Entity
 @Getter
 @Setter
@@ -54,6 +60,7 @@ public class TrainingModule extends AbstractEntity {
 	private Date				updateMoment;
 
 	@URL
+	@Length(max = 255)
 	private String				optionalLink;
 
 	@NotNull

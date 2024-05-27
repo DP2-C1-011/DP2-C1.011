@@ -31,6 +31,8 @@ public class AuthenticatedClientUpdateService extends AbstractService<Authentica
 
 	@Autowired
 	private AuthenticatedClientRepository repository;
+	
+	public static final String IDENTIFICATION = "identification"; 
 
 	// AbstractService interface ----------------------------------------------ç
 
@@ -57,18 +59,18 @@ public class AuthenticatedClientUpdateService extends AbstractService<Authentica
 	public void bind(final Client object) {
 		assert object != null;
 
-		super.bind(object, "identification", "companyName", "type", "email", "optionalLink");
+		super.bind(object, IDENTIFICATION, "companyName", "type", "email", "optionalLink");
 	}
 
 	@Override
 	public void validate(final Client object) {
 		assert object != null;
 
-		if (!super.getBuffer().getErrors().hasErrors("identification")) {
+		if (!super.getBuffer().getErrors().hasErrors(IDENTIFICATION)) {
 			Client existing;
 
 			existing = this.repository.findOneClientByCode(object.getIdentification());
-			super.state(existing == null || object.equals(existing), "identification", "authenticated.client.form.error.duplicated");
+			super.state(existing == null || object.equals(existing), IDENTIFICATION, "authenticated.client.form.error.duplicated");
 		}
 	}
 
@@ -87,7 +89,7 @@ public class AuthenticatedClientUpdateService extends AbstractService<Authentica
 		SelectChoices choices;
 		choices = SelectChoices.from(Type.class, object.getType());
 
-		dataset = super.unbind(object, "identification", "companyName", "email", "optionalLink");
+		dataset = super.unbind(object, IDENTIFICATION, "companyName", "email", "optionalLink");
 		dataset.put("type", choices.getSelected().getKey());
 		dataset.put("types", choices);
 		super.getResponse().addData(dataset);

@@ -74,6 +74,11 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 			existing = this.repository.findOneContractByCode(object.getCode());
 			super.state(existing == null, "code", "client.contract.form.error.duplicated");
 		}
+		
+		if (!super.getBuffer().getErrors().hasErrors("project")) {
+
+			super.state(object.getProject().getDraftMode().equals(false),"project", "client.contract.form.error.unpublishedproject");
+		}
 
 		if (!super.getBuffer().getErrors().hasErrors("budget")) {
 			Double budget;

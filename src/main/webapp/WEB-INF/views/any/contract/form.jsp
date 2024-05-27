@@ -11,6 +11,7 @@
 	<acme:input-textarea code="any.contract.form.label.goals" path="goals" readonly="true"/>	
 	<acme:input-money code="any.contract.form.label.budget" path="budget" readonly="true"/>
 	<acme:input-textbox code="any.contract.form.label.project" path="project" readonly="true"/>
+	<acme:input-money code="client.contract.form.label.systemCurrencyBudget" path="systemCurrencyBudget" readonly="true"/>
 	
 	<acme:button code="any.contract.form.button.progressLogs" action="/any/progress-log/list?masterId=${id}"/>
 </acme:form>

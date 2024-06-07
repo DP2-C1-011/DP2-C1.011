@@ -79,6 +79,8 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 	@Override
 	public void perform(final TrainingModule object) {
 		assert object != null;
+		TrainingModule objectOld = this.repository.findTrainingModuleById(object.getId());
+		object.setCreationMoment(objectOld.getCreationMoment());
 		object.setUpdateMoment(MomentHelper.getCurrentMoment());
 		object.setDraftMode(false);
 		this.repository.save(object);

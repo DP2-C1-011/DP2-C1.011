@@ -2,6 +2,7 @@ developer.training-module.form.title = Training Module Details
 developer.training-module.list.title = Training Module List
 
 developer.training-module.form.label.code = Code
+developer.training-module.form.label.project = Project
 developer.training-module.form.label.creation-moment = Creation Moment
 developer.training-module.form.label.details = Details
 developer.training-module.form.label.difficulty-level = Difficulty Level
@@ -26,3 +27,4 @@ developer.training-module.form.error.draftMode = Training Module must stay in Dr
 developer.training-module.form.error.duplicateCode = Another Training Module has this code
 developer.training-module.form.error.updateBeforeCreate = Update Moment must be after Creation Moment
 developer.training-module.form.error.not-published-trainingSessions = Training Module contains unpublished Training Sessions
+developer.training-module.form.error.not-published-project = The project must be published

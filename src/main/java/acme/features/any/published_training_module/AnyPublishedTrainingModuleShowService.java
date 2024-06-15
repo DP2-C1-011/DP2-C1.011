@@ -38,7 +38,7 @@ public class AnyPublishedTrainingModuleShowService extends AbstractService<Any, 
 
 		Dataset dataset;
 		dataset = super.unbind(object, "code", "creation-moment", "details", "difficulty-level", "update-moment", "optional-link", "total-time", "draft-mode");
-
+		dataset.put("project", object.getProject().getCode());
 		super.getResponse().addData(dataset);
 	}
 

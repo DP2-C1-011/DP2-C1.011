@@ -4,7 +4,8 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form>
-	<acme:input-textbox code="any.training-module.form.label.code" path="code"/>	
+	<acme:input-textbox code="any.training-module.form.label.code" path="code"/>
+	<acme:input-textbox code="any.training-module.form.label.project" path="project" readonly="true"/>
 	<acme:input-moment code="any.training-module.form.label.creation-moment" path="creationMoment"/>
 	<acme:input-textbox code="any.training-module.form.label.details" path="details"/>
 	<acme:input-textbox code="any.training-module.form.label.difficulty-level" path="difficultyLevel"/>

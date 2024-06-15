@@ -62,8 +62,10 @@ public class DeveloperTrainingSessionPublishService extends AbstractService<Deve
 			super.state(existing == null || existing.equals(object), "code", "developer.training-session.form.error.duplicateCode");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("startMoment"))
+		if (!super.getBuffer().getErrors().hasErrors("startMoment")) {
 			super.state(MomentHelper.isAfter(object.getStartMoment(), object.getTrainingModule().getCreationMoment()), "startMoment", "developer.training-session.form.error.startBeforeCreate");
+			super.state(MomentHelper.isAfter(object.getStartMoment(), MomentHelper.deltaFromMoment(object.getTrainingModule().getCreationMoment(), 7, ChronoUnit.DAYS)), "startMoment", "developer.training-session.form.error.startTooSoon");
+		}
 
 		if (!super.getBuffer().getErrors().hasErrors("startMoment") && !super.getBuffer().getErrors().hasErrors("finishMoment")) {
 			super.state(MomentHelper.isAfter(object.getFinishMoment(), object.getStartMoment()), "finishMoment", "developer.training-session.form.error.finishBeforeStart");

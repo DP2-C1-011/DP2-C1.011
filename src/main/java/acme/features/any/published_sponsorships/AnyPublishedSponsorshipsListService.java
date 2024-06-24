@@ -39,6 +39,9 @@ public class AnyPublishedSponsorshipsListService extends AbstractService<Any, Sp
 		assert object != null;
 		Dataset dataset;
 		dataset = super.unbind(object, "code", "moment", "startDate", "endDate", "amount", "financial", "email", "link", "draftMode");
+
+		dataset.put("project", object.getProject().getCode());
+
 		super.getResponse().addData(dataset);
 	}
 }

@@ -17,4 +17,5 @@ public interface AnyPublishedSponsorshipsRepository extends AbstractRepository {
 
 	@Query("select c from Sponsorship c where c.id = :id")
 	Sponsorship findSponsorshipById(int id);
+
 }

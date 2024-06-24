@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.entities.project.Project;
 import acme.entities.sponsor.Invoice;
 import acme.entities.sponsor.Method;
 import acme.entities.sponsor.Sponsorship;
@@ -51,7 +52,15 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 	public void bind(final Sponsorship object) {
 		assert object != null;
 
+		int projectId;
+		Project project;
+
+		projectId = super.getRequest().getData("project", int.class);
+		project = this.repository.findOneProjectById(projectId);
+
 		super.bind(object, "code", "moment", "startDate", "endDate", "amount", "financial", "email", "link");
+		object.setProject(project);
+
 	}
 
 	@Override
@@ -81,6 +90,16 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 		dataset = super.unbind(object, "code", "moment", "startDate", "endDate", "amount", "financial", "email", "link", "draftMode");
 
 		dataset.put("methods", choices);
+
+		Collection<Project> projects;
+		SelectChoices projectChoices;
+
+		projects = this.repository.findAllPublishedProjects();
+		projectChoices = SelectChoices.from(projects, "code", object.getProject());
+
+		dataset.put("project", projectChoices.getSelected().getKey());
+		dataset.put("projects", projectChoices);
+
 		super.getResponse().addData(dataset);
 	}
 }

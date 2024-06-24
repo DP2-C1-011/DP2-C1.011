@@ -10,6 +10,7 @@ sponsor.sponsorship.form.label.financial = Financial, payed in money, not goods
 sponsor.sponsorship.form.label.email = Email
 sponsor.sponsorship.form.label.link = Link
 sponsor.sponsorship.form.label.draft-mode = Draft mode
+sponsor.sponsorship.form.label.project = Associated Project
 
 sponsor.sponsorship.form.button.invoices = Invoices
 
@@ -24,6 +25,7 @@ sponsor.sponsorship.list.label.amount = Amount
 sponsor.sponsorship.list.label.email = Email
 sponsor.sponsorship.list.label.link = Link
 
+sponsor.sponsorship.form.error.not-published-project = Associated project must be published
 sponsor.sponsorship.form.error.invalid-currency = Invalid Currency
 sponsor.sponsorship.form.error.negative-amount = Money can't be negative
 sponsor.sponsorship.form.error.periodTooShort = The Sponsorship must last at least a month

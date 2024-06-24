@@ -2,6 +2,7 @@ developer.training-module.form.title = Detalles Módulo de Entrenamiento
 developer.training-module.list.title = Listado Módulos de Entrenamiento
 
 developer.training-module.form.label.code = Código
+developer.training-module.form.label.project = Proyecto
 developer.training-module.form.label.creation-moment = Momento de Creación
 developer.training-module.form.label.details = Detalles
 developer.training-module.form.label.difficulty-level = Dificultad
@@ -26,3 +27,4 @@ developer.training-module.form.error.draftMode = Módulo de Entrenamiento debe q
 developer.training-module.form.error.duplicateCode = Otro Módulo de Entrenamiento tiene este código
 developer.training-module.form.error.updateBeforeCreate = El momento de actualización debe ser posterior al de creación
 developer.training-module.form.error.not-published-trainingSessions = El Módulo de Entrenamiento contiene Sesiones de Entrenamiento No Publicadas
+developer.training-module.form.error.not-published-project = El proyecto debe estar publicado

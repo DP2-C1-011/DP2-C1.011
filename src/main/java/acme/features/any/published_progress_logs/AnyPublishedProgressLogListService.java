@@ -17,13 +17,15 @@ public class AnyPublishedProgressLogListService extends AbstractService<Any, Pro
 
 	@Autowired
 	AnyPublishedProgressLogRepository cpr;
+	
+	public static final String MASTER = "masterId";
 
 
 	@Override
 	public void authorise() {
 		int masterId;
 		Contract contract;
-		masterId = super.getRequest().getData("masterId", int.class);
+		masterId = super.getRequest().getData(MASTER, int.class);
 		contract = this.cpr.findOneContractById(masterId);
 		super.getResponse().setAuthorised(!contract.getDraftMode());
 	}
@@ -33,10 +35,8 @@ public class AnyPublishedProgressLogListService extends AbstractService<Any, Pro
 		Collection<ProgressLog> objects;
 		int masterId;
 
-		masterId = super.getRequest().getData("masterId", int.class);
+		masterId = super.getRequest().getData(MASTER, int.class);
 		objects = this.cpr.findProgressLogsByContractId(masterId);
-		//		masterId = super.getRequest().getPrincipal().getActiveRoleId();
-		//		objects = this.cpr.findProgressLogsByClientId(masterId);
 
 		super.getBuffer().addData(objects);
 	}
@@ -58,8 +58,8 @@ public class AnyPublishedProgressLogListService extends AbstractService<Any, Pro
 
 		int masterId;
 
-		masterId = super.getRequest().getData("masterId", int.class);
-		super.getResponse().addGlobal("masterId", masterId);
+		masterId = super.getRequest().getData(MASTER, int.class);
+		super.getResponse().addGlobal(MASTER, masterId);
 	}
 
 }

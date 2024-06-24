@@ -63,20 +63,22 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 
 		int projectId;
 		Project project;
-		Date date;
-		date = MomentHelper.getCurrentMoment();
 
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findOneProjectById(projectId);
 
 		super.bind(object, "code", "provider", "customer", "goals", "budget");
 		object.setProject(project);
-		object.setInstantiationMoment(date);
 	}
 
 	@Override
 	public void validate(final Contract object) {
 		assert object != null;
+		
+		if (!super.getBuffer().getErrors().hasErrors("project")) {
+
+			super.state(object.getProject().getDraftMode().equals(false),"project", "client.contract.form.error.unpublishedproject");
+		}
 
 		if (!super.getBuffer().getErrors().hasErrors("budget")) {
 			Double budget;
@@ -109,6 +111,7 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 
 		numberProgressLogsPerContract = this.repository.findManyProgressLogsByContractId(object.getId()).size();
 		totalPublishedProgressLogs = this.repository.findTotalPublishedProgressLogsByContractId(object.getId()).size();
+		super.state(numberProgressLogsPerContract>0, "*", "client.contract.form.error.at-least-one-progressLog");;
 		super.state(totalPublishedProgressLogs != null && totalPublishedProgressLogs == numberProgressLogsPerContract, "*", "client.contract.form.error.not-published-progressLogs");
 
 		Double totalBudgets;

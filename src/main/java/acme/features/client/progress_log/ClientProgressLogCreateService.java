@@ -1,10 +1,13 @@
 
 package acme.features.client.progress_log;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.entities.contract.Contract;
 import acme.entities.contract.ProgressLog;
@@ -39,6 +42,8 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 		ProgressLog object;
 		int masterId;
 		Contract contract;
+		Date date;
+		date = MomentHelper.getCurrentMoment();
 
 		masterId = super.getRequest().getData("masterId", int.class);
 		contract = this.repository.findOneContractById(masterId);
@@ -48,7 +53,7 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 		object.setComment("");
 		object.setContract(contract);
 		object.setDraftMode(true);
-
+		object.setRegistrationMoment(date);
 		super.getBuffer().addData(object);
 	}
 
@@ -56,7 +61,7 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 	public void bind(final ProgressLog object) {
 		assert object != null;
 
-		super.bind(object, "recordId", "completeness", "comment", "registrationMoment", "responsible");
+		super.bind(object, "recordId", "completeness", "comment", "responsible");
 	}
 
 	@Override

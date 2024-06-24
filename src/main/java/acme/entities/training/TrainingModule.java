@@ -18,10 +18,17 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.entities.project.Project;
 import acme.roles.Developer;
 import lombok.Getter;
 import lombok.Setter;
 
+/*
+ * @Table(indexes = {
+ * 
+ * @Index(columnList = "code")
+ * })
+ */
 @Entity
 @Getter
 @Setter
@@ -33,6 +40,10 @@ public class TrainingModule extends AbstractEntity {
 	@Valid
 	@ManyToOne()
 	private Developer			developer;
+
+	@NotNull
+	@ManyToOne(optional = false)
+	private Project				project;
 
 	@NotBlank
 	@Column(unique = true)
@@ -54,6 +65,7 @@ public class TrainingModule extends AbstractEntity {
 	private Date				updateMoment;
 
 	@URL
+	@Length(max = 255)
 	private String				optionalLink;
 
 	@NotNull
@@ -62,4 +74,5 @@ public class TrainingModule extends AbstractEntity {
 	private Integer				totalTime;
 
 	private Boolean				draftMode;
+
 }

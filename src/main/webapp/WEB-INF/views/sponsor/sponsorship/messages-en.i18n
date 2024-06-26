@@ -6,10 +6,10 @@ sponsor.sponsorship.form.label.moment = Moment
 sponsor.sponsorship.form.label.start-date = Start Date
 sponsor.sponsorship.form.label.end-date = End Date
 sponsor.sponsorship.form.label.amount = Amount
-sponsor.sponsorship.form.label.financial = Financial, payed in money, not goods
+sponsor.sponsorship.form.label.financial = Payment Method
 sponsor.sponsorship.form.label.email = Email
 sponsor.sponsorship.form.label.link = Link
-sponsor.sponsorship.form.label.draft-mode = Draft mode
+sponsor.sponsorship.form.label.draft-mode = Draft Mode
 sponsor.sponsorship.form.label.project = Associated Project
 
 sponsor.sponsorship.form.button.invoices = Invoices

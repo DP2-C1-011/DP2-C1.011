@@ -62,6 +62,7 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 		project = this.repository.findOneProjectById(projectId);
 
 		super.bind(object, "code", "moment", "startDate", "endDate", "amount", "financial", "email", "link");
+		object.setProject(project);
 	}
 
 	@Override

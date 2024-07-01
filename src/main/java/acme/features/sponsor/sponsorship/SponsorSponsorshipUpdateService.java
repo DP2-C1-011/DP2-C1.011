@@ -2,6 +2,7 @@
 package acme.features.sponsor.sponsorship;
 
 import java.time.temporal.ChronoUnit;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +12,7 @@ import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.components.MoneyService;
+import acme.entities.project.Project;
 import acme.entities.sponsor.Method;
 import acme.entities.sponsor.Sponsorship;
 import acme.roles.Sponsor;
@@ -53,12 +55,22 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 	@Override
 	public void bind(final Sponsorship object) {
 		assert object != null;
+
+		int projectId;
+		Project project;
+		projectId = super.getRequest().getData("project", int.class);
+		project = this.repository.findOneProjectById(projectId);
+
 		super.bind(object, "code", "moment", "startDate", "endDate", "amount", "financial", "email", "link");
+		object.setProject(project);
 	}
 
 	@Override
 	public void validate(final Sponsorship object) {
 		assert object != null;
+
+		if (!super.getBuffer().getErrors().hasErrors("project"))
+			super.state(object.getProject().getDraftMode().equals(false), "project", "sponsor.sponsorship.form.error.not-published-project");
 
 		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
 			super.state(object.getDraftMode(), "draftMode", "sponsor.sponsorship.form.error.draftMode");
@@ -104,6 +116,16 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 		dataset = super.unbind(object, "code", "moment", "startDate", "endDate", "amount", "financial", "email", "link", "draftMode");
 
 		dataset.put("methods", choices);
+
+		Collection<Project> projects;
+		SelectChoices projectChoices;
+
+		projects = this.repository.findAllPublishedProjects();
+		projectChoices = SelectChoices.from(projects, "code", object.getProject());
+
+		dataset.put("project", projectChoices.getSelected().getKey());
+		dataset.put("projects", projectChoices);
+
 		super.getResponse().addGlobal("sponsorshipId", object.getId());
 		super.getResponse().addData(dataset);
 	}

@@ -43,6 +43,9 @@ public class AnyPublishedSponsorshipsShowService extends AbstractService<Any, Sp
 
 		Dataset dataset;
 		dataset = super.unbind(object, "code", "moment", "startDate", "endDate", "amount", "financial", "email", "link", "draftMode");
+
+		dataset.put("project", object.getProject().getCode());
+
 		super.getResponse().addData(dataset);
 	}
 
